@@ -39,19 +39,15 @@ export default class Mediator {
                 const previousValue = Mediator.currentTasksValue;
                 Mediator.currentTasksValue = this.store.getState()[key];
 
-                console.log(previousValue);
-
-                if (previousValue !== Mediator.currentTasksValue) {
+                if (previousValue !== Mediator.currentTasksValue)
                     localStorage.setItem(key, JSON.stringify(Mediator.currentTasksValue))
-                }
             }
             if (key === 'projects') {
                 const previousValue = Mediator.currentProjectsValue;
                 Mediator.currentProjectsValue = this.store.getState()[key];
 
-                if (previousValue !== Mediator.currentProjectsValue) {
+                if (previousValue !== Mediator.currentProjectsValue)
                     localStorage.setItem(key, JSON.stringify(Mediator.currentProjectsValue));
-                }
             }
         }
     }

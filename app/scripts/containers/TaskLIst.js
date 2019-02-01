@@ -1,8 +1,8 @@
 import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import Task from '../components/Task';
-import {removeTask, startEditTask} from '../actions/PageActions';
 import Constants from '../lib/Constants';
+import { Actions } from '../actions/PageActions';
 
 class TaskLIst extends React.Component {
     constructor(props) {
@@ -73,8 +73,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeTask: task => dispatch(removeTask(task)),
-        startEditTaskAction: task => dispatch(startEditTask(task))
+        removeTask: task => dispatch(Actions.removeTask(task)),
+        startEditTaskAction: task => dispatch(Actions.startEditTask(task))
     };
 };
 

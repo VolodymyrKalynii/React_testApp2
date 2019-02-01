@@ -1,8 +1,9 @@
 import * as React from 'react';
+import connect from 'react-redux/es/connect/connect';
+
 import TaskForm from '../components/TaskForm';
 import TasksControlsBar from '../components/TasksControlsBar';
-import {addProject, addTask, editTask, filterForProjects, filterPriority, showTaskForm} from '../actions/PageActions';
-import connect from 'react-redux/es/connect/connect';
+import Actions from '../actions/PageActions';
 
 class TasksControls extends React.Component{
     constructor(props) {
@@ -71,12 +72,12 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        showTaskForm: showForm => dispatch(showTaskForm(showForm)),
-        filterPriority: isFilterPriority => dispatch(filterPriority(isFilterPriority)),
-        filterForProjects: project => dispatch(filterForProjects(project)),
-        addTaskAction: task => dispatch(addTask(task)),
-        editTaskAction: task => dispatch(editTask(task)),
-        addProjectAction: project => dispatch(addProject(project))
+        showTaskForm: showForm => dispatch(Actions.showTaskForm(showForm)),
+        filterPriority: isFilterPriority => dispatch(Actions.filterPriority(isFilterPriority)),
+        filterForProjects: project => dispatch(Actions.filterForProjects(project)),
+        addTaskAction: task => dispatch(Actions.addTask(task)),
+        editTaskAction: task => dispatch(Actions.editTask(task)),
+        addProjectAction: project => dispatch(Actions.addProject(project))
     }
 };
 
