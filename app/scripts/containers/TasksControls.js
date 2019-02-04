@@ -3,57 +3,51 @@ import connect from 'react-redux/es/connect/connect';
 
 import TaskForm from '../components/TaskForm';
 import TasksControlsBar from '../components/TasksControlsBar';
-import Actions from '../actions/PageActions';
+import PageActions from '../redux/actions/PageActions';
 
 class TasksControls extends React.Component{
-    constructor(props) {
-        super(props);
-
-        this.showTaskForm = props.showTaskForm;
-        this.filterPriority = props.filterPriority;
-        this.filterForProjects = props.filterForProjects;
-        this.createRenderBlock = this.createRenderBlock.bind(this);
-
-        this.addTaskAction = props.addTaskAction;
-        this.addProjectAction = props.addProjectAction;
-        this.editTaskAction = props.editTaskAction;
-    }
-
     render() {
         return this.createRenderBlock();
     }
 
-    createRenderBlock() {
-        const filteredProjectName = this.props.filteredProjectName;
-        const editedTaskIndex = this.props.editedTaskIndex;
-        const isShowTaskForm = this.props.isShowTaskForm;
-        const projects = this.props.projects;
-        const tasks = this.props.tasks;
+    createRenderBlock = () => {
+        const {
+            tasks,
+            projects,
+            isShowTaskForm,
+            editedTaskIndex,
+            filteredProjectName,
+            addTaskAction,
+            saveTaskAction,
+            addProjectAction,
+            showTaskFormAction,
+            hideTaskFormAction,
+            filterPriorityAction,
+            filterForProjectsAction
+         } = this.props;
 
         if (isShowTaskForm) {
             return (
                 <TaskForm
                     tasks={tasks}
                     projects={projects}
-                    filteredProjectName={filteredProjectName}
-                    addTaskAction={this.addTaskAction}
-                    editTaskAction={this.editTaskAction}
-                    addProjectAction={this.addProjectAction}
                     editedTaskIndex={editedTaskIndex}
-                    isShowTaskForm={isShowTaskForm}
-                    showTaskForm={this.showTaskForm}
+                    filteredProjectName={filteredProjectName}
+                    addTaskAction={addTaskAction}
+                    saveTaskAction={saveTaskAction}
+                    addProjectAction={addProjectAction}
+                    hideTaskFormAction={hideTaskFormAction}
                 />
             )
         } else {
             return (
                 <TasksControlsBar
                     tasks={tasks}
-                    filteredProjectName={filteredProjectName}
-                    isShowTaskForm={isShowTaskForm}
-                    filterForProjects={this.filterForProjects}
-                    filterPriority={this.filterPriority}
                     projects={projects}
-                    showTaskForm={this.showTaskForm}
+                    filteredProjectName={filteredProjectName}
+                    showTaskFormAction={showTaskFormAction}
+                    filterPriorityAction={filterPriorityAction}
+                    filterForProjectsAction={filterForProjectsAction}
                 />
             )
         }
@@ -63,21 +57,22 @@ class TasksControls extends React.Component{
 const mapStateToProps = store => {
     return {
         tasks: store.tasks,
-        editedTaskIndex: store.editedTaskIndex,
-        isShowTaskForm: store.isShowTaskForm,
         projects: store.projects,
+        isShowTaskForm: store.isShowTaskForm,
+        editedTaskIndex: store.editedTaskIndex,
         filteredProjectName: store.filteredProjectName
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        showTaskForm: showForm => dispatch(Actions.showTaskForm(showForm)),
-        filterPriority: isFilterPriority => dispatch(Actions.filterPriority(isFilterPriority)),
-        filterForProjects: project => dispatch(Actions.filterForProjects(project)),
-        addTaskAction: task => dispatch(Actions.addTask(task)),
-        editTaskAction: task => dispatch(Actions.editTask(task)),
-        addProjectAction: project => dispatch(Actions.addProject(project))
+        addTaskAction: task => dispatch(PageActions.addTask(task)),
+        saveTaskAction: task => dispatch(PageActions.saveTask(task)),
+        addProjectAction: project => dispatch(PageActions.addProject(project)),
+        showTaskFormAction: task => dispatch(PageActions.showTaskForm(task)),
+        hideTaskFormAction: () => dispatch(PageActions.hideTaskForm()),
+        filterForProjectsAction: project => dispatch(PageActions.filterForProjects(project)),
+        filterPriorityAction: isFilterPriority => dispatch(PageActions.filterPriority(isFilterPriority))
     }
 };
 

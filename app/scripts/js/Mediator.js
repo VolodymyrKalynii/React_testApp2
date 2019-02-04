@@ -1,6 +1,6 @@
-import Store from '../store/store';
+import Store from '../redux/store/store';
 import AppWrapper from './AppWrapper';
-import InitialState from '../state/InitialState';
+import InitialState from '../redux/state/InitialState';
 
 export default class Mediator {
 

@@ -21,6 +21,12 @@ Constants.SHOW_TASK_FORM = 'SHOW_TASK_FORM';
  * @type {string}
  * @readonly
  */
+Constants.HIDE_TASK_FORM = 'HIDE_TASK_FORM';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.FILTER_PRIORITY = 'FILTER_PRIORITY';
 
 /**
@@ -39,13 +45,7 @@ Constants.FILTER_FOR_PROJECTS = 'FILTER_FOR_PROJECTS';
  * @type {string}
  * @readonly
  */
-Constants.START_EDIT_TASK = 'START_EDIT_TASK';
-
-/**
- * @type {string}
- * @readonly
- */
-Constants.EDIT_TASK = 'EDIT_TASK';
+Constants.SAVE_TASK = 'SAVE_TASK';
 
 /**
  * @type {string}

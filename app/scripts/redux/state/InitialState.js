@@ -1,4 +1,4 @@
-import Constants from '../lib/Constants';
+import Constants from '../../lib/Constants';
 
 export default class InitialState {}
 

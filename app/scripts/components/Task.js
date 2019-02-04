@@ -1,4 +1,6 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
+
 import checkProjects from '../lib/checkProjects';
 
 export default class Task extends React.Component {
@@ -10,54 +12,47 @@ export default class Task extends React.Component {
         };
 
         this.detailsButtonText = 'Show details';
-        this.removeTask = this.props.removeTask;
-        this.startEditTaskAction = this.props.startEditTaskAction;
-
-        this.editTask = this.editTask.bind(this);
-        this.deleteTask = this.deleteTask.bind(this);
-        this.showDetails = this.showDetails.bind(this);
+        this.removeTaskAction = this.props.removeTaskAction;
+        this.showTaskFormAction = this.props.showTaskFormAction;
     }
 
     componentWillReceiveProps(nextProps) {
-        const editedTaskIndex = nextProps.editedTaskIndex;
+        const {editedTaskIndex} = nextProps;
         this.isEditingMode = editedTaskIndex !== null;
 
         this.validateDeleteTaskButton();
     }
 
     render() {
-        this.task = this.props.item;
-        this.tasks = this.props.tasks;
-        this.projects = this.props.projects;
-        this.filteredProjectName = this.props.filteredProjectName;
+        const task = this.props.task;
 
         return (
             <div className='taskList__task taskWrapper'>
-                <h5>{this.task.name}</h5>
-                <h6>Project {this.task.project}</h6>
-                <h6>Priority {this.task.priority}</h6>
-                {this.renderDetailsBlock(this.task)}
+                <h5>{task.name}</h5>
+                <h6>Project {task.project}</h6>
+                <h6>Priority {task.priority}</h6>
+                {this.renderDetailsBlock(task)}
                 <button onClick={this.showDetails}>{this.detailsButtonText}</button>
-                <button onClick={this.editTask}>Edit task</button>
+                <button onClick={this.startEditTask}>Edit task</button>
                 <button ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
             </div>
         )
     }
 
-    deleteTask() {
-        const currentTaskProject = this.tasks[this.props.index].project;
-        this.tasks.splice(this.props.index, 1);
-        const projectsObj = checkProjects(this.tasks, this.projects, currentTaskProject, this.filteredProjectName);
+    deleteTask = () => {
+        const {tasks, projects, filteredProjectName, index} = this.props;
+        const currentTaskProject = tasks[index].project;
 
-        this.projects = projectsObj.projects;
-        this.filteredProjectName = projectsObj.filteredProjectName;
+        tasks.splice(this.props.index, 1);
 
-        this.removeTask({
-            tasks: this.tasks,
-            projects: this.projects,
-            filteredProjectName: this.filteredProjectName
+        const projectsObj = checkProjects(tasks, projects, currentTaskProject, filteredProjectName);
+
+        this.removeTaskAction({
+            tasks,
+            projects: projectsObj.projects,
+            filteredProjectName: projectsObj.filteredProjectName
         });
-    }
+    };
 
     /**
      *
@@ -78,18 +73,15 @@ export default class Task extends React.Component {
         }
     }
 
-    showDetails() {
+    showDetails = () => {
         this.setState({
             showDetails: !this.state.showDetails
         });
-    }
+    };
 
-    editTask() {
-        this.startEditTaskAction({
-            task: this.task,
-            index: this.props.index
-        });
-    }
+    startEditTask = () => {
+        this.showTaskFormAction(this.props.index);
+    };
 
     validateDeleteTaskButton() {
         if (this.isEditingMode)
@@ -106,3 +98,14 @@ export default class Task extends React.Component {
         this.refs.deleteTaskButton.removeAttribute('disabled');
     }
 }
+
+Task.propTypes = {
+    task: PropTypes.object.isRequired,
+    index: PropTypes.number.isRequired,
+    tasks: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    editedTaskIndex: PropTypes.number,
+    filteredProjectName: PropTypes.string.isRequired,
+    removeTaskAction: PropTypes.func.isRequired,
+    showTaskFormAction: PropTypes.func.isRequired
+};

@@ -2,15 +2,13 @@ import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import Task from '../components/Task';
 import Constants from '../lib/Constants';
-import { Actions } from '../actions/PageActions';
+import PageActions  from '../redux/actions/PageActions';
 
 class TaskLIst extends React.Component {
     constructor(props) {
         super(props);
-        this.removeTask = this.props.removeTask;
-        this.startEditTaskAction = this.props.startEditTaskAction;
-
-        this.renderTaskBlock = this.renderTaskBlock.bind(this);
+        this.removeTaskAction = this.props.removeTaskAction;
+        this.showTaskFormAction = this.props.showTaskFormAction;
     }
 
     render() {
@@ -21,7 +19,7 @@ class TaskLIst extends React.Component {
         )
     }
 
-    renderTaskBlock() {
+    renderTaskBlock = () => {
         this.tasks = this.props.tasks;
         this.projects = this.props.projects;
         this.editedTaskIndex = this.props.editedTaskIndex;
@@ -30,12 +28,12 @@ class TaskLIst extends React.Component {
 
         if (isTask) {
             if (this.filteredProjectName === Constants.CHOSE_ALL_PROJECTS)
-                return this.tasks.map((item, index) =>
-                    this.renderTask(index, item));
+                return this.tasks.map((task, index) =>
+                    this.renderTask(index, task));
             else {
-                return this.tasks.map((item, index) => {
-                    if (item.project === this.filteredProjectName)
-                        return this.renderTask(index, item)
+                return this.tasks.map((task, index) => {
+                    if (task.project === this.filteredProjectName)
+                        return this.renderTask(index, task)
                 });
             }
         } else {
@@ -45,19 +43,19 @@ class TaskLIst extends React.Component {
                 </h4>
             );
         }
-    }
+    };
 
-    renderTask(index, item) {
+    renderTask(index, task) {
         return <Task
             key={index}
+            task={task}
             index={index}
-            item={item}
             tasks={this.tasks}
             projects={this.projects}
             editedTaskIndex={this.editedTaskIndex}
             filteredProjectName={this.filteredProjectName}
-            removeTask={this.removeTask}
-            startEditTaskAction={this.startEditTaskAction}
+            removeTaskAction={this.removeTaskAction}
+            showTaskFormAction={this.showTaskFormAction}
         />
     }
 }
@@ -66,15 +64,15 @@ const mapStateToProps = store => {
     return {
         tasks: store.tasks,
         projects: store.projects,
-        filteredProjectName: store.filteredProjectName,
-        editedTaskIndex: store.editedTaskIndex
+        editedTaskIndex: store.editedTaskIndex,
+        filteredProjectName: store.filteredProjectName
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeTask: task => dispatch(Actions.removeTask(task)),
-        startEditTaskAction: task => dispatch(Actions.startEditTask(task))
+        removeTaskAction: task => dispatch(PageActions.removeTask(task)),
+        showTaskFormAction: task => dispatch(PageActions.showTaskForm(task))
     };
 };
 

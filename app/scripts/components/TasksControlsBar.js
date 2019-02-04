@@ -1,38 +1,34 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
+
 import Constants from '../lib/Constants';
 
 export default class TasksControlsBar extends React.Component{
     constructor(props) {
         super(props);
 
-        this.showTaskForm = props.showTaskForm;
-        this.isShowTaskForm = props.isShowTaskForm;
-        this.filterPriority = props.filterPriority;
-        this.filterForProjects = props.filterForProjects;
+        this.showTaskFormAction = props.showTaskFormAction;
+        this.filterPriorityAction = props.filterPriorityAction;
+        this.filterForProjectsAction = props.filterForProjectsAction;
 
         this.state = {
             isFilterPriority: false
         };
-
-        this.filterTasks = this.filterTasks.bind(this);
-        this.filterTasksForProjects = this.filterTasksForProjects.bind(this);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.filteredProjectName = nextProps.filteredProjectName;
+        const {filteredProjectName} = nextProps;
 
-        if (this.filteredProjectName === Constants.CHOSE_ALL_PROJECTS)
-            this.refs.projectsSelect.value = this.filteredProjectName;
+        if (filteredProjectName === Constants.CHOSE_ALL_PROJECTS)
+            this.refs.projectsSelect.value = filteredProjectName;
     }
 
     render() {
         this.projects = this.props.projects;
-        this.tasks = this.props.tasks;
-        this.filteredProjectName = this.props.filteredProjectName;
 
         return (
             <div className='taskControlBar'>
-                <button onClick={this.showTaskForm.bind(null, !this.isShowTaskForm)}>New Task</button>
+                <button onClick={this.showTaskForm}>New Task</button>
                 <label><input type='checkbox' onChange={this.filterTasks}/> By priority</label>
                 <select name="" id="" ref='projectsSelect' onChange={this.filterTasksForProjects}>
                     {this.projects.map((project, index) => {
@@ -46,27 +42,31 @@ export default class TasksControlsBar extends React.Component{
         );
     }
 
-    filterTasksForProjects() {
+    showTaskForm = () => {
+        this.showTaskFormAction(null)
+    };
 
-        const projectsSelect = this.refs.projectsSelect;
+    filterTasksForProjects = () => {
+        const {projectsSelect} = this.refs;
 
-        this.filterForProjects(projectsSelect.value);
-    }
+        this.filterForProjectsAction(projectsSelect.value);
+    };
 
-    filterTasks() {
+    filterTasks = () => {
+        const {tasks} = this.props;
         const isFilterPriority = !this.state.isFilterPriority;
 
         if (isFilterPriority)
-            this.tasks.sort(TasksControlsBar.sortByPriority);
+            tasks.sort(TasksControlsBar.sortByPriority);
         else
-            this.tasks.sort(TasksControlsBar.sortByTime);
+            tasks.sort(TasksControlsBar.sortByTime);
 
-        this.filterPriority(this.tasks);
+        this.filterPriorityAction(tasks);
 
         this.setState({
-            isFilterPriority: isFilterPriority
+            isFilterPriority
         })
-    }
+    };
 
     static sortByPriority(a, b) {
         if (a.priority > b.priority) return 1;
@@ -78,3 +78,12 @@ export default class TasksControlsBar extends React.Component{
         if (a.time < b.time) return -1;
     }
 }
+
+TasksControlsBar.propTypes = {
+    tasks: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    filteredProjectName: PropTypes.string.isRequired,
+    showTaskFormAction: PropTypes.func.isRequired,
+    filterPriorityAction: PropTypes.func.isRequired,
+    filterForProjectsAction: PropTypes.func.isRequired
+};

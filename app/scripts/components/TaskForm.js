@@ -1,4 +1,6 @@
 import * as React from 'react';
+import PropTypes from 'prop-types';
+
 import checkProjects from '../lib/checkProjects';
 
 export default class TaskForm extends React.Component {
@@ -6,17 +8,11 @@ export default class TaskForm extends React.Component {
         super(props);
 
         this.addTaskAction = props.addTaskAction;
+        this.saveTaskAction = props.saveTaskAction;
         this.addProjectAction = props.addProjectAction;
-        this.editTaskAction = props.editTaskAction;
+        this.hideTaskFormAction = props.hideTaskFormAction;
 
-        this.showTaskForm = props.showTaskForm;
-        this.isShowTaskForm = props.isShowTaskForm;
-        this.addTask = this.addTask.bind(this);
-        this.checkProjects = this.checkProjects.bind(this);
-        this.validateForm = this.validateForm.bind(this);
-        this.disableFormButtonAdd = this.disableFormButtonAdd.bind(this);
-        this.enableFormButtonAdd = this.enableFormButtonAdd.bind(this);
-        TaskForm.createFromValues = TaskForm.createFromValues.bind(this);
+        this.initEditingMode(props);
     }
 
     componentDidMount(){
@@ -25,17 +21,13 @@ export default class TaskForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
+        this.initEditingMode(nextProps);
         this.setFormsValues(nextProps);
         this.validateForm();
     }
 
     render() {
-        const editedTaskIndex = this.props.editedTaskIndex;
-        const isEditingMode = editedTaskIndex !== null;
-        let formButtonAddText = 'Add task';
-
-        if (isEditingMode)
-            formButtonAddText = 'Save task';
+        let formButtonAddText = this.isEditingMode ? 'Save task': 'Add task';
 
         return (
             <div className='taskForm'>
@@ -51,8 +43,8 @@ export default class TaskForm extends React.Component {
                     </select>
                 </div>
                 <input className='taskForm__input' ref='taskDesk' onChange={this.validateForm} type="text" placeholder='Task description'/>
-                <button className='taskForm__input' ref='formButtonAdd' onClick={this.addTask}> {formButtonAddText}</button>
-                <button className='taskForm__input' ref='formButtonBack' onClick={this.showTaskForm.bind(null, !this.isShowTaskForm)}>Back</button>
+                <button className='taskForm__input' ref='formButtonAdd' onClick={this.addTask}>{formButtonAddText}</button>
+                <button className='taskForm__input' ref='formButtonBack' onClick={this.hideTaskForm}>Back</button>
             </div>
         );
     }
@@ -72,21 +64,24 @@ export default class TaskForm extends React.Component {
         }
     }
 
+    hideTaskForm = () => {
+        this.hideTaskFormAction()
+    };
+
     /**
-     *
      * @param {{}} props
      */
     setFormsValues(props) {
-        const editedTaskIndex = props.editedTaskIndex;
-        const isEditingMode = editedTaskIndex !== null;
         const tasks = props.tasks;
 
-        if (isEditingMode) {
-            const formValues = TaskForm.createFromValues(tasks, editedTaskIndex);
-            const taskName = this.refs.taskName;
-            const projectName = this.refs.projectName;
-            const priority = this.refs.priority;
-            const taskDesk = this.refs.taskDesk;
+        if (this.isEditingMode) {
+            const formValues = TaskForm.createFromValues(tasks, this.editedTaskIndex);
+            const {
+                taskName,
+                projectName,
+                priority,
+                taskDesk
+            } = this.refs;
 
             taskName.value = formValues.name;
             projectName.value = formValues.project;
@@ -95,57 +90,57 @@ export default class TaskForm extends React.Component {
         }
     }
 
-    addTask() {
-        const taskName = this.refs.taskName;
-        const projectName = this.refs.projectName;
-        const priority = this.refs.priority;
-        const taskDesk = this.refs.taskDesk;
+    addTask = () => {
         const tasks = this.props.tasks;
-        const editedTaskIndex = this.props.editedTaskIndex;
-        this.isEditingMode = editedTaskIndex !== null;
-        this.oldTaskProject = null;
-
-        const taskObj = {
-            name: taskName.value,
-            project: projectName.value.toLowerCase(),
-            task: taskDesk.value,
-            priority: priority.value,
-            time: Date.now()
-        };
+        const taskObj = this.createTaskObj();
+        let oldTaskProject = null;
 
         if (this.isEditingMode) {
-            this.oldTaskProject = tasks[editedTaskIndex].project;
+            oldTaskProject = tasks[this.editedTaskIndex].project;
 
-            tasks[editedTaskIndex] = taskObj;
+            tasks[this.editedTaskIndex] = taskObj;
 
-            this.editTaskAction(tasks);
+            this.saveTaskAction(tasks);
         } else {
             tasks.push(taskObj);
 
             this.addTaskAction(tasks);
         }
 
-        this.checkProjects(taskObj, tasks);
-
-        taskName.value = '';
-        taskDesk.value = '';
-        projectName.value = '';
-        priority.value = 1;
-
+        this.checkProjects(taskObj, tasks, oldTaskProject);
+        this.resetForm();
         this.validateForm();
-    }
+    };
+
+    createTaskObj = () => {
+        const {
+            taskName,
+            projectName,
+            priority,
+            taskDesk
+        } = this.refs;
+
+        return {
+            name: taskName.value,
+            project: projectName.value.toLowerCase(),
+            task: taskDesk.value,
+            priority: priority.value,
+            time: Date.now()
+        }
+    };
 
     /**
      *
      * @param {{}} taskObj
      * @param {Array<*>} tasks
+     * @param {null || string} oldTaskProject
      */
-    checkProjects(taskObj, tasks) {
+    checkProjects = (taskObj, tasks, oldTaskProject) => {
         let projects = this.props.projects;
         let filteredProjectName = this.props.filteredProjectName;
 
         if (this.isEditingMode) {
-            const projectsObj = checkProjects(tasks, projects, this.oldTaskProject, filteredProjectName);
+            const projectsObj = checkProjects(tasks, projects, oldTaskProject, filteredProjectName);
 
             projects = projectsObj.projects;
             filteredProjectName = projectsObj.filteredProjectName
@@ -158,20 +153,53 @@ export default class TaskForm extends React.Component {
                 filteredProjectName
             });
         }
-    }
+    };
 
-    validateForm() {
+    /**
+     * @param {{}} props
+     */
+    initEditingMode = (props) => {
+        this.editedTaskIndex = props.editedTaskIndex;
+        this.isEditingMode = this.editedTaskIndex !== null;
+    };
+
+    resetForm = () => {
+        const {
+            taskName,
+            projectName,
+            priority,
+            taskDesk
+        } = this.refs;
+
+        taskName.value = '';
+        taskDesk.value = '';
+        projectName.value = '';
+        priority.value = 1;
+    };
+
+    validateForm = () => {
         if (!this.refs.taskName.value || !this.refs.taskDesk.value)
             this.disableFormButtonAdd();
         else
             this.enableFormButtonAdd();
-    }
+    };
 
-    disableFormButtonAdd() {
+    disableFormButtonAdd = () => {
         this.refs.formButtonAdd.setAttribute('disabled', 'disabled');
-    }
+    };
 
-    enableFormButtonAdd() {
+    enableFormButtonAdd= () => {
         this.refs.formButtonAdd.removeAttribute('disabled');
     }
 }
+
+TaskForm.propTypes = {
+    tasks: PropTypes.array.isRequired,
+    projects: PropTypes.array.isRequired,
+    editedTaskIndex: PropTypes.number,
+    filteredProjectName: PropTypes.string.isRequired,
+    addTaskAction: PropTypes.func.isRequired,
+    saveTaskAction: PropTypes.func.isRequired,
+    addProjectAction: PropTypes.func.isRequired,
+    hideTaskFormAction: PropTypes.func.isRequired,
+};
