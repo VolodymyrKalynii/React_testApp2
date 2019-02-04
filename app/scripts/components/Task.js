@@ -27,14 +27,18 @@ export default class Task extends React.Component {
         const task = this.props.task;
 
         return (
-            <div className='taskList__task taskWrapper'>
+            <div className='taskList__task task'>
                 <h5>{task.name}</h5>
-                <h6>Project {task.project}</h6>
-                <h6>Priority {task.priority}</h6>
+                <div className="task__info">
+                    <h6>Project {task.project}</h6>
+                    <h6>Priority {task.priority}</h6>
+                </div>
                 {this.renderDetailsBlock(task)}
-                <button onClick={this.showDetails}>{this.detailsButtonText}</button>
-                <button onClick={this.startEditTask}>Edit task</button>
-                <button ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
+                <div className="task__buttons">
+                    <button onClick={this.showDetails}>{this.detailsButtonText}</button>
+                    <button onClick={this.startEditTask}>Edit task</button>
+                    <button ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
+                </div>
             </div>
         )
     }
