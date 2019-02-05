@@ -1,21 +1,20 @@
-import Constants from '../../lib/Constants';
-import ArrayUtils from '../../lib/ArrayUtils';
+import Consts from '../../lib/Constants';
 import InitialState from '../state/InitialState';
 
 export function taskReducer(state = InitialState.initialState, action) {
-    const tasks = ArrayUtils.getClone(state.tasks);
-    const projects = ArrayUtils.getClone(state.projects);
+    const tasks = [...state.tasks];
+    const projects = [...state.projects];
     let filteredProjectName = null;
 
     switch (action.type) {
-        case Constants.FILTER_FOR_PROJECTS:
+        case Consts.FILTER_FOR_PROJECTS:
             filteredProjectName = action.payload;
 
             return {
                 ...state,
                 filteredProjectName
             };
-        case Constants.ADD_PROJECT:
+        case Consts.ADD_PROJECT:
             filteredProjectName = action.payload.filteredProjectName;
 
             return {
@@ -23,20 +22,20 @@ export function taskReducer(state = InitialState.initialState, action) {
                 projects,
                 filteredProjectName
             };
-        case Constants.ADD_TASK:
+        case Consts.ADD_TASK:
             return {
                 ...state,
                 tasks,
                 editedTaskIndex: null
             };
-        case Constants.SAVE_TASK:
+        case Consts.SAVE_TASK:
             return {
                 ...state,
                 tasks,
                 editedTaskIndex: null,
                 isShowTaskForm: false
             };
-        case Constants.REMOVE_TASK:
+        case Consts.REMOVE_TASK:
             filteredProjectName = action.payload.filteredProjectName;
 
             return {
@@ -46,12 +45,12 @@ export function taskReducer(state = InitialState.initialState, action) {
                 editedTaskIndex: null,
                 filteredProjectName
             };
-        case Constants.FILTER_PRIORITY:
+        case Consts.FILTER_PRIORITY:
             return {
                 ...state,
                 tasks
             };
-        case Constants.SHOW_TASK_FORM:
+        case Consts.SHOW_TASK_FORM:
             const editedTaskIndex = action.payload;
 
             return {
@@ -59,7 +58,7 @@ export function taskReducer(state = InitialState.initialState, action) {
                 isShowTaskForm: true,
                 editedTaskIndex
             };
-        case Constants.HIDE_TASK_FORM:
+        case Consts.HIDE_TASK_FORM:
             return {
                 ...state,
                 isShowTaskForm: false,

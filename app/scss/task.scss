@@ -1,0 +1,21 @@
+.task{
+  &__info{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__button{
+    margin-top: 5px;
+  }
+
+  &__project{
+    font-style: italic;
+  }
+
+  &__priority{
+    font-weight: bold;
+  }
+}

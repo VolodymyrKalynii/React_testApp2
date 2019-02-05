@@ -1,0 +1,32 @@
+.taskForm {
+  border: 1px solid black;
+  padding: 10px;
+  margin-bottom: 10px;
+
+  &__buttons{
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__input {
+    display: block;
+    padding: 5px;
+    width: 75%;
+  }
+
+  &__block{
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin: 5px 0;
+  }
+
+  &__inputTitle{
+    margin-right: 10px;
+    font-size: 14px;
+  }
+
+  &__button{
+    width: 45%;
+  }
+}

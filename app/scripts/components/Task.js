@@ -24,20 +24,21 @@ export default class Task extends React.Component {
     }
 
     render() {
-        const task = this.props.task;
+        const {task} = this.props;
 
         return (
             <div className='taskList__task task'>
-                <h5>{task.name}</h5>
+                <h4>{task.name}</h4>
                 <div className="task__info">
-                    <h6>Project {task.project}</h6>
-                    <h6>Priority {task.priority}</h6>
+                    <h5>Project: <span className="task__project">{task.project}</span></h5>
+                    <h5>Priority: <span className="task__priority">{task.priority}</span></h5>
                 </div>
                 {this.renderDetailsBlock(task)}
                 <div className="task__buttons">
-                    <button onClick={this.showDetails}>{this.detailsButtonText}</button>
-                    <button onClick={this.startEditTask}>Edit task</button>
-                    <button ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
+                    <button className="task__button" onClick={this.showDetails}>{this.detailsButtonText}</button>
+                    <button className="task__button" onClick={this.startEditTask}>Edit task</button>
+                    <button className="task__button" onClick={this.startEditTask}>Close task</button>
+                    <button className="task__button" ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
                 </div>
             </div>
         )

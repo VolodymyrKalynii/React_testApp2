@@ -1,7 +1,7 @@
 import * as React from 'react';
 import PropTypes from 'prop-types';
 
-import Constants from '../lib/Constants';
+import Consts from '../lib/Constants';
 
 export default class TasksControlsBar extends React.Component{
     constructor(props) {
@@ -19,7 +19,7 @@ export default class TasksControlsBar extends React.Component{
     componentWillReceiveProps(nextProps) {
         const {filteredProjectName} = nextProps;
 
-        if (filteredProjectName === Constants.CHOSE_ALL_PROJECTS)
+        if (filteredProjectName === Consts.CHOSE_ALL_PROJECTS)
             this.refs.projectsSelect.value = filteredProjectName;
     }
 
@@ -30,10 +30,12 @@ export default class TasksControlsBar extends React.Component{
             <div className='taskControlBar'>
                 <button onClick={this.showTaskForm}>New Task</button>
                 <label><input type='checkbox' onChange={this.filterTasks}/> By priority</label>
+                <input type='radio' name='taskList'/>
+                <input type='radio' name='taskList'/>
                 <select name="" id="" ref='projectsSelect' onChange={this.filterTasksForProjects}>
                     {this.projects.map((project, index) => {
                         let projectText = project;
-                        if (project === Constants.CHOSE_ALL_PROJECTS)
+                        if (project === Consts.CHOSE_ALL_PROJECTS)
                             projectText = 'ChoseAll';
                         return (<option key={index} value={project}>{projectText}</option>)
                     })}

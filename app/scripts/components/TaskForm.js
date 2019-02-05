@@ -31,20 +31,31 @@ export default class TaskForm extends React.Component {
 
         return (
             <div className='taskForm'>
-                <input className='taskForm__input' ref='taskName' onChange={this.validateForm} type="text" placeholder='Task name'/>
-                <input className='taskForm__input' ref='projectName' onChange={this.validateForm} type="text" placeholder='Project name'/>
-                <div>
-                    <span>Priority </span>
-                    <select name="" id="" ref='priority'>
+                <div className="taskForm__block">
+                    <span className='taskForm__inputTitle'>Task</span>
+                    <input className='taskForm__input' ref='taskName' onChange={this.validateForm} type="text" placeholder='Task'/>
+                </div>
+                <div className="taskForm__block">
+                    <span className='taskForm__inputTitle'>Project</span>
+                    <input className='taskForm__input' ref='projectName' onChange={this.validateForm} type="text" placeholder='Project'/>
+                </div>
+                <div className='taskForm__block'>
+                    <span className='taskForm__inputTitle'>Priority</span>
+                    <select className='taskForm__input' name="" id="" ref='priority'>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                     </select>
                 </div>
-                <input className='taskForm__input' ref='taskDesk' onChange={this.validateForm} type="text" placeholder='Task description'/>
-                <button className='taskForm__input' ref='formButtonAdd' onClick={this.addTask}>{formButtonAddText}</button>
-                <button className='taskForm__input' ref='formButtonBack' onClick={this.hideTaskForm}>Back</button>
+                <div className="taskForm__block">
+                    <span className='taskForm__inputTitle'>Description</span>
+                    <textarea  className='taskForm__input' ref='taskDesk' onChange={this.validateForm} placeholder='Description' />
+                </div>
+                <div className="taskForm__buttons">
+                    <button className='taskForm__button' ref='formButtonAdd' onClick={this.addTask}>{formButtonAddText}</button>
+                    <button className='taskForm__button' ref='formButtonBack' onClick={this.hideTaskForm}>Back</button>
+                </div>
             </div>
         );
     }
