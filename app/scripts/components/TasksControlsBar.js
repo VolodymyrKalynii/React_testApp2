@@ -10,9 +10,11 @@ export default class TasksControlsBar extends React.Component{
         this.showTaskFormAction = props.showTaskFormAction;
         this.filterPriorityAction = props.filterPriorityAction;
         this.filterForProjectsAction = props.filterForProjectsAction;
+        this.toggleShowingTasksAction = props.toggleShowingTasksAction;
 
         this.state = {
-            isFilterPriority: false
+            isFilterPriority: false,
+            isShowClosedTasks: props.isShowClosedTasks
         };
     }
 
@@ -24,34 +26,50 @@ export default class TasksControlsBar extends React.Component{
     }
 
     render() {
-        this.projects = this.props.projects;
-
         return (
             <div className='taskControlBar'>
                 <button onClick={this.showTaskForm}>New Task</button>
                 <label><input type='checkbox' onChange={this.filterTasks}/> By priority</label>
-                <input type='radio' name='taskList'/>
-                <input type='radio' name='taskList'/>
-                <select name="" id="" ref='projectsSelect' onChange={this.filterTasksForProjects}>
-                    {this.projects.map((project, index) => {
-                        let projectText = project;
-                        if (project === Consts.CHOSE_ALL_PROJECTS)
-                            projectText = 'ChoseAll';
-                        return (<option key={index} value={project}>{projectText}</option>)
-                    })}
-                </select>
+                <label><input type='radio' value="false" checked={!this.state.isShowClosedTasks} onChange={this.changeVisibleTask} name='taskList'/> active</label>
+                <label><input type='radio' value="true" checked={!!this.state.isShowClosedTasks}  onChange={this.changeVisibleTask}  name='taskList'/> closed</label>
+                {this.renderSelectBlock()}
             </div>
         );
     }
 
+    renderSelectBlock = () => {
+        const {projects, closedTasksProjects} = this.props;
+        let currentProjects = projects;
+
+        if (this.state.isShowClosedTasks)
+            currentProjects = closedTasksProjects;
+
+        return (
+            <select name="" id="" ref='projectsSelect' onChange={this.filterTasksForProjects}>
+                {currentProjects.map((project, index) => {
+                    let projectText = project;
+                    if (project === Consts.CHOSE_ALL_PROJECTS)
+                        projectText = 'ChoseAll';
+                    return (<option key={index} value={project}>{projectText}</option>)
+                })}
+            </select>
+        )
+    };
+
     showTaskForm = () => {
-        this.showTaskFormAction(null)
+        const {tasks} = this.props;
+        this.showTaskFormAction(null);
+
+        tasks.sort(TasksControlsBar.sortByTime);
+
+        this.filterPriorityAction(tasks);
     };
 
     filterTasksForProjects = () => {
         const {projectsSelect} = this.refs;
 
         this.filterForProjectsAction(projectsSelect.value);
+
     };
 
     filterTasks = () => {
@@ -70,6 +88,15 @@ export default class TasksControlsBar extends React.Component{
         })
     };
 
+    changeVisibleTask = (changeEvent) => {
+        this.setState({
+            isShowClosedTasks: JSON.parse(changeEvent.target.value)
+        });
+
+        this.toggleShowingTasksAction(JSON.parse(changeEvent.target.value));
+        this.filterForProjectsAction(Consts.CHOSE_ALL_PROJECTS);
+    };
+
     static sortByPriority(a, b) {
         if (a.priority > b.priority) return 1;
         if (a.priority < b.priority) return -1;
@@ -84,8 +111,11 @@ export default class TasksControlsBar extends React.Component{
 TasksControlsBar.propTypes = {
     tasks: PropTypes.array.isRequired,
     projects: PropTypes.array.isRequired,
+    isShowClosedTasks: PropTypes.bool.isRequired,
     filteredProjectName: PropTypes.string.isRequired,
+    closedTasksProjects: PropTypes.array.isRequired,
     showTaskFormAction: PropTypes.func.isRequired,
     filterPriorityAction: PropTypes.func.isRequired,
-    filterForProjectsAction: PropTypes.func.isRequired
+    filterForProjectsAction: PropTypes.func.isRequired,
+    toggleShowingTasksAction: PropTypes.func.isRequired
 };

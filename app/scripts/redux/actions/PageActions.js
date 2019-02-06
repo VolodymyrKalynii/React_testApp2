@@ -24,12 +24,45 @@ export default class PageActions {
     }
 
     /**
+     * @param {Array<string>} projects
+     * @return {{type: string, payload: *}}
+     */
+    static addClosedTaskProject(projects) {
+        return {
+            type: Constants.ADD_CLOSED_TASK_PROJECT,
+            payload: projects
+        }
+    }
+
+    /**
      * @param {{}} taskObj
      * @return {{type: string, payload: *}}
      */
     static removeTask(taskObj) {
         return {
             type: Constants.REMOVE_TASK,
+            payload: taskObj
+        }
+    }
+
+    /**
+     * @param {{}} taskObj
+     * @return {{type: string, payload: *}}
+     */
+    static removeClosedTask(taskObj) {
+        return {
+            type: Constants.REMOVE_CLOSED_TASK,
+            payload: taskObj
+        }
+    }
+
+    /**
+     * @param {{}} taskObj
+     * @return {{type: string, payload: *}}
+     */
+    static closeTask(taskObj) {
+        return {
+            type: Constants.CLOSEE_TASK,
             payload: taskObj
         }
     }
@@ -42,6 +75,13 @@ export default class PageActions {
         return{
             type: Constants.SHOW_TASK_FORM,
             payload: task
+        }
+    }
+
+    static toggleShowingTasks(isShowClosedTasks) {
+        return{
+            type: Constants.TOGGLE_SHOWING_TASKS,
+            payload: isShowClosedTasks
         }
     }
 

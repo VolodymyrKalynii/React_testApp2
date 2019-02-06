@@ -35,21 +35,26 @@ export default class Mediator {
      */
     handleChange() {
         for (let key in this.store.getState()) {
-            if (key === 'tasks') {
-                const previousValue = Mediator.currentTasksValue;
-                Mediator.currentTasksValue = this.store.getState()[key];
-
-                if (previousValue !== Mediator.currentTasksValue)
-                    localStorage.setItem(key, JSON.stringify(Mediator.currentTasksValue))
-            }
-            if (key === 'projects') {
-                const previousValue = Mediator.currentProjectsValue;
-                Mediator.currentProjectsValue = this.store.getState()[key];
-
-                if (previousValue !== Mediator.currentProjectsValue)
-                    localStorage.setItem(key, JSON.stringify(Mediator.currentProjectsValue));
-            }
+            if (key === 'tasks')
+                this.writeLocalStorageField(key);
+            if (key === 'projects')
+                this.writeLocalStorageField(key);
+            if (key === 'closedTasks')
+                this.writeLocalStorageField(key);
+            if (key === 'closedTasksProjects')
+                this.writeLocalStorageField(key);
         }
+    }
+
+    /**
+     * @param key
+     */
+    writeLocalStorageField(key) {
+        const previousValue = Mediator[key];
+        Mediator[key] = this.store.getState()[key];
+
+        if (previousValue !== Mediator[key])
+            localStorage.setItem(key, JSON.stringify(Mediator[key]));
     }
 
     /**
@@ -60,5 +65,7 @@ export default class Mediator {
     }
 }
 
-Mediator.currentTasksValue = InitialState.initialState.tasks;
-Mediator.currentProjectsValue = InitialState.initialState.projects;
+Mediator.tasks = InitialState.initialState.tasks;
+Mediator.closedTasks = InitialState.initialState.closedTasks;
+Mediator.closedTasksProjects = InitialState.initialState.closedTasksProjects;
+Mediator.projects = InitialState.initialState.projects;

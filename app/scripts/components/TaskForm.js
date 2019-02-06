@@ -147,8 +147,7 @@ export default class TaskForm extends React.Component {
      * @param {null || string} oldTaskProject
      */
     checkProjects = (taskObj, tasks, oldTaskProject) => {
-        let projects = this.props.projects;
-        let filteredProjectName = this.props.filteredProjectName;
+        let {projects, filteredProjectName} = this.props;
 
         if (this.isEditingMode) {
             const projectsObj = checkProjects(tasks, projects, oldTaskProject, filteredProjectName);

@@ -7,8 +7,11 @@ import PageActions  from '../redux/actions/PageActions';
 class TaskLIst extends React.Component {
     constructor(props) {
         super(props);
+        this.closeTaskAction = this.props.closeTaskAction;
         this.removeTaskAction = this.props.removeTaskAction;
         this.showTaskFormAction = this.props.showTaskFormAction;
+        this.removeClosedTaskAction = this.props.removeClosedTaskAction;
+        this.addClosedTaskProjectAction = this.props.addClosedTaskProjectAction;
     }
 
     render() {
@@ -21,17 +24,25 @@ class TaskLIst extends React.Component {
 
     renderTaskBlock = () => {
         this.tasks = this.props.tasks;
+        this.currentTasks = this.props.tasks;
         this.projects = this.props.projects;
+        this.closedTasks = this.props.closedTasks;
         this.editedTaskIndex = this.props.editedTaskIndex;
+        this.isShowClosedTasks = this.props.isShowClosedTasks;
         this.filteredProjectName = this.props.filteredProjectName;
-        const isTask = !!this.tasks.length;
+        this.closedTasksProjects = this.props.closedTasksProjects;
+
+        if (this.isShowClosedTasks)
+            this.currentTasks = this.closedTasks;
+
+        const isTask = !!this.currentTasks.length;
 
         if (isTask) {
             if (this.filteredProjectName === Constants.CHOSE_ALL_PROJECTS)
-                return this.tasks.map((task, index) =>
+                return this.currentTasks.map((task, index) =>
                     this.renderTask(index, task));
             else {
-                return this.tasks.map((task, index) => {
+                return this.currentTasks.map((task, index) => {
                     if (task.project === this.filteredProjectName)
                         return this.renderTask(index, task)
                 });
@@ -50,12 +61,18 @@ class TaskLIst extends React.Component {
             key={index}
             task={task}
             index={index}
-            tasks={this.tasks}
+            tasks={this.currentTasks}
             projects={this.projects}
+            closedTasks={this.closedTasks}
             editedTaskIndex={this.editedTaskIndex}
+            isShowClosedTasks={this.isShowClosedTasks}
             filteredProjectName={this.filteredProjectName}
+            closedTasksProjects={this.closedTasksProjects}
+            closeTaskAction={this.closeTaskAction}
             removeTaskAction={this.removeTaskAction}
             showTaskFormAction={this.showTaskFormAction}
+            removeClosedTaskAction={this.removeClosedTaskAction}
+            addClosedTaskProjectAction={this.addClosedTaskProjectAction}
         />
     }
 }
@@ -64,15 +81,21 @@ const mapStateToProps = store => {
     return {
         tasks: store.tasks,
         projects: store.projects,
+        closedTasks: store.closedTasks,
         editedTaskIndex: store.editedTaskIndex,
-        filteredProjectName: store.filteredProjectName
+        isShowClosedTasks: store.isShowClosedTasks,
+        filteredProjectName: store.filteredProjectName,
+        closedTasksProjects: store.closedTasksProjects,
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        removeTaskAction: task => dispatch(PageActions.removeTask(task)),
-        showTaskFormAction: task => dispatch(PageActions.showTaskForm(task))
+        removeTaskAction: taskObj => dispatch(PageActions.removeTask(taskObj)),
+        removeClosedTaskAction: taskObj => dispatch(PageActions.removeClosedTask(taskObj)),
+        closeTaskAction: taskObj => dispatch(PageActions.closeTask(taskObj)),
+        showTaskFormAction: task => dispatch(PageActions.showTaskForm(task)),
+        addClosedTaskProjectAction: projects => dispatch(PageActions.addClosedTaskProject(projects)),
     };
 };
 

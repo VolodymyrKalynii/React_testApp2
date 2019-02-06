@@ -15,7 +15,25 @@ Constants.REMOVE_TASK = 'REMOVE_TASK';
  * @type {string}
  * @readonly
  */
+Constants.REMOVE_CLOSED_TASK = 'REMOVE_CLOSED_TASK';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.CLOSEE_TASK = 'CLOSEE_TASK';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.SHOW_TASK_FORM = 'SHOW_TASK_FORM';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.TOGGLE_SHOWING_TASKS = 'TOGGLE_SHOWING_TASKS';
 
 /**
  * @type {string}
@@ -34,6 +52,12 @@ Constants.FILTER_PRIORITY = 'FILTER_PRIORITY';
  * @readonly
  */
 Constants.ADD_PROJECT = 'ADD_PROJECT';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.ADD_CLOSED_TASK_PROJECT = 'ADD_CLOSED_TASK_PROJECT';
 
 /**
  * @type {string}
