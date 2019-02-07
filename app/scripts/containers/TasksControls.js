@@ -16,6 +16,7 @@ class TasksControls extends React.Component{
             projects,
             isShowTaskForm,
             editedTaskIndex,
+            // filteredTaskName,
             isShowClosedTasks,
             filteredProjectName,
             closedTasksProjects,
@@ -26,6 +27,7 @@ class TasksControls extends React.Component{
             hideTaskFormAction,
             filterPriorityAction,
             filterForProjectsAction,
+            filterForTaskNamesAction,
             toggleShowingTasksAction
          } = this.props;
 
@@ -47,12 +49,14 @@ class TasksControls extends React.Component{
                 <TasksControlsBar
                     tasks={tasks}
                     projects={projects}
+                    // filteredTaskName={filteredTaskName}
                     isShowClosedTasks={isShowClosedTasks}
                     filteredProjectName={filteredProjectName}
                     closedTasksProjects={closedTasksProjects}
                     showTaskFormAction={showTaskFormAction}
                     filterPriorityAction={filterPriorityAction}
                     filterForProjectsAction={filterForProjectsAction}
+                    filterForTaskNamesAction={filterForTaskNamesAction}
                     toggleShowingTasksAction={toggleShowingTasksAction}
                 />
             )
@@ -66,6 +70,7 @@ const mapStateToProps = store => {
         projects: store.projects,
         isShowTaskForm: store.isShowTaskForm,
         editedTaskIndex: store.editedTaskIndex,
+        // filteredTaskName: store.filteredTaskName,
         isShowClosedTasks: store.isShowClosedTasks,
         closedTasksProjects: store.closedTasksProjects,
         filteredProjectName: store.filteredProjectName
@@ -80,6 +85,7 @@ const mapDispatchToProps = dispatch => {
         showTaskFormAction: task => dispatch(PageActions.showTaskForm(task)),
         hideTaskFormAction: () => dispatch(PageActions.hideTaskForm()),
         filterForProjectsAction: project => dispatch(PageActions.filterForProjects(project)),
+        filterForTaskNamesAction: taskName => dispatch(PageActions.filterForTaskNames(taskName)),
         filterPriorityAction: isFilterPriority => dispatch(PageActions.filterPriority(isFilterPriority)),
         toggleShowingTasksAction: isShowClosedTasks => dispatch(PageActions.toggleShowingTasks(isShowClosedTasks))
     }

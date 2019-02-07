@@ -12,7 +12,7 @@ export default class TaskForm extends React.Component {
         this.addProjectAction = props.addProjectAction;
         this.hideTaskFormAction = props.hideTaskFormAction;
 
-        this.initEditingMode(props);
+        this.checkEditingMode(props);
     }
 
     componentDidMount(){
@@ -21,7 +21,7 @@ export default class TaskForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.initEditingMode(nextProps);
+        this.checkEditingMode(nextProps);
         this.setFormsValues(nextProps);
         this.validateForm();
     }
@@ -61,7 +61,6 @@ export default class TaskForm extends React.Component {
     }
 
     /**
-     *
      * @param {Array<*>} tasks
      * @param {number} editedTaskIndex
      * @return {{name: (*|string), project: string | * | string, task: (string|*), priority: number | RTCPriorityType | string}}
@@ -141,7 +140,6 @@ export default class TaskForm extends React.Component {
     };
 
     /**
-     *
      * @param {{}} taskObj
      * @param {Array<*>} tasks
      * @param {null || string} oldTaskProject
@@ -168,7 +166,7 @@ export default class TaskForm extends React.Component {
     /**
      * @param {{}} props
      */
-    initEditingMode = (props) => {
+    checkEditingMode = (props) => {
         this.editedTaskIndex = props.editedTaskIndex;
         this.isEditingMode = this.editedTaskIndex !== null;
     };

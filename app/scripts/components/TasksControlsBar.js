@@ -11,6 +11,7 @@ export default class TasksControlsBar extends React.Component{
         this.filterPriorityAction = props.filterPriorityAction;
         this.filterForProjectsAction = props.filterForProjectsAction;
         this.toggleShowingTasksAction = props.toggleShowingTasksAction;
+        this.filterForTaskNamesAction = props.filterForTaskNamesAction;
 
         this.state = {
             isFilterPriority: false,
@@ -28,10 +29,11 @@ export default class TasksControlsBar extends React.Component{
     render() {
         return (
             <div className='taskControlBar'>
-                <button onClick={this.showTaskForm}>New Task</button>
-                <label><input type='checkbox' onChange={this.filterTasks}/> By priority</label>
-                <label><input type='radio' value="false" checked={!this.state.isShowClosedTasks} onChange={this.changeVisibleTask} name='taskList'/> active</label>
-                <label><input type='radio' value="true" checked={!!this.state.isShowClosedTasks}  onChange={this.changeVisibleTask}  name='taskList'/> closed</label>
+                <button onClick={this.showTaskForm}>+</button>
+                <input className='taskControlBar__search' type="text" placeholder='Search name' onChange={this.filterTasksForTaskName} />
+                <label><input type='checkbox' onChange={this.filterTasks}/>By priority</label>
+                <label className='taskControlBar__radio'><input type='radio' value="false" checked={!this.state.isShowClosedTasks} onChange={this.changeVisibleTask} name='taskList'/>active</label>
+                <label className='taskControlBar__radio'><input type='radio' value="true" checked={!!this.state.isShowClosedTasks}  onChange={this.changeVisibleTask}  name='taskList'/>closed</label>
                 {this.renderSelectBlock()}
             </div>
         );
@@ -65,11 +67,16 @@ export default class TasksControlsBar extends React.Component{
         this.filterPriorityAction(tasks);
     };
 
-    filterTasksForProjects = () => {
-        const {projectsSelect} = this.refs;
+    filterTasksForTaskName = (evt) => {
+        const filteredTaskName = evt.target.value === ''
+            ? Consts.CHOSE_ALL_TASKS
+            : evt.target.value;
 
-        this.filterForProjectsAction(projectsSelect.value);
+        this.filterForTaskNamesAction(filteredTaskName);
+    };
 
+    filterTasksForProjects = (evt) => {
+        this.filterForProjectsAction(evt.target.value);
     };
 
     filterTasks = () => {
@@ -89,11 +96,13 @@ export default class TasksControlsBar extends React.Component{
     };
 
     changeVisibleTask = (changeEvent) => {
+        const isShowClosedTasks = changeEvent.target.value === 'true';
+
         this.setState({
-            isShowClosedTasks: JSON.parse(changeEvent.target.value)
+            isShowClosedTasks
         });
 
-        this.toggleShowingTasksAction(JSON.parse(changeEvent.target.value));
+        this.toggleShowingTasksAction(isShowClosedTasks);
         this.filterForProjectsAction(Consts.CHOSE_ALL_PROJECTS);
     };
 

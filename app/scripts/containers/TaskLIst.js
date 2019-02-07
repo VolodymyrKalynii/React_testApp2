@@ -24,50 +24,73 @@ class TaskLIst extends React.Component {
 
     renderTaskBlock = () => {
         this.tasks = this.props.tasks;
-        this.currentTasks = this.props.tasks;
-        this.projects = this.props.projects;
         this.closedTasks = this.props.closedTasks;
-        this.editedTaskIndex = this.props.editedTaskIndex;
+        this.filteredTaskName = this.props.filteredTaskName;
         this.isShowClosedTasks = this.props.isShowClosedTasks;
         this.filteredProjectName = this.props.filteredProjectName;
-        this.closedTasksProjects = this.props.closedTasksProjects;
 
         if (this.isShowClosedTasks)
-            this.currentTasks = this.closedTasks;
+            this.tasks = this.closedTasks;
 
-        const isTask = !!this.currentTasks.length;
+        const isTask = !!this.tasks.length;
 
-        if (isTask) {
-            if (this.filteredProjectName === Constants.CHOSE_ALL_PROJECTS)
-                return this.currentTasks.map((task, index) =>
-                    this.renderTask(index, task));
-            else {
-                return this.currentTasks.map((task, index) => {
-                    if (task.project === this.filteredProjectName)
-                        return this.renderTask(index, task)
-                });
-            }
-        } else {
-            return (
-                <h4>
-                    There are no tasks
-                </h4>
-            );
-        }
+        return isTask
+            ? this.mappingTasks()
+            : <h4>There are no tasks</h4>
     };
 
-    renderTask(index, task) {
+    mappingTasks = () => {
+        return this.tasks.map((task, index) =>
+            this.filterTasksForProjects(task, index)
+        );
+    };
+
+    /**
+     * @param {{}} task
+     * @param {number} index
+     * @return {string}
+     */
+    filterTasksForProjects = (task, index) => {
+        const filterForAllProjects = this.filteredProjectName === Constants.CHOSE_ALL_PROJECTS;
+        const filterForCurrentProject = task.project === this.filteredProjectName;
+
+        return (filterForAllProjects || filterForCurrentProject)
+            ? this.filterTaskForNames(task, index)
+            : '';
+    };
+
+    /**
+     * @param {{}} task
+     * @param {number} index
+     * @return {string}
+     */
+    filterTaskForNames = (task, index) => {
+        const isTaskNameSearched = task.name.toLowerCase().search(this.filteredTaskName) !== -1;
+        const ifFilteredTaskName = this.filteredTaskName === Constants.CHOSE_ALL_TASKS;
+
+        return (ifFilteredTaskName || isTaskNameSearched)
+            ? this.renderTask(task, index)
+            : '';
+    };
+
+    /**
+     * @param {{}} task
+     * @param {number} index
+     * @return {string}
+     */
+    renderTask(task, index) {
+        const {projects, editedTaskIndex, closedTasksProjects} = this.props;
         return <Task
             key={index}
             task={task}
             index={index}
-            tasks={this.currentTasks}
-            projects={this.projects}
+            tasks={this.tasks}
+            projects={projects}
             closedTasks={this.closedTasks}
-            editedTaskIndex={this.editedTaskIndex}
+            editedTaskIndex={editedTaskIndex}
+            closedTasksProjects={closedTasksProjects}
             isShowClosedTasks={this.isShowClosedTasks}
             filteredProjectName={this.filteredProjectName}
-            closedTasksProjects={this.closedTasksProjects}
             closeTaskAction={this.closeTaskAction}
             removeTaskAction={this.removeTaskAction}
             showTaskFormAction={this.showTaskFormAction}
@@ -83,6 +106,7 @@ const mapStateToProps = store => {
         projects: store.projects,
         closedTasks: store.closedTasks,
         editedTaskIndex: store.editedTaskIndex,
+        filteredTaskName: store.filteredTaskName,
         isShowClosedTasks: store.isShowClosedTasks,
         filteredProjectName: store.filteredProjectName,
         closedTasksProjects: store.closedTasksProjects,

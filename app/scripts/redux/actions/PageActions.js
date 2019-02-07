@@ -114,6 +114,17 @@ export default class PageActions {
     }
 
     /**
+     * @param {Array<{}>} taskName
+     * @return {{type: string, payload: *}}
+     */
+    static filterForTaskNames(taskName) {
+        return{
+            type: Constants.FILTER_FOR_TASK_NAMES,
+            payload: taskName
+        }
+    }
+
+    /**
      * @param {{}} task
      * @return {{type: string, payload: *}}
      */

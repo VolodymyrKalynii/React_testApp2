@@ -69,6 +69,12 @@ Constants.FILTER_FOR_PROJECTS = 'FILTER_FOR_PROJECTS';
  * @type {string}
  * @readonly
  */
+Constants.FILTER_FOR_TASK_NAMES = 'FILTER_FOR_TASK_NAMES';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.SAVE_TASK = 'SAVE_TASK';
 
 /**
@@ -76,3 +82,9 @@ Constants.SAVE_TASK = 'SAVE_TASK';
  * @readonly
  */
 Constants.CHOSE_ALL_PROJECTS = 'CHOSE_ALL_PROJECTS';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.CHOSE_ALL_TASKS = 'CHOSE_ALL_TASKS';

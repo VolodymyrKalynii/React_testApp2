@@ -7,6 +7,7 @@ export function taskReducer(state = InitialState.initialState, action) {
     const projects = [...state.projects];
     const closedTasksProjects = [...state.closedTasksProjects];
     let filteredProjectName = null;
+    let filteredTaskName = null;
 
     switch (action.type) {
         case Consts.FILTER_FOR_PROJECTS:
@@ -15,6 +16,13 @@ export function taskReducer(state = InitialState.initialState, action) {
             return {
                 ...state,
                 filteredProjectName
+            };
+        case Consts.FILTER_FOR_TASK_NAMES:
+            filteredTaskName = action.payload;
+
+            return {
+                ...state,
+                filteredTaskName
             };
         case Consts.ADD_PROJECT:
             filteredProjectName = action.payload.filteredProjectName;
