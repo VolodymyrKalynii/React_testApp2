@@ -20,13 +20,14 @@ export default class Mediator {
          * @private
          */
         this.store = Mediator.getStore();
-        this.store.subscribe(this.handleChange.bind(this));
+        // this.store.subscribe(this.handleChange.bind(this));
     }
 
     /**
      * @private
      */
     renderBaseComponent() {
+        // AppWrapper.render();
         AppWrapper.render(this.store);
     }
 
@@ -65,7 +66,7 @@ export default class Mediator {
     }
 }
 
-Mediator.tasks = InitialState.initialState.tasks;
-Mediator.closedTasks = InitialState.initialState.closedTasks;
-Mediator.closedTasksProjects = InitialState.initialState.closedTasksProjects;
-Mediator.projects = InitialState.initialState.projects;
+// Mediator.tasks = InitialState.initialState.tasks;
+// Mediator.closedTasks = InitialState.initialState.closedTasks;
+// Mediator.closedTasksProjects = InitialState.initialState.closedTasksProjects;
+// Mediator.projects = InitialState.initialState.projects;

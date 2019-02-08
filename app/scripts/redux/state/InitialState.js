@@ -1,15 +1,29 @@
-import Constants from '../../lib/Constants';
+import {JsonImporter} from '../../lib/JsonImporter';
 
-export default class InitialState {}
 
-InitialState.initialState = {
-    tasks: JSON.parse(localStorage.getItem('tasks')) || [],
-    closedTasks: JSON.parse(localStorage.getItem('closedTasks')) || [],
-    projects: JSON.parse(localStorage.getItem('projects')) || [Constants.CHOSE_ALL_PROJECTS],
-    closedTasksProjects: JSON.parse(localStorage.getItem('closedTasksProjects')) || [Constants.CHOSE_ALL_PROJECTS],
-    filteredProjectName: Constants.CHOSE_ALL_PROJECTS,
-    filteredTaskName: Constants.CHOSE_ALL_TASKS,
-    isShowClosedTasks: false,
-    editedTaskIndex: null,
-    isShowTaskForm: false
-};
+// class InitPhotos {
+//     init() {
+//         this.photos = JsonImporter.import('../../imgJson/photos.json')
+//     }
+//
+//     get(){
+//         this.init();
+//         console.log(this.photos);
+//         return this.photos
+//     }
+// }
+
+export default class InitialState {
+    static async loadFile() {
+
+        InitialState.initialState = {
+            photosObj: await JsonImporter.import('../../imgJson/photos.json')
+        };
+
+        console.log(InitialState.initialState.photosObj);
+    }
+}
+
+InitialState.loadFile()
+
+// console.log(InitialState.initialState);
