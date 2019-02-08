@@ -1,14 +1,18 @@
 .task{
+  display: flex;
+  justify-content: space-between;
   &__info{
-    display: flex;
-    justify-content: space-between;
+    max-width: 80%;
+    flex-grow: 1;
+    overflow: hidden;
   }
   &__buttons{
-    display: flex;
-    justify-content: space-between;
+    flex-wrap: wrap;
+    width: 60px;
   }
   &__button{
-    margin-top: 5px;
+    margin: 2px;
+    width: 25px;
   }
 
   &__project{

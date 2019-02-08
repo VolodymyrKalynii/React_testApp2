@@ -11,7 +11,7 @@ export default class Task extends React.Component {
             showDetails: false
         };
 
-        this.detailsButtonText = 'Show details';
+        this.detailsButtonText = 'chevron-down';
         this.closeTaskAction = this.props.closeTaskAction;
         this.removeTaskAction = this.props.removeTaskAction;
         this.showTaskFormAction = this.props.showTaskFormAction;
@@ -37,12 +37,14 @@ export default class Task extends React.Component {
 
         return (
             <div className='taskList__task task'>
-                <h4>{task.name}</h4>
                 <div className="task__info">
-                    <h5>Project: <span className="task__project">{task.project}</span></h5>
-                    <h5>Priority: <span className="task__priority">{task.priority}</span></h5>
+                    <h4>{task.name}</h4>
+                    <div className="task__info">
+                        <h5>Project: <span className="task__project">{task.project}</span></h5>
+                        <h5>Priority: <span className="task__priority">{task.priority}</span></h5>
+                    </div>
+                    {this.renderDetailsBlock(task)}
                 </div>
-                {this.renderDetailsBlock(task)}
                 {this.renderButtonsBlock()}
             </div>
         )
@@ -56,12 +58,12 @@ export default class Task extends React.Component {
         const showDetails = this.state.showDetails;
 
         if (showDetails) {
-            this.detailsButtonText = 'Hide details';
+            this.detailsButtonText = 'chevron-up';
             return (
                 <p>{task.task}</p>
             );
         } else {
-            this.detailsButtonText = 'Show details';
+            this.detailsButtonText = 'chevron-down';
             return null;
         }
     }
@@ -72,17 +74,17 @@ export default class Task extends React.Component {
         if (!isShowClosedTasks) {
             return (
                 <div className="task__buttons">
-                    <button className="task__button" onClick={this.showDetails}>{this.detailsButtonText}</button>
-                    <button className="task__button" onClick={this.startEditTask}>Edit task</button>
-                    <button className="task__button" ref='closeTaskButton' onClick={this.closeTask}>Close task</button>
-                    <button className="task__button" ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
+                    <button className="task__button" onClick={this.showDetails}><span className={`mdi mdi-${this.detailsButtonText}`} /></button>
+                    <button className="task__button" onClick={this.startEditTask}><span className='mdi mdi-pen'/></button>
+                    <button className="task__button" ref='closeTaskButton' onClick={this.closeTask}><span className='mdi mdi-check'/></button>
+                    <button className="task__button" ref='deleteTaskButton' onClick={this.deleteTask}><span className='mdi mdi-delete'/></button>
                 </div>
             )
         } else {
             return (
                 <div className="task__buttons">
-                    <button className="task__button" onClick={this.showDetails}>{this.detailsButtonText}</button>
-                    <button className="task__button" ref='deleteTaskButton' onClick={this.deleteTask}>Delete task</button>
+                    <button className="task__button" onClick={this.showDetails}><span className={`mdi mdi-${this.detailsButtonText}`} /></button>
+                    <button className="task__button" ref='deleteTaskButton' onClick={this.deleteTask}><span className='mdi mdi-delete'/></button>
                 </div>
             )
         }
