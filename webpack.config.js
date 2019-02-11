@@ -146,17 +146,7 @@ module.exports = {
         new CopyWebpackPlugin([
             {
                 from: 'app/index.html'
-            },
-            {
-                from: 'app/img/',
-                to: 'img/',
-                toType: 'dir'
-            },
-            {
-                from: 'app/imgJson/',
-                to: 'imgJson/',
-                toType: 'dir'
-            },
+            }
         ])
     ],
     devServer: {

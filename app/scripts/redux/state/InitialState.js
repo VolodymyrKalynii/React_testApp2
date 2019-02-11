@@ -17,10 +17,10 @@ export default class InitialState {
     static async loadFile() {
 
         InitialState.initialState = {
-            photosObj: await JsonImporter.import('../../imgJson/photos.json')
+
         };
 
-        console.log(InitialState.initialState.photosObj);
+        // console.log(InitialState.initialState.photosObj);
     }
 }
 
