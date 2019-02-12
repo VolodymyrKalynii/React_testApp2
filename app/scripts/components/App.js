@@ -5,14 +5,22 @@ import Nav from "./Nav";
 import Home from "./Home";
 import Bookmarks from "./Bookmarks";
 import NotFound from "./NotFound";
+import FilmWrapper from './FilmWrapper';
 
 export default class App extends React.Component{
+    constructor(props) {
+        super(props);
+
+    }
+
     render() {
         return (
-            <div className='taskWrapper'>
+            <div className='wrapper'>
                 <Nav/>
+                <br/>
                 <Switch>
                     <Route exact path="/" component={Home} />
+                    <Route path="/movie/:id" component={FilmWrapper} />
                     <Route path="/bookmarks" component={Bookmarks} />
                     {/*<Route path={} component={NotFound} />*/}
                 </Switch>

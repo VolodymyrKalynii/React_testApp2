@@ -5,14 +5,13 @@ import {HashRouter, Router, BrowserRouter } from "react-router-dom";
 import App from "../components/App";
 
 export default class AppWrapper {
-
-    static render() {
+    static render(films) {
         return ReactDOM.render(
-            <BrowserRouter >
+            <HashRouter >
                 <div>
-                    <App/>
+                    <App films={films}/>
                 </div>
-            </BrowserRouter>,
+            </HashRouter>,
             document.getElementById('app')
         );
     }

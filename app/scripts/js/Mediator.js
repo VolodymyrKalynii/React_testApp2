@@ -1,16 +1,29 @@
 import Store from '../redux/store/store';
 import AppWrapper from './AppWrapper';
 import InitialState from '../redux/state/InitialState';
+import {JsonImporter} from '../lib/JsonImporter';
 
 export default class Mediator {
 
-    init() {
+    async init() {
         this.initStore();
 
-        this.renderBaseComponent();
+        await this.getFilmsList();
+
+        // console.log(this.filmsList);
+
+        this.renderBaseComponent(this.filmsList);
     }
 
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+    async getFilmsList() {
+
+        this.filmsList = await JsonImporter.import('https://api.themoviedb.org/3/movie/popular?api_key=39ec9362a6a55025a6cfacdcf4057fc7&language=en-US&page=1');
+
+
+        // console.log(this.filmsList);
+    }
 
     /**
      * @private
@@ -28,7 +41,7 @@ export default class Mediator {
      */
     renderBaseComponent() {
         // AppWrapper.render();
-        AppWrapper.render(this.store);
+        AppWrapper.render(this.filmsList);
     }
 
     /**
