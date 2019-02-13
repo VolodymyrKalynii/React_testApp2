@@ -8,7 +8,7 @@ export default class FilmLink extends React.Component{
 
         // console.log(props);
 
-        console.log(this.props.film);
+        // console.log(this.props.film);
     }
 
     render() {

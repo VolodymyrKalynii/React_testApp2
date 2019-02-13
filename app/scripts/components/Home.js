@@ -12,7 +12,8 @@ export default class Home extends React.Component{
             films: [],
             activePage: 1,
             itemsCountPerPage: 1,
-            totalItemsCount: 1000
+            totalItemsCount: 1000,
+            filteredSearch: false
         }
     }
 
@@ -24,6 +25,7 @@ export default class Home extends React.Component{
         if (this.state.films.length > 0)
         return (
             <div>
+                <input ref='searchNameInput' onChange={this.searchFilm} type="text" placeholder='Film title'/>
                 <FilmsList films={this.state.films}/>
                 <Pagination
                     activePage={this.state.activePage}
@@ -44,7 +46,8 @@ export default class Home extends React.Component{
     /**
      * @param {number} pageNumber
      */
-    sendRequest = (pageNumber) => {
+    sendRequest = (pageNumber = this.state.activePage) => {
+        console.log(pageNumber);
         const filmsList = JsonImporter.import(`${Constants.API_ROOT}/movie/popular?api_key=${Constants.API_KEY}&language=en-US&page=${pageNumber}`);
 
         filmsList.then(response => {
@@ -52,12 +55,47 @@ export default class Home extends React.Component{
                 films: response.results,
                 itemsCountPerPage: response.results.length,
                 totalItemsCount: response.total_results,
-                activePage: pageNumber
+                activePage: pageNumber,
+                filteredSearch: false
+            });
+        });
+    };
+
+    sendSearchingRequest = (filmName, pageNumber = 1) => {
+        // const filteredSearch = this.state.filteredSearch;
+        
+        // if (!filteredSearch) pageNumber = 1;
+
+        const filmsList = JsonImporter.import(`${Constants.API_ROOT}/search/movie?api_key=${Constants.API_KEY}&language=en-US&query=${filmName}&page=${pageNumber}`);
+
+        filmsList.then(response => {
+            // console.log(response);
+            this.setState({
+                films: response.results,
+                itemsCountPerPage: response.results.length,
+                totalItemsCount: response.total_results,
+                filteredSearch: true
             });
         });
     };
 
     handlePageChange = (pageNumber) => {
-        this.sendRequest(pageNumber);
+        const filteredSearch = this.state.filteredSearch;
+        const filmName = this.refs.searchNameInput.value;
+
+        filteredSearch ? this.sendSearchingRequest(filmName, pageNumber): this.sendRequest(pageNumber);
+
+        // this.sendRequest(pageNumber);
+    };
+
+    searchFilm = () => {
+        const filmName = this.refs.searchNameInput.value;
+
+
+        if  (!filmName) {
+            this.sendRequest();
+        } else {
+            this.sendSearchingRequest(filmName)
+        }
     };
 }
