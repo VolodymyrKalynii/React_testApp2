@@ -15,5 +15,4 @@ export default class FilmsList extends React.Component{
             </div>
         );
     }
-
 }

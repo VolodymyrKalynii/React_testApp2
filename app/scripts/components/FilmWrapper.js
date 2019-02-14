@@ -40,12 +40,10 @@ export default class FilmWrapper extends React.Component{
         const filmsList = JsonImporter.import(`${Constants.API_ROOT}/movie/${movieId}?api_key=${Constants.API_KEY}&language=en-US`);
 
         filmsList.then(response => {
-            // console.log(response);
             this.setState({
                 loadedFilm: true,
                 filmInfo: response
             })
         });
     };
-
 }

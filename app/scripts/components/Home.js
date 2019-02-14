@@ -47,7 +47,6 @@ export default class Home extends React.Component{
      * @param {number} pageNumber
      */
     sendRequest = (pageNumber = this.state.activePage) => {
-        console.log(pageNumber);
         const filmsList = JsonImporter.import(`${Constants.API_ROOT}/movie/popular?api_key=${Constants.API_KEY}&language=en-US&page=${pageNumber}`);
 
         filmsList.then(response => {
@@ -62,14 +61,9 @@ export default class Home extends React.Component{
     };
 
     sendSearchingRequest = (filmName, pageNumber = 1) => {
-        // const filteredSearch = this.state.filteredSearch;
-        
-        // if (!filteredSearch) pageNumber = 1;
-
         const filmsList = JsonImporter.import(`${Constants.API_ROOT}/search/movie?api_key=${Constants.API_KEY}&language=en-US&query=${filmName}&page=${pageNumber}`);
 
         filmsList.then(response => {
-            // console.log(response);
             this.setState({
                 films: response.results,
                 itemsCountPerPage: response.results.length,
@@ -83,19 +77,16 @@ export default class Home extends React.Component{
         const filteredSearch = this.state.filteredSearch;
         const filmName = this.refs.searchNameInput.value;
 
-        filteredSearch ? this.sendSearchingRequest(filmName, pageNumber): this.sendRequest(pageNumber);
-
-        // this.sendRequest(pageNumber);
+        filteredSearch
+            ? this.sendSearchingRequest(filmName, pageNumber)
+            : this.sendRequest(pageNumber);
     };
 
     searchFilm = () => {
         const filmName = this.refs.searchNameInput.value;
 
-
-        if  (!filmName) {
-            this.sendRequest();
-        } else {
-            this.sendSearchingRequest(filmName)
-        }
+        filmName
+            ? this.sendSearchingRequest(filmName)
+            : this.sendRequest();
     };
 }

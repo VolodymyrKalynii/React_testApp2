@@ -21,13 +21,13 @@ Constants.IMG_ROOT = 'https://image.tmdb.org/t/p/w300';
  * @type {string}
  * @readonly
  */
-Constants.REMOVE_CLOSED_TASK = 'REMOVE_CLOSED_TASK';
+Constants.ADD_STAR = 'ADD_STAR';
 
 /**
  * @type {string}
  * @readonly
  */
-Constants.CLOSEE_TASK = 'CLOSEE_TASK';
+Constants.REMOVE_STAR = 'REMOVE_STAR';
 
 /**
  * @type {string}

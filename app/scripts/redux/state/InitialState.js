@@ -1,29 +1,5 @@
-import {JsonImporter} from '../../lib/JsonImporter';
+export default class InitialState {}
 
-
-// class InitPhotos {
-//     init() {
-//         this.photos = JsonImporter.import('../../imgJson/photos.json')
-//     }
-//
-//     get(){
-//         this.init();
-//         console.log(this.photos);
-//         return this.photos
-//     }
-// }
-
-export default class InitialState {
-    static async loadFile() {
-
-        InitialState.initialState = {
-
-        };
-
-        // console.log(InitialState.initialState.photosObj);
-    }
-}
-
-InitialState.loadFile()
-
-// console.log(InitialState.initialState);
+InitialState.initialState = {
+    starFilmsId: JSON.parse(localStorage.getItem('starFilmsId')) || []
+};

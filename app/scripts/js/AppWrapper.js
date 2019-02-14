@@ -2,16 +2,24 @@ import '@babel/polyfill';
 import * as React from 'react';
 import ReactDOM from 'react-dom';
 import {HashRouter, Router, BrowserRouter } from "react-router-dom";
+import {Provider} from 'react-redux';
+
 import App from "../components/App";
+// import { createHashHistory } from 'history'
+
+// const history = createHashHistory()
+
+// const browserHistory = ReactRouter.browserHistory;
 
 export default class AppWrapper {
-    static render(films) {
+
+    static render(store) {
         return ReactDOM.render(
-            <HashRouter >
-                <div>
-                    <App films={films}/>
-                </div>
-            </HashRouter>,
+            <Provider store={store}>
+                <HashRouter>
+                    <App/>
+                </HashRouter>
+            </Provider>,
             document.getElementById('app')
         );
     }

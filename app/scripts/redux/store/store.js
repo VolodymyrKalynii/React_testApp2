@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import {taskReducer} from '../reducers/taskReducer';
+import {films} from '../reducers/films';
 
 export default class Store {
     static createStore() {
-        return createStore(taskReducer);
+        return createStore(films);
     }
 }
