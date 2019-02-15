@@ -22,4 +22,15 @@ export default class PageActions {
             payload: starFilmsId
         }
     }
+
+    /**
+     * @param {Array<string>} genres
+     * @return {{type: string, payload: *}}
+     */
+    static loadGenres(genres) {
+        return {
+            type: Consts.LOAD_GENRES,
+            payload: genres
+        }
+    }
 }

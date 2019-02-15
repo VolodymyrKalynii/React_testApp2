@@ -33,7 +33,7 @@ Constants.REMOVE_STAR = 'REMOVE_STAR';
  * @type {string}
  * @readonly
  */
-Constants.SHOW_TASK_FORM = 'SHOW_TASK_FORM';
+Constants.LOAD_GENRES = 'LOAD_GENRES';
 
 /**
  * @type {string}

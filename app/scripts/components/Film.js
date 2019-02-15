@@ -20,9 +20,6 @@ class Film extends React.Component{
         };
     }
 
-    componentDidMount() {
-    }
-
     render() {
         return (
             <div>

@@ -8,11 +8,6 @@ import NotFound from "./NotFound";
 import FilmWrapper from './FilmWrapper';
 
 export default class App extends React.Component{
-    constructor(props) {
-        super();
-
-    }
-
     render() {
         return (
             <div className='wrapper'>

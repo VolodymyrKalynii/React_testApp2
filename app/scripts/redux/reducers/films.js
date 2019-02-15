@@ -17,6 +17,12 @@ export function films(state = InitialState.initialState, action) {
                 ...state,
                 starFilmsId
             };
+        case Consts.LOAD_GENRES:
+
+            return {
+                ...state,
+                genres: action.payload
+            };
         default:
             return state
     }

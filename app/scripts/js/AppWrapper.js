@@ -9,8 +9,6 @@ import App from "../components/App";
 
 // const history = createHashHistory()
 
-// const browserHistory = ReactRouter.browserHistory;
-
 export default class AppWrapper {
 
     static render(store) {

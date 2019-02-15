@@ -3,50 +3,91 @@ import {JsonImporter} from '../lib/JsonImporter';
 import Pagination from "react-js-pagination";
 import FilmsList from './FilmsList';
 import Constants from '../lib/Constants';
+import PageActions from '../redux/actions/page';
+import connect from 'react-redux/es/connect/connect';
 
-export default class Home extends React.Component{
+class Home extends React.Component{
     constructor(props) {
         super(props);
 
         this.state = {
             films: [],
+            genres: [],
             activePage: 1,
             itemsCountPerPage: 1,
+            isGenresLoaded: false,
+            isFilmsLoaded: false,
             totalItemsCount: 1000,
             filteredSearch: false
-        }
+        };
+
+        this.loadGenresAction = this.props.loadGenresAction;
     }
 
     componentDidMount() {
         this.sendRequest(this.state.activePage);
+        // this.getGenres();
+
+        this.checkGenres()
+
     }
 
     render() {
-        if (this.state.films.length > 0)
+        if (this.state.isFilmsLoaded && this.state.isGenresLoaded)
         return (
             <div>
                 <input ref='searchNameInput' onChange={this.searchFilm} type="text" placeholder='Film title'/>
-                <FilmsList films={this.state.films}/>
-                <Pagination
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={this.state.itemsCountPerPage}
-                    totalItemsCount={this.state.totalItemsCount}
-                    pageRangeDisplayed={5}
-                    onChange={this.handlePageChange}
-                />
+                {this.renderFilmsBlock()}
             </div>
         );
         else return (
             <div>
-                No films
+                loading...
             </div>
         )
     }
+
+    renderFilmsBlock = () => {
+        if (this.state.films.length === 0) {
+            return <div>No films</div>
+        } else {
+            return (
+                <div>
+                    <FilmsList films={this.state.films} genres={this.state.genres}/>
+                    <Pagination
+                        activePage={this.state.activePage}
+                        itemsCountPerPage={this.state.itemsCountPerPage}
+                        totalItemsCount={this.state.totalItemsCount}
+                        pageRangeDisplayed={5}
+                        onChange={this.handlePageChange}
+                    />
+                </div>
+            )
+        }
+    };
+
+    checkGenres = () => {
+        const {genres} = this.props;
+
+        console.log(genres);
+
+        if (genres.length === 0) {
+            this.loadGenres();
+        } else {
+            this.setState({
+                isGenresLoaded: true,
+                genres
+            })
+        }
+
+
+    };
 
     /**
      * @param {number} pageNumber
      */
     sendRequest = (pageNumber = this.state.activePage) => {
+        // console.log('sendRequest');
         const filmsList = JsonImporter.import(`${Constants.API_ROOT}/movie/popular?api_key=${Constants.API_KEY}&language=en-US&page=${pageNumber}`);
 
         filmsList.then(response => {
@@ -55,8 +96,40 @@ export default class Home extends React.Component{
                 itemsCountPerPage: response.results.length,
                 totalItemsCount: response.total_results,
                 activePage: pageNumber,
+                isFilmsLoaded: true,
                 filteredSearch: false
             });
+        });
+    };
+
+    /**
+     */
+    // getGenres = () => {
+    //     const filmsList = JsonImporter.import(`${Constants.API_ROOT}/genre/movie/list?api_key=${Constants.API_KEY}&language=en-US`);
+    //     // console.log('request');
+    //     // console.log(Date.now());
+    //     filmsList.then(response => {
+    //         this.setState({
+    //             isGenresLoaded: true,
+    //             genres: response.genres
+    //         });
+    //         // console.log(Date.now());
+    //     });
+    // };
+    /**
+     */
+    loadGenres = () => {
+        console.log('request');
+        const filmsList = JsonImporter.import(`${Constants.API_ROOT}/genre/movie/list?api_key=${Constants.API_KEY}&language=en-US`);
+        filmsList.then(response => {
+
+            // console.log(response.genres);
+            this.loadGenresAction(response.genres);
+            this.setState({
+                isGenresLoaded: true,
+                genres: response.genres
+            });
+            // console.log(Date.now());
         });
     };
 
@@ -90,3 +163,19 @@ export default class Home extends React.Component{
             : this.sendRequest();
     };
 }
+
+
+const mapStateToProps = store => {
+    // console.log(store);
+    return {
+        genres: store.genres
+    }
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadGenresAction: genres => dispatch(PageActions.loadGenres(genres))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(Home)

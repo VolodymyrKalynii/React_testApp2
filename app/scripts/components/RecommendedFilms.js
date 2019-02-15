@@ -13,12 +13,21 @@ export default class RecommendedFilms extends React.Component {
             recommendedFilms: [],
             recommendedFilmsId: [],
         };
+        //
+        // console.log(props);
 
         this.recommendedFilmsPagesQty = 1;
     }
 
     componentDidMount() {
         this.sendRequest(this.props.filmId);
+    }
+
+    componentWillReceiveProps(nextProps) {
+        this.setState({
+            recommendedFilms: []
+        });
+        this.sendRequest(nextProps.filmId);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -34,7 +43,6 @@ export default class RecommendedFilms extends React.Component {
     }
 
     renderSimilarFilms = () => {
-        // console.log(this.state.recommendedFilms);
         if (this.state.readySimilarFilms) {
             return (
                 <div>
@@ -86,6 +94,8 @@ export default class RecommendedFilms extends React.Component {
         const recommendedFilmsIdMixed = ArrayUtils.mixElems(recommendedFilms);
         const recommendedFilmsIdMixedSliced = recommendedFilmsIdMixed.slice(recommendedFilmsIdMixed.length - 3);
 
+
+
         this.getRndRecommendedFilms(recommendedFilmsIdMixedSliced);
     };
 
@@ -110,12 +120,11 @@ export default class RecommendedFilms extends React.Component {
                 recommendedFilms
             });
 
-            if (recommendedFilms.length === recommendedFilmsIdMixedSliced.length) {
+            if (recommendedFilms.length >= recommendedFilmsIdMixedSliced.length) {
                 this.setState({
                     readySimilarFilms: true
                 });
             }
         });
     };
-
 }

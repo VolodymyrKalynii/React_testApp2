@@ -10,13 +10,12 @@ class FilmLink extends React.Component{
 
         this.starFilmsId = this.props.starFilmsId;
 
-        // console.log(this.starFilmsId);
-
         this.addStarAction = this.props.addStarAction;
         this.removeStarAction = this.props.removeStarAction;
 
         this.state = {
-            isFilmStared: this.isFilmInStarFilms()
+            isFilmStared: this.isFilmInStarFilms(),
+            filmGenres: []
         }
     }
 
@@ -31,21 +30,39 @@ class FilmLink extends React.Component{
                     <div className='filmLink__imgBlock'>
                         <img className='filmLink__img' src={Constants.IMG_ROOT+this.props.film.poster_path} alt=''/>
                     </div>
+                    <p className="filmLink__genres">
+                        {this.renderGenres()}
+                    </p>
                 </NavLink>
             </div>
         );
     }
 
-    renderButton = () => {
-        if (this.state.isFilmStared) {
-            return (
-                <button onClick={this.removeFromStarList}>remove star</button>
-            )
+    renderGenres = () => {
+
+        if (this.props.film.genres) {
+            return this.props.film.genres
+                .map((genreObj) => genreObj.name)
+                .join(', ');
         } else {
-            return (
-                <button onClick={this.addToStarList}>star</button>
-            )
+            const genresArr = [];
+            const {film: {genre_ids}, genres} = this.props;
+
+            genres.map((genreObj) => {
+                genre_ids.map((genreId) => {
+                    if (genreObj.id === genreId)
+                        genresArr.push(genreObj.name);
+                })
+            });
+
+            return genresArr.join(', ');
         }
+    };
+
+    renderButton = () => {
+        return this.state.isFilmStared
+            ? <button onClick={this.removeFromStarList}>remove star</button>
+            : <button onClick={this.addToStarList}>star</button>
     };
 
     addToStarList = (evt) => {
