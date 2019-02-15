@@ -2,7 +2,7 @@ import * as React from 'react';
 import {JsonImporter} from '../lib/JsonImporter';
 import Constants from '../lib/Constants';
 import ArrayUtils from '../lib/ArrayUtils';
-import FilmsList from './FilmsList';
+import MoviesList from './MoviesList';
 
 export default class RecommendedFilms extends React.Component {
     constructor(props) {
@@ -46,7 +46,7 @@ export default class RecommendedFilms extends React.Component {
         if (this.state.readySimilarFilms) {
             return (
                 <div>
-                    <FilmsList films={this.state.recommendedFilms}/>
+                    <MoviesList movies={this.state.recommendedFilms}/>
                 </div>
             )
         }

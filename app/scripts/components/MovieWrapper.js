@@ -1,16 +1,16 @@
 import * as React from 'react';
 import {JsonImporter} from '../lib/JsonImporter';
 import Constants from '../lib/Constants';
-import Film from './Film';
+import Movie from '../containers/Movie';
 
 
-export default class FilmWrapper extends React.Component{
+export default class MovieWrapper extends React.Component{
     constructor(props) {
         super(props);
 
         this.state = {
+            movieInfo: '',
             loadedFilm: false,
-            filmInfo: ''
         };
 
         // this.requestQty = 0;
@@ -19,7 +19,7 @@ export default class FilmWrapper extends React.Component{
     //
     componentDidMount() {
         // console.log('Mount');
-        this.sendRequest(this.props.match.params.id);
+        this.loadMovieById(this.props.match.params.id);
     }
     //
 
@@ -51,8 +51,8 @@ export default class FilmWrapper extends React.Component{
     // }
 
     componentWillReceiveProps(nextProps) {
-        if (+nextProps.match.params.id !== this.state.filmInfo.id)
-            this.sendRequest(nextProps.match.params.id);
+        if (+nextProps.match.params.id !== this.state.movieInfo.id)
+            this.loadMovieById(nextProps.match.params.id);
     }
 
     // shouldComponentUpdate(nextProps, nextState) {
@@ -97,37 +97,21 @@ export default class FilmWrapper extends React.Component{
 
 
     render() {
-        // console.log('render');
-        // this.sendRequest(this.props.match.params.id);
-        if (this.state.loadedFilm) {
-            // console.log(this.state.filmInfo.id);
-            return (
-                <Film filmInfo={this.state.filmInfo}/>
-            )
-        }
-        else {
-            return (
-                <div>
-                    loading
-                </div>
-            );
-        }
+        return this.state.loadedFilm
+            ? <Movie movie={this.state.movieInfo}/>
+            : <div>loading...</div>
     }
 
     /**
      * @param {number} movieId
      */
-    sendRequest = (movieId) => {
-        // console.log(movieId);
-        // this.requestQty++;
-        // console.log('Request');
+    loadMovieById = (movieId) => {
         const filmsList = JsonImporter.import(`${Constants.API_ROOT}/movie/${movieId}?api_key=${Constants.API_KEY}&language=en-US`);
 
         filmsList.then(response => {
-            // console.log(response.id);
             this.setState({
                 loadedFilm: true,
-                filmInfo: response
+                movieInfo: response
             })
         });
     };

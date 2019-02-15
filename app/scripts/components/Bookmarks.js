@@ -3,7 +3,7 @@ import PageActions from '../redux/actions/page';
 import connect from 'react-redux/es/connect/connect';
 import {JsonImporter} from '../lib/JsonImporter';
 import Constants from '../lib/Constants';
-import FilmsList from './FilmsList';
+import MoviesList from './MoviesList';
 
 class Bookmarks extends React.Component{
     constructor(props) {
@@ -39,7 +39,7 @@ class Bookmarks extends React.Component{
                 console.log('рендер ', this.state.films);
                 return (
                     <div>
-                        <FilmsList films={this.state.films}/>
+                        <MoviesList movies={this.state.films}/>
                     </div>
                 )
             } else {

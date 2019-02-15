@@ -11,6 +11,26 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
+  "eslintConfig": {
+    "extends": [
+      "react-app",
+      "airbnb"
+    ],
+    "rules": {
+      "jsx-a11y/no-autofocus": 0,
+      "implicit-arrow-linebreak": 0,
+      "react/destructuring-assignment": 0,
+      "operator-linebreak": [
+        "error",
+        "before",
+        {
+          "overrides": {
+            "=": "ignore"
+          }
+        }
+      ]
+    }
+  },
   "devDependencies": {
     "@babel/core": "^7.2.2",
     "@babel/plugin-proposal-class-properties": "^7.3.0",
@@ -19,6 +39,13 @@
     "autoprefixer": "^9.4.7",
     "babel-loader": "^8.0.5",
     "css-loader": "^2.0.0",
+    "eslint": "^5.13.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-config-react-app": "^3.0.7",
+    "eslint-plugin-flowtype": "^3.4.2",
+    "eslint-plugin-import": "^2.16.0",
+    "eslint-plugin-jsx-a11y": "^6.2.1",
+    "eslint-plugin-react": "^7.12.4",
     "mini-css-extract-plugin": "^0.5.0",
     "npx": "^10.2.0",
     "optimize-css-assets-webpack-plugin": "^5.0.1",
@@ -32,7 +59,9 @@
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
     "@fullpage/react-fullpage": "^0.1.13",
+    "babel-eslint": "^10.0.1",
     "copy-webpack-plugin": "^4.6.0",
+    "history": "latest",
     "immutable": "^3.8.2",
     "node-sass": "^4.11.0",
     "npm": "^6.7.0",
@@ -43,7 +72,6 @@
     "react-redux": "^6.0.0",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.3.1",
-    "redux": "^4.0.1",
-    "history": "latest"
+    "redux": "^4.0.1"
   }
 }
