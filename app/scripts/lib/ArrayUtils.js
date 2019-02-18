@@ -29,4 +29,49 @@ export default class ArrayUtils {
 
         return arrMixed;
     };
+
+    /**
+     *
+     * @param {{}} opts
+     * @return {*}
+     */
+    static getRndElements(opts) {
+        const {arr, elementsQty} = opts;
+        const rndElements = [];
+        let index = null;
+
+        do {
+            index = this.getRandElement(arr);
+
+            if (~rndElements.indexOf(index))
+                return true;
+            else
+                rndElements.push(index)
+
+        } while (rndElements.length < elementsQty);
+
+        return rndElements
+    }
+
+    /**
+     * Вертає випадковий індес масиву.
+     *
+     * @param {Array<*>} arr
+     * @returns {*}
+     * @private
+     */
+    static getRandElement(arr) {
+        return arr[this.getRandInteger(arr.length - 1)];
+    }
+
+    /**
+     * @param {number} max Максимально можливе випадкове значення.
+     * @return {number}
+     * @private
+     */
+    static getRandInteger(max) {
+        let rand = Math.random() * max;
+
+        return Math.round(rand);
+    }
 }

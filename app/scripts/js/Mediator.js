@@ -1,6 +1,7 @@
 import Store from '../redux/store/store';
 import AppWrapper from './AppWrapper';
 import InitialState from '../redux/state/InitialState';
+import Constants from '../lib/Constants';
 
 export default class Mediator {
 
@@ -32,13 +33,14 @@ export default class Mediator {
      */
     handleChange() {
         for (let key in this.store.getState()) {
-            if (key === 'starFilmsId')
+            if (key === Constants.STAR_MOVIES_ID)
                 this.writeLocalStorageField(key);
         }
     }
 
     /**
-     * @param key
+     * @param {string} key
+     * @private
      */
     writeLocalStorageField(key) {
         const previousValue = Mediator[key];

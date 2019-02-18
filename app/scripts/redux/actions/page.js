@@ -2,24 +2,24 @@ import Consts from '../../lib/Constants';
 
 export default class PageActions {
     /**
-     * @param {Array<{}>} starFilmsId
+     * @param {Array<{}>} starMoviesId
      * @return {{type: string, payload: *}}
      */
-    static addStar(starFilmsId) {
+    static addStar(starMoviesId) {
         return {
             type: Consts.ADD_STAR,
-            payload: starFilmsId
+            payload: starMoviesId
         }
     }
 
     /**
-     * @param {Array<string>} starFilmsId
+     * @param {Array<string>} starMoviesId
      * @return {{type: string, payload: *}}
      */
-    static removeStar(starFilmsId) {
+    static removeStar(starMoviesId) {
         return {
             type: Consts.REMOVE_STAR,
-            payload: starFilmsId
+            payload: starMoviesId
         }
     }
 

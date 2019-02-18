@@ -1,11 +1,14 @@
 import * as React from 'react';
 import Pagination from "react-js-pagination";
 import connect from 'react-redux/es/connect/connect';
+import PropTypes from 'prop-types';
 
 import {JsonImporter} from '../lib/JsonImporter';
 import MoviesList from '../components/MoviesList';
-import Constants from '../lib/Constants';
 import PageActions from '../redux/actions/page';
+import RequestsURLsCreator from '../js/RequestsURLsCreator';
+import Loader from '../components/Loader';
+import SearchField from '../components/SearchField';
 
 class Home extends React.Component{
     constructor(props) {
@@ -26,7 +29,7 @@ class Home extends React.Component{
     }
 
     componentDidMount() {
-        this.loadMoviesByPages(this.state.activePage);
+        this.loadMoviesByPageNumber(this.state.activePage);
         this.checkGenres()
     }
 
@@ -35,16 +38,24 @@ class Home extends React.Component{
 
         return allowRenderContent
             ? this.getContent()
-            : (<div className='home'>loading..</div>)
+            : <Loader/>
     }
 
     getContent = () => {
         return (
             <div className='home'>
-                <input ref='searchNameInput' onChange={this.searchFilm} type="text" placeholder='Film title'/>
+                {/*<div className='searchField'>*/}
+                    {/*<input className='searchField__input' ref='searchNameInput' onChange={this.searchFilm} type="text" placeholder='Film title'/>*/}
+                {/*</div>*/}
+                <SearchField getName={this.getName} makeSearch={this.searchFilm}/>
                 {this.renderMoviesBlock()}
             </div>
         )
+    };
+
+    getName = (value) => {
+        this.searchName = value;
+
     };
 
     renderMoviesBlock = () => {
@@ -73,8 +84,8 @@ class Home extends React.Component{
     /**
      * @param {number} pageNumber
      */
-    loadMoviesByPages = (pageNumber = this.state.activePage) => {
-        const moviesList = JsonImporter.import(`${Constants.API_ROOT}/movie/popular?api_key=${Constants.API_KEY}&language=en-US&page=${pageNumber}`);
+    loadMoviesByPageNumber = (pageNumber = this.state.activePage) => {
+        const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber));
 
         moviesList.then(response => {
             this.setState({
@@ -86,6 +97,49 @@ class Home extends React.Component{
                 itemsCountPerPage: response.results.length
             });
         });
+    };
+
+    /**
+     * @param {string} movieName
+     * @param {number} pageNumber
+     */
+    loadMoviesByNameAndPage = (movieName, pageNumber = 1) => {
+        const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByNameAndPageNumber(pageNumber, movieName));
+
+        moviesList.then(response => {
+            this.setState({
+                filteredSearch: true,
+                movies: response.results,
+                totalItemsCount: response.total_results,
+                itemsCountPerPage: response.results.length
+            });
+        });
+    };
+
+    searchFilm = () => {
+        // const movieName = this.refs.searchNameInput.value;
+        const movieName = this.searchName;
+
+        // console.log(this.searchName);
+
+        movieName
+            ? this.loadMoviesByNameAndPage(movieName)
+            : this.loadMoviesByPageNumber();
+    };
+
+    /**
+     * @param {number} pageNumber
+     */
+    handlePageChange = (pageNumber) => {
+        const filteredSearch = this.state.filteredSearch;
+        // const movieName = this.refs.searchNameInput.value;
+        const movieName = this.searchName;
+
+        // console.log(this.searchName);
+
+        filteredSearch
+            ? this.loadMoviesByNameAndPage(movieName, pageNumber)
+            : this.loadMoviesByPageNumber(pageNumber);
     };
 
     /**
@@ -103,7 +157,7 @@ class Home extends React.Component{
     };
 
     loadGenres = () => {
-        const genresList = JsonImporter.import(`${Constants.API_ROOT}/genre/movie/list?api_key=${Constants.API_KEY}&language=en-US`);
+        const genresList = JsonImporter.import(RequestsURLsCreator.loadGenres());
 
         genresList.then(response => {
             this.loadGenresAction(response.genres);
@@ -112,43 +166,6 @@ class Home extends React.Component{
                 genres: response.genres
             });
         });
-    };
-
-    /**
-     * @param {string} filmName
-     * @param {number} pageNumber
-     */
-    loadMoviesByNamesAndPages = (filmName, pageNumber = 1) => {
-        const moviesList = JsonImporter.import(`${Constants.API_ROOT}/search/movie?api_key=${Constants.API_KEY}&language=en-US&query=${filmName}&page=${pageNumber}`);
-
-        moviesList.then(response => {
-            this.setState({
-                filteredSearch: true,
-                movies: response.results,
-                totalItemsCount: response.total_results,
-                itemsCountPerPage: response.results.length
-            });
-        });
-    };
-
-    searchFilm = () => {
-        const filmName = this.refs.searchNameInput.value;
-
-        filmName
-            ? this.loadMoviesByNamesAndPages(filmName)
-            : this.loadMoviesByPages();
-    };
-
-    /**
-     * @param {number} pageNumber
-     */
-    handlePageChange = (pageNumber) => {
-        const filteredSearch = this.state.filteredSearch;
-        const filmName = this.refs.searchNameInput.value;
-
-        filteredSearch
-            ? this.loadMoviesByNamesAndPages(filmName, pageNumber)
-            : this.loadMoviesByPages(pageNumber);
     };
 }
 
@@ -165,3 +182,7 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Home)
+
+Home.propTypes = {
+    genres: PropTypes.array.isRequired,
+};

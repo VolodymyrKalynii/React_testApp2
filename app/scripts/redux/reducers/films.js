@@ -2,20 +2,20 @@ import Consts from '../../lib/Constants';
 import InitialState from '../state/InitialState';
 
 export function films(state = InitialState.initialState, action) {
-    const starFilmsId = [...state.starFilmsId];
+    const starMoviesId = [...state.starMoviesId];
 
     switch (action.type) {
         case Consts.ADD_STAR:
 
             return {
                 ...state,
-                starFilmsId
+                starMoviesId
             };
         case Consts.REMOVE_STAR:
 
             return {
                 ...state,
-                starFilmsId
+                starMoviesId
             };
         case Consts.LOAD_GENRES:
 

@@ -1,5 +1,7 @@
 import * as React from 'react';
-import MovieLink from '../containers/MovieLink';
+import PropTypes from 'prop-types';
+
+import MovieLink from './MovieLink';
 
 export default class MoviesList extends React.Component {
     render() {
@@ -11,3 +13,8 @@ export default class MoviesList extends React.Component {
         );
     }
 }
+
+MovieLink.propTypes = {
+    movies: PropTypes.array,
+    genres: PropTypes.array
+};

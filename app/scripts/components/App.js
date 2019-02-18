@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router';
 
 import Nav from './Nav';
 import Home from '../containers/Home';
-import Bookmarks from './Bookmarks';
+import Bookmarks from '../containers/Bookmarks';
 import NotFound from './NotFound';
 import MovieWrapper from './MovieWrapper';
 

@@ -1,5 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
+import PropTypes from 'prop-types';
+
 import PageActions from '../redux/actions/page';
 
 class StarButton extends React.Component{
@@ -8,10 +10,10 @@ class StarButton extends React.Component{
 
         this.state = {
             isMovieStared: this.isMovieInStarFilms()
-        }
+        };
 
-
-        //todo зробити кнопку для добавляння закладок як окремий компоенет
+        this.addStarAction = this.props.addStarAction;
+        this.removeStarAction = this.props.removeStarAction;
     }
 
     render() {
@@ -20,35 +22,37 @@ class StarButton extends React.Component{
             : <button onClick={this.addToStarList}>star</button>
     }
 
-    addToStarList = () => {
-        const {movie: {id}, starFilmsId} = this.props;
+    addToStarList = (evt) => {
+        evt.preventDefault();
+        const {movieId, starMoviesId} = this.props;
 
-        starFilmsId.push(id);
+        starMoviesId.push(movieId);
         this.setState({
             isMovieStared: true,
         });
 
-        this.addStarAction(starFilmsId);
+        this.addStarAction(starMoviesId);
     };
 
-    removeFromStarList = () => {
-        const {starFilmsId} = this.props;
+    removeFromStarList = (evt) => {
+        evt.preventDefault();
+        const {starMoviesId} = this.props;
         const movieIdIndex = this.getMovieIdIndexInStarList();
 
-        starFilmsId.splice(movieIdIndex, 1);
+        starMoviesId.splice(movieIdIndex, 1);
         this.setState({
             isMovieStared: false,
         });
 
-        this.removeStarAction(starFilmsId);
+        this.removeStarAction(starMoviesId);
     };
 
     getMovieIdIndexInStarList = () => {
-        const {movie: {id}, starFilmsId} = this.props;
+        const {movieId, starMoviesId} = this.props;
         let movieIdIndex = null;
 
-        starFilmsId.some((filmId, index) => {
-            if (filmId === id) {
+        starMoviesId.some((filmId, index) => {
+            if (filmId === movieId) {
                 movieIdIndex = index;
                 return true
             }
@@ -58,19 +62,24 @@ class StarButton extends React.Component{
     };
 
     isMovieInStarFilms = () => {
-        const {movie: {id}, starFilmsId} = this.props;
+        const {movieId, starMoviesId} = this.props;
 
-        return ~starFilmsId.indexOf(id);
+        return ~starMoviesId.indexOf(movieId);
     };
 }
 
 const mapStateToProps = store => ({
-    starFilmsId: store.starFilmsId,
+    starMoviesId: store.starMoviesId,
 });
 
 const mapDispatchToProps = dispatch => ({
-    addStarAction: starFilmsId => dispatch(PageActions.addStar(starFilmsId)),
-    removeStarAction: starFilmsId => dispatch(PageActions.removeStar(starFilmsId)),
+    addStarAction: starMoviesId => dispatch(PageActions.addStar(starMoviesId)),
+    removeStarAction: starMoviesId => dispatch(PageActions.removeStar(starMoviesId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StarButton);
+
+StarButton.propTypes = {
+    movieId: PropTypes.number.isRequired,
+    starMoviesId: PropTypes.array.isRequired
+};
