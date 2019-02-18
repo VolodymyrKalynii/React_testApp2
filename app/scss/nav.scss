@@ -1,6 +1,16 @@
 .nav{
 
   &__link{
+    text-decoration: none;
+    color: #fff;
     margin-right: 5px;
+
+    &-active{
+      text-shadow: 0 0 5px $MainOrange;
+    }
+
+    &:hover{
+      text-shadow: 0 0 2px $MainOrange;
+    }
   }
 }

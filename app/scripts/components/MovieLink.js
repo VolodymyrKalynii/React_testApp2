@@ -10,16 +10,20 @@ export default class MovieLink extends React.Component{
         return (
             <div className='filmLink'>
                 <NavLink className='filmLink__link' to={`/movie/${this.props.movie.id}`}>
-                    <div className='filmLink__topBlock'>
-                        <span className='filmLink__title'>{this.props.movie.title}</span>
-                        {<StarButton movieId={this.props.movie.id}/>}
-                    </div>
                     <div className='filmLink__imgBlock'>
                         <img className='filmLink__img' src={Constants.IMG_ROOT+this.props.movie.poster_path} alt=''/>
                     </div>
-                    <p className="filmLink__genres">
-                        {this.renderGenres()}
-                    </p>
+                    <div className="filmLink__starButton">
+                        <StarButton movieId={this.props.movie.id}/>
+                    </div>
+                    <div className="filmLink__content">
+                        <div className='filmLink__topBlock'>
+                            <span className='filmLink__title'>{this.props.movie.title}</span>
+                        </div>
+                        <p className="filmLink__genres">
+                            {this.renderGenres()}
+                        </p>
+                    </div>
                 </NavLink>
             </div>
         );

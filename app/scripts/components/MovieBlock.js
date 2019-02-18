@@ -13,7 +13,7 @@ export default class MovieBlock extends React.Component {
 
     getMoviesBlock = () => {
         return (
-            <div>
+            <div className='home__content'>
                 <MoviesList movies={this.props.movies} genres={this.props.genres}/>
                 <Pagination
                     activePage={this.props.activePage}

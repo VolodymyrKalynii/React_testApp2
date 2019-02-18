@@ -1,0 +1,35 @@
+.pagination{
+  display: flex;
+  justify-content: center;
+
+  li{
+    list-style: none;
+    padding: 5px 10px;
+
+    &.disabled{
+      pointer-events: none;
+      a{
+        color: #aaa;
+        cursor: default;
+      }
+    }
+
+    &.active{
+      a{
+        text-shadow: 0 0 5px $MainOrange;
+      }
+    }
+
+    &:hover{
+      a {
+        text-shadow: 0 0 2px $MainOrange;
+      }
+    }
+  }
+
+  a{
+    text-decoration: none;
+    font-size: $normalBigFz;
+    color: #fff;
+  }
+}
