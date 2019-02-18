@@ -12,7 +12,6 @@ export default class App extends React.Component {
     return (
       <div className="wrapper">
         <Nav />
-        <br />
         <Switch>
           <Route exact path="/" component={Home} />
           <Route path="/movie/:id" component={MovieWrapper} />

@@ -4,12 +4,12 @@ export default class SearchField extends React.Component {
     render() {
         return (
             <div className='searchField'>
-                <input className='searchField__input' ref='searchNameInput' onChange={this.searchFilm} type="text" placeholder='Film title'/>
+                <input className='searchField__input' ref='searchNameInput' onChange={this.searchMovie} type="text" placeholder='Film title'/>
             </div>
         );
     }
 
-    searchFilm = () => {
+    searchMovie = () => {
         const movieName = this.refs.searchNameInput.value;
         const {setSearchMovieName, makeSearch} = this.props;
 

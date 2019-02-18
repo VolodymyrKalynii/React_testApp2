@@ -1,10 +1,8 @@
 import * as React from 'react';
-import Pagination from "react-js-pagination";
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 
 import {JsonImporter} from '../lib/JsonImporter';
-import MoviesList from '../components/MoviesList';
 import PageActions from '../redux/actions/page';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
@@ -45,10 +43,10 @@ class Home extends React.Component{
     getContent = () => {
         return (
             <div className='home'>
-                <SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchFilm}/>
+                <SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchMovie}/>
                 <MovieBlock
                     movies={this.state.movies}
-                    genres={this.state.movies}
+                    genres={this.state.genres}
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.state.itemsCountPerPage}
                     totalItemsCount={this.state.totalItemsCount}
@@ -65,14 +63,16 @@ class Home extends React.Component{
         const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber));
 
         moviesList.then(response => {
-            this.setState({
-                isMoviesLoaded: true,
-                filteredSearch: false,
-                activePage: pageNumber,
-                movies: response.results,
-                totalItemsCount: response.total_results,
-                itemsCountPerPage: response.results.length
-            });
+            setTimeout(() => {
+                this.setState({
+                    isMoviesLoaded: true,
+                    filteredSearch: false,
+                    activePage: pageNumber,
+                    movies: response.results,
+                    totalItemsCount: response.total_results,
+                    itemsCountPerPage: response.results.length
+                });
+            }, 1);
         });
     };
 
@@ -99,7 +99,7 @@ class Home extends React.Component{
         this.searchMovieName = value;
     };
 
-    searchFilm = () => {
+    searchMovie = () => {
         this.searchMovieName
             ? this.loadMoviesByNameAndPage()
             : this.loadMoviesByPageNumber();
