@@ -1,11 +1,6 @@
 import * as React from 'react';
 
 export default class SearchField extends React.Component {
-    constructor(props) {
-        super(props);
-
-    }
-
     render() {
         return (
             <div className='searchField'>
@@ -14,11 +9,11 @@ export default class SearchField extends React.Component {
         );
     }
 
-
     searchFilm = () => {
         const movieName = this.refs.searchNameInput.value;
+        const {setSearchMovieName, makeSearch} = this.props;
 
-        this.props.getName(movieName);
-        this.props.makeSearch();
+        setSearchMovieName(movieName);
+        makeSearch();
     }
 }

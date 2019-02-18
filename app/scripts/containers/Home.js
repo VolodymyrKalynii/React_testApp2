@@ -9,6 +9,7 @@ import PageActions from '../redux/actions/page';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
 import SearchField from '../components/SearchField';
+import MovieBlock from '../components/MovieBlock';
 
 class Home extends React.Component{
     constructor(props) {
@@ -44,38 +45,14 @@ class Home extends React.Component{
     getContent = () => {
         return (
             <div className='home'>
-                {/*<div className='searchField'>*/}
-                    {/*<input className='searchField__input' ref='searchNameInput' onChange={this.searchFilm} type="text" placeholder='Film title'/>*/}
-                {/*</div>*/}
-                <SearchField getName={this.getName} makeSearch={this.searchFilm}/>
-                {this.renderMoviesBlock()}
-            </div>
-        )
-    };
-
-    getName = (value) => {
-        this.searchName = value;
-
-    };
-
-    renderMoviesBlock = () => {
-        const allowRenderMovies = this.state.movies.length !== 0;
-
-        return allowRenderMovies
-            ? this.getMoviesBlock()
-            : (<div>No movies</div>);
-    };
-
-    getMoviesBlock = () => {
-        return (
-            <div>
-                <MoviesList movies={this.state.movies} genres={this.state.genres}/>
-                <Pagination
+                <SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchFilm}/>
+                <MovieBlock
+                    movies={this.state.movies}
+                    genres={this.state.movies}
                     activePage={this.state.activePage}
                     itemsCountPerPage={this.state.itemsCountPerPage}
                     totalItemsCount={this.state.totalItemsCount}
-                    pageRangeDisplayed={5}
-                    onChange={this.handlePageChange}
+                    handlePageChange={this.handlePageChange}
                 />
             </div>
         )
@@ -100,11 +77,10 @@ class Home extends React.Component{
     };
 
     /**
-     * @param {string} movieName
      * @param {number} pageNumber
      */
-    loadMoviesByNameAndPage = (movieName, pageNumber = 1) => {
-        const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByNameAndPageNumber(pageNumber, movieName));
+    loadMoviesByNameAndPage = (pageNumber = 1) => {
+        const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByNameAndPageNumber(pageNumber, this.searchMovieName));
 
         moviesList.then(response => {
             this.setState({
@@ -116,14 +92,16 @@ class Home extends React.Component{
         });
     };
 
+    /**
+     * @param {string} value
+     */
+    setSearchMovieName = (value) => {
+        this.searchMovieName = value;
+    };
+
     searchFilm = () => {
-        // const movieName = this.refs.searchNameInput.value;
-        const movieName = this.searchName;
-
-        // console.log(this.searchName);
-
-        movieName
-            ? this.loadMoviesByNameAndPage(movieName)
+        this.searchMovieName
+            ? this.loadMoviesByNameAndPage()
             : this.loadMoviesByPageNumber();
     };
 
@@ -132,13 +110,9 @@ class Home extends React.Component{
      */
     handlePageChange = (pageNumber) => {
         const filteredSearch = this.state.filteredSearch;
-        // const movieName = this.refs.searchNameInput.value;
-        const movieName = this.searchName;
-
-        // console.log(this.searchName);
 
         filteredSearch
-            ? this.loadMoviesByNameAndPage(movieName, pageNumber)
+            ? this.loadMoviesByNameAndPage(pageNumber)
             : this.loadMoviesByPageNumber(pageNumber);
     };
 
