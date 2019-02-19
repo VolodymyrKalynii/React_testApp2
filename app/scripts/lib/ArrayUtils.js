@@ -39,16 +39,19 @@ export default class ArrayUtils {
         const {arr, elementsQty} = opts;
         const rndElements = [];
         let index = null;
+        let flag = false;
 
         do {
+            flag = false;
+
             index = this.getRandElement(arr);
 
             if (~rndElements.indexOf(index))
-                return true;
+                flag = true;
             else
                 rndElements.push(index)
 
-        } while (rndElements.length < elementsQty);
+        } while (rndElements.length < elementsQty || flag);
 
         return rndElements
     }

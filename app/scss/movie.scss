@@ -1,0 +1,42 @@
+.movie{
+  position: relative;
+
+  &__title{
+    font-size: $middleFz;
+    font-weight: 500;
+    color: #fff;
+    padding: 20px 0;
+  }
+
+  &__info{
+    display: flex;
+  }
+
+  &__right{
+    padding-left: 100px;
+  }
+
+  &__text{
+    font-size: $smallBigFz;
+    color: #fff;
+    padding-bottom: 10px;
+  }
+
+  &__starButton{
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    width: 30px;
+  }
+
+  &__overview{
+    padding: 10px 0;
+    font-size: $smallFz;
+  }
+
+  &__subTitle{
+    font-size: $middleSmallFz;
+    color: #fff;
+    padding: 10px 0;
+  }
+}

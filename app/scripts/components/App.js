@@ -10,14 +10,17 @@ import MovieWrapper from './MovieWrapper';
 export default class App extends React.Component {
   render() {
     return (
-      <div className="wrapper">
-        <Nav />
-        <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/movie/:id" component={MovieWrapper} />
-          <Route path="/bookmarks" component={Bookmarks} />
-          {/* <Route path={} component={NotFound} /> */}
-        </Switch>
+      <div className='wrapper'>
+          <Nav />
+          <div className='container'>
+              <Switch>
+                  <Route exact path="/" component={Home} />
+                  <Route path="/movie/:id" component={MovieWrapper} />
+                  <Route path="/bookmarks" component={Bookmarks} />
+                  {/* <Route path={} component={NotFound} /> */}
+              </Switch>
+          </div>
+
       </div>
     );
   }

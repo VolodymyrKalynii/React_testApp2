@@ -8,24 +8,53 @@ import StarButton from '../containers/StarButton';
 export default class Movie extends React.Component {
     render() {
         return (
-            <div>
-                <h3>{this.props.movie.title}</h3>
-                <h4>{this.props.movie.tagline}</h4>
-                <h4>{this.props.movie.budget}</h4>
-                <h4>{this.renderGenres()}</h4>
-                <h4>{this.props.movie.homepage}</h4>
-                <h4>{this.props.movie.runtime} minutes</h4>
-                <h4>{this.props.movie.release_date}</h4>
-                <h4>{this.props.movie.vote_average}</h4>
-                <h4>{this.props.movie.vote_count}</h4>
-                <p>{this.props.movie.overview}</p>
-                <img src={Constants.IMG_ROOT + this.props.movie.poster_path} alt=""/>
-
-                <StarButton movieId={this.props.movie.id}/>
+            <div className='movie'>
+                {this.renderContentBlock()}
+                <div className='movie__starButton'>
+                    <StarButton movieId={this.props.movie.id}/>
+                </div>
+                <p className='movie__subTitle'>Recommended Movies</p>
                 <RecommendedMovies movieId={this.props.movie.id}/>
             </div>
         );
     }
+
+    renderContentBlock = () => {
+        const {
+            title,
+            poster_path,
+            tagline,
+            budget,
+            homepage,
+            runtime,
+            release_date,
+            vote_average,
+            vote_count,
+            overview
+        } = this.props.movie;
+
+        return (
+            <div className='movie__content'>
+                <p  className='movie__title'>{title}</p>
+                <div className='movie__info'>
+                    <div className='movie__left'>
+                        <img src={Constants.IMG_ROOT + poster_path} alt=""/>
+                    </div>
+                    <div className='movie__right'>
+                        <p className='movie__text'>Tagline: {tagline}</p>
+                        <p className='movie__text'>Budget: {budget}</p>
+                        <p className='movie__text'>Genres: {this.renderGenres()}</p>
+                        <p className='movie__text'>Homepage: <a href={homepage}>{homepage}</a></p>
+                        <p className='movie__text'>Runtime: {runtime} minutes</p>
+                        <p className='movie__text'>Release date: {release_date}</p>
+                        <p className='movie__text'>Vote avarage: {vote_average}</p>
+                        <p className='movie__text'>Vote count: {vote_count}</p>
+                    </div>
+                </div>
+                <p className='movie__text movie__overview'>{overview}</p>
+            </div>
+        )
+    };
 
     renderGenres = () => {
         const {genres} = this.props.movie;

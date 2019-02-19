@@ -9,7 +9,7 @@ import Loader from '../components/Loader';
 import SearchField from '../components/SearchField';
 import MovieBlock from '../components/MovieBlock';
 
-class Home extends React.Component{
+class Home extends React.Component {
     constructor(props) {
         super(props);
 
@@ -29,7 +29,7 @@ class Home extends React.Component{
 
     componentDidMount() {
         this.loadMoviesByPageNumber(this.state.activePage);
-        this.checkGenres()
+        this.checkGenres();
     }
 
     render() {
@@ -37,7 +37,7 @@ class Home extends React.Component{
 
         return allowRenderContent
             ? this.getContent()
-            : <Loader/>
+            : <Loader/>;
     }
 
     getContent = () => {
@@ -53,7 +53,7 @@ class Home extends React.Component{
                     handlePageChange={this.handlePageChange}
                 />
             </div>
-        )
+        );
     };
 
     /**
@@ -63,16 +63,14 @@ class Home extends React.Component{
         const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber));
 
         moviesList.then(response => {
-            setTimeout(() => {
-                this.setState({
-                    isMoviesLoaded: true,
-                    filteredSearch: false,
-                    activePage: pageNumber,
-                    movies: response.results,
-                    totalItemsCount: response.total_results,
-                    itemsCountPerPage: response.results.length
-                });
-            }, 1);
+            this.setState({
+                isMoviesLoaded: true,
+                filteredSearch: false,
+                activePage: pageNumber,
+                movies: response.results,
+                totalItemsCount: response.total_results,
+                itemsCountPerPage: response.results.length
+            });
         });
     };
 
@@ -106,9 +104,10 @@ class Home extends React.Component{
     };
 
     /**
-     * @param {number} pageNumber
+     * @param {number} data
      */
-    handlePageChange = (pageNumber) => {
+    handlePageChange = (data) => {
+        const pageNumber = data.selected + 1;
         const filteredSearch = this.state.filteredSearch;
 
         filteredSearch
@@ -127,7 +126,7 @@ class Home extends React.Component{
             : this.setState({
                 genres,
                 isGenresLoaded: true
-            })
+            });
     };
 
     loadGenres = () => {
@@ -146,7 +145,7 @@ class Home extends React.Component{
 const mapStateToProps = store => {
     return {
         genres: store.genres
-    }
+    };
 };
 
 const mapDispatchToProps = dispatch => {
@@ -155,7 +154,7 @@ const mapDispatchToProps = dispatch => {
     };
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Home)
+export default connect(mapStateToProps, mapDispatchToProps)(Home);
 
 Home.propTypes = {
     genres: PropTypes.array.isRequired,

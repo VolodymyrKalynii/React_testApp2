@@ -18,6 +18,7 @@ export default class RecommendedMovies extends React.Component {
         };
 
         this.recommendedMoviesPageQty = 1;
+        this.recommendedMoviesQty = AppConfig.RECOMMENDED_MOVIES_QTY;
         this.recommendedAllMoviesId = [];
     }
 
@@ -29,7 +30,7 @@ export default class RecommendedMovies extends React.Component {
         this.setState({
             recommendedMovies: []
         });
-        this.sendRequest(nextProps.movieId);
+        this.loadRecommendedMoviesId(nextProps.movieId);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -88,12 +89,24 @@ export default class RecommendedMovies extends React.Component {
     };
 
     getRndRecommendedMoviesId = () => {
+        // this.recommendedAllMoviesId.splice(0, 40);
+        // console.log(this.recommendedAllMoviesId);
+        // console.log(this.recommendedMoviesQty);
+
+
+        this.checksRecommendedMoviesLength();
+
         const recommendedRndMoviesId = ArrayUtils.getRndElements({
             arr: this.recommendedAllMoviesId,
-            elementsQty: AppConfig.RECOMMENDED_MOVIES_QTY
+            elementsQty: this.recommendedMoviesQty
         });
 
         this.getRndRecommendedMovies(recommendedRndMoviesId);
+    };
+
+    checksRecommendedMoviesLength = () => {
+        if (this.recommendedAllMoviesId.length < this.recommendedMoviesQty)
+            this.recommendedMoviesQty = this.recommendedAllMoviesId.length
     };
 
     /**
@@ -119,7 +132,7 @@ export default class RecommendedMovies extends React.Component {
                 recommendedMovies
             });
 
-            if (recommendedMovies.length >= AppConfig.RECOMMENDED_MOVIES_QTY) {
+            if (recommendedMovies.length >= this.recommendedMoviesQty) {
                 this.setState({
                     readyRecommendedMovies: true
                 });

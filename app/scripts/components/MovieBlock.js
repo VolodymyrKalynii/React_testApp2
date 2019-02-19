@@ -1,6 +1,6 @@
 import * as React from 'react';
 import MoviesList from './MoviesList';
-import Pagination from 'react-js-pagination';
+import ReactPaginate from 'react-paginate';
 
 export default class MovieBlock extends React.Component {
     render() {
@@ -12,17 +12,25 @@ export default class MovieBlock extends React.Component {
     }
 
     getMoviesBlock = () => {
+        console.log(this.props.totalItemsCount);
+        console.log(this.props.totalItemsCount / 20);
         return (
             <div className='home__content'>
                 <MoviesList movies={this.props.movies} genres={this.props.genres}/>
-                <Pagination
-                    activePage={this.props.activePage}
-                    itemsCountPerPage={this.props.itemsCountPerPage}
-                    totalItemsCount={this.props.totalItemsCount}
-                    pageRangeDisplayed={5}
-                    onChange={this.props.handlePageChange}
+                <ReactPaginate
+                    previousLabel={'<'}
+                    nextLabel={'>'}
+                    // breakLabel={'...'}
+                    // breakClassName={'break-me'}
+                    pageCount={this.props.totalItemsCount / 20}
+                    marginPagesDisplayed={1}
+                    pageRangeDisplayed={2}
+                    onPageChange={this.props.handlePageChange}
+                    containerClassName={'pagination'}
+                    subContainerClassName={'pages pagination'}
+                    activeClassName={'active'}
                 />
             </div>
         )
-    }
+    };
 }
