@@ -6,6 +6,16 @@
 
   //margin-bottom: 10px;
 
+  @media screen and (max-width: 1020px){
+    width: 50%;
+    justify-content: center;
+  }
+
+  @media screen and (max-width: 660px){
+    width: 100%;
+    justify-content: center;
+  }
+
   &__link{
     display: flex;
     flex-direction: column;
@@ -14,7 +24,15 @@
     position: relative;
     overflow: hidden;
     width: 100%;
-    
+
+    @media screen and (max-width: 1020px){
+      width: 300px;
+    }
+
+    @media screen and (max-width: 660px){
+      width: 250px;
+    }
+
     &:hover{
       .filmLink__content{
         transform: translateX(0);
@@ -46,6 +64,14 @@
     height: 345px;
     object-fit: cover;
     object-position: 0 0;
+
+    @media screen and (max-width: 1020px){
+      height: 450px;
+    }
+
+    @media screen and (max-width: 660px){
+      width: 370px;
+    }
   }
 
   &__content{

@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15f58179-30b1-4ba7-860c-b87ef45aacc3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/scss/movie.scss" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app/scss/preloader.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dictionaries/USER.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dictionaries/USER.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/Loader.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/Loader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/Movie.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/Movie.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/MovieBlock.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/MovieBlock.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/MovieLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/MovieLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/RecommendedMovies.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/RecommendedMovies.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/containers/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/containers/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/containers/StarButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/containers/StarButton.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/global-config/AppConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/global-config/AppConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/lib/ArrayUtils.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/lib/ArrayUtils.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scss/base.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/base.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scss/filmLink.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/filmLink.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scss/nav.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/nav.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scss/pagination.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/pagination.scss" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scss/starButton.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/starButton.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scss/style.scss" beforeDir="false" afterPath="$PROJECT_DIR$/app/scss/style.scss" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -67,26 +48,26 @@
     <session id="1511921820">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="5" />
+          <entry key="project.closed" value="6" />
           <entry key="project.open.time.1" value="1" />
           <entry key="project.open.time.12" value="1" />
           <entry key="project.open.time.41" value="1" />
           <entry key="project.open.time.43" value="1" />
-          <entry key="project.open.time.50" value="1" />
+          <entry key="project.open.time.50" value="2" />
           <entry key="project.open.time.53" value="1" />
           <entry key="project.open.time.60" value="1" />
           <entry key="project.open.time.65" value="1" />
           <entry key="project.open.time.70" value="1" />
           <entry key="project.open.time.80" value="1" />
           <entry key="project.open.time.84" value="1" />
-          <entry key="project.opened" value="11" />
+          <entry key="project.opened" value="12" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="js" value="122" />
           <entry key="json" value="4" />
-          <entry key="scss" value="24" />
+          <entry key="scss" value="25" />
           <entry key="svg" value="2" />
         </counts>
       </usages-collector>
@@ -94,7 +75,7 @@
         <counts>
           <entry key="JSON" value="4" />
           <entry key="JavaScript" value="122" />
-          <entry key="SCSS" value="24" />
+          <entry key="SCSS" value="25" />
           <entry key="SVG" value="2" />
         </counts>
       </usages-collector>
@@ -102,14 +83,14 @@
         <counts>
           <entry key="js" value="10482" />
           <entry key="json" value="1" />
-          <entry key="scss" value="1031" />
+          <entry key="scss" value="1123" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="JSON" value="1" />
           <entry key="JavaScript" value="10482" />
-          <entry key="SCSS" value="1031" />
+          <entry key="SCSS" value="1123" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.js.language.service.starts">
@@ -124,7 +105,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/containers/Home.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="50">
+            <state relative-caret-position="-286">
               <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -134,13 +115,10 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
+        <entry file="file://$PROJECT_DIR$/app/scss/starButton.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
-              <folding>
-                <element signature="e#0#31#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="104">
+              <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
             </state>
           </provider>
         </entry>
@@ -148,8 +126,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scss/base.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="596">
-              <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
+            <state relative-caret-position="674">
+              <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -157,7 +135,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/components/Nav.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="182">
+            <state relative-caret-position="156">
               <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -169,7 +147,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieLink.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="286">
+            <state relative-caret-position="234">
               <caret line="14" column="137" selection-start-line="14" selection-start-column="137" selection-end-line="14" selection-end-column="137" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
@@ -181,8 +159,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scss/filmLink.scss">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+            <state relative-caret-position="702">
+              <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
             </state>
           </provider>
         </entry>
@@ -314,7 +292,6 @@
         <option value="$PROJECT_DIR$/app/scss/home.scss" />
         <option value="$PROJECT_DIR$/app/scss/filmsList.scss" />
         <option value="$PROJECT_DIR$/app/scripts/lib/ArrayUtils.js" />
-        <option value="$PROJECT_DIR$/app/scss/starButton.scss" />
         <option value="$PROJECT_DIR$/app/scss/movie.scss" />
         <option value="$PROJECT_DIR$/app/scripts/global-config/AppConfig.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/RecommendedMovies.js" />
@@ -323,7 +300,6 @@
         <option value="$PROJECT_DIR$/package.json" />
         <option value="$PROJECT_DIR$/app/scripts/components/MovieBlock.js" />
         <option value="$PROJECT_DIR$/app/scss/pagination.scss" />
-        <option value="$PROJECT_DIR$/app/scss/base.scss" />
         <option value="$PROJECT_DIR$/app/scripts/components/Nav.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/App.js" />
         <option value="$PROJECT_DIR$/app/scss/nav.scss" />
@@ -332,6 +308,8 @@
         <option value="$PROJECT_DIR$/app/scss/preloader.scss" />
         <option value="$PROJECT_DIR$/app/scripts/containers/Home.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/MovieLink.js" />
+        <option value="$PROJECT_DIR$/app/scss/starButton.scss" />
+        <option value="$PROJECT_DIR$/app/scss/base.scss" />
         <option value="$PROJECT_DIR$/app/scss/filmLink.scss" />
       </list>
     </option>
@@ -353,9 +331,10 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="71" />
-    <option name="width" value="935" />
-    <option name="height" value="1087" />
+    <option name="x" value="25" />
+    <option name="y" value="219" />
+    <option name="width" value="1858" />
+    <option name="height" value="1096" />
   </component>
   <component name="ProjectView">
     <navigator proportions="" version="1">
@@ -409,7 +388,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testAjaxRedux" />
+    <property name="last_opened_file_path" value="D:/OpenServer/domains/smartum.loc" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -480,12 +459,13 @@
       <workItem from="1550234380081" duration="310000" />
       <workItem from="1550235820984" duration="10296000" />
       <workItem from="1550474691745" duration="28105000" />
-      <workItem from="1550560600192" duration="14834000" />
+      <workItem from="1550560600192" duration="17006000" />
+      <workItem from="1550583192440" duration="1467000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="132778000" />
+    <option name="totallyTimeSpent" value="136417000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
@@ -583,9 +563,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="520">
           <caret line="41" column="21" selection-start-line="41" selection-start-column="21" selection-end-line="41" selection-end-column="21" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -644,16 +621,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
           <caret line="7" selection-start-line="7" selection-end-line="9" selection-end-column="38" />
-          <folding>
-            <element signature="e#0#25#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scss/starButton.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="26">
-          <caret line="1" column="6" selection-start-line="1" selection-start-column="6" selection-end-line="1" selection-end-column="6" />
         </state>
       </provider>
     </entry>
@@ -709,10 +676,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="8" column="14" selection-start-line="8" selection-start-column="14" selection-end-line="8" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-            <element signature="e#576#1632#0" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -730,9 +693,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="260">
           <caret line="10" column="25" selection-start-line="10" selection-start-column="25" selection-end-line="10" selection-end-column="25" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -773,16 +733,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scss/base.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="596">
-          <caret line="78" column="10" selection-start-line="78" selection-start-column="10" selection-end-line="78" selection-end-column="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="338">
+        <state relative-caret-position="156">
           <caret line="13" column="17" selection-start-line="13" selection-start-column="17" selection-end-line="13" selection-end-column="17" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -790,17 +743,20 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scss/nav.scss">
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/Nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        <state relative-caret-position="156">
+          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/Nav.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieLink.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="182">
-          <caret line="7" column="42" selection-start-line="7" selection-start-column="42" selection-end-line="7" selection-end-column="42" />
+        <state relative-caret-position="234">
+          <caret line="14" column="137" selection-start-line="14" selection-start-column="137" selection-end-line="14" selection-end-column="137" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -814,13 +770,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scss/style.scss">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scss/preloader.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
@@ -828,9 +777,23 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/scss/nav.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="34" selection-start-line="2" selection-start-column="34" selection-end-line="2" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scss/style.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="18" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/containers/Home.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="50">
+        <state relative-caret-position="-286">
           <caret line="37" column="15" selection-start-line="37" selection-start-column="15" selection-end-line="37" selection-end-column="15" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
@@ -838,20 +801,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieLink.js">
+    <entry file="file://$PROJECT_DIR$/app/scss/starButton.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="14" column="137" selection-start-line="14" selection-start-column="137" selection-end-line="14" selection-end-column="137" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="104">
+          <caret line="4" column="18" selection-start-line="4" selection-start-column="18" selection-end-line="4" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scss/base.scss">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="81" column="17" selection-start-line="81" selection-start-column="17" selection-end-line="81" selection-end-column="17" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scss/filmLink.scss">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="16" column="4" selection-start-line="16" selection-start-column="4" selection-end-line="16" selection-end-column="4" />
+        <state relative-caret-position="702">
+          <caret line="72" column="15" selection-start-line="72" selection-start-column="15" selection-end-line="72" selection-end-column="15" />
         </state>
       </provider>
     </entry>

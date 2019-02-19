@@ -1,6 +1,8 @@
 .starButton{
   min-width: 20px;
   cursor: pointer;
+  max-width: 30px;
+  max-height: 30px;
 
   &:hover{
     path {
