@@ -5,18 +5,15 @@ import {HashRouter, Router, BrowserRouter } from "react-router-dom";
 import {Provider} from 'react-redux';
 
 import App from "../components/App";
-// import { createHashHistory } from 'history'
-
-// const history = createHashHistory()
 
 export default class AppWrapper {
 
     static render(store) {
         return ReactDOM.render(
             <Provider store={store}>
-                <HashRouter>
+                <BrowserRouter>
                     <App/>
-                </HashRouter>
+                </BrowserRouter>
             </Provider>,
             document.getElementById('app')
         );
