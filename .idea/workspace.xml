@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15f58179-30b1-4ba7-860c-b87ef45aacc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/app/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/app/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/components/MovieLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/MovieLink.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/Nav.js" afterDir="false" />
@@ -117,11 +116,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/components/Nav.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="97" lean-forward="true" selection-start-line="8" selection-start-column="96" selection-end-line="8" selection-end-column="97" />
+            <state relative-caret-position="234">
+              <caret line="9" column="111" selection-start-line="9" selection-start-column="111" selection-end-line="9" selection-end-column="111" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -151,7 +150,7 @@
         <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieLink.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="182">
-              <caret line="12" column="58" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="58" />
+              <caret line="12" column="78" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -159,11 +158,11 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="416">
-              <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+            <state relative-caret-position="468">
+              <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
               </folding>
@@ -314,9 +313,9 @@
         <option value="$PROJECT_DIR$/app/scripts/containers/Bookmarks.js" />
         <option value="$PROJECT_DIR$/app/scripts/js/AppWrapper.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/scripts/components/Nav.js" />
-        <option value="$PROJECT_DIR$/app/scripts/components/MovieLink.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/App.js" />
+        <option value="$PROJECT_DIR$/app/scripts/components/MovieLink.js" />
+        <option value="$PROJECT_DIR$/app/scripts/components/Nav.js" />
       </list>
     </option>
   </component>
@@ -469,12 +468,12 @@
       <workItem from="1550560600192" duration="17006000" />
       <workItem from="1550583192440" duration="1467000" />
       <workItem from="1550647900970" duration="541000" />
-      <workItem from="1550748426066" duration="6839000" />
+      <workItem from="1550748426066" duration="6952000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="143797000" />
+    <option name="totallyTimeSpent" value="143910000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
@@ -796,10 +795,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/Nav.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="97" lean-forward="true" selection-start-line="8" selection-start-column="96" selection-end-line="8" selection-end-column="97" />
+        <state relative-caret-position="468">
+          <caret line="18" column="52" selection-start-line="18" selection-start-column="52" selection-end-line="18" selection-end-column="52" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
@@ -809,17 +808,17 @@
     <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieLink.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="182">
-          <caret line="12" column="58" selection-start-line="12" selection-start-column="57" selection-end-line="12" selection-end-column="58" />
+          <caret line="12" column="78" selection-start-line="12" selection-start-column="78" selection-end-line="12" selection-end-column="78" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/Nav.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="416">
-          <caret line="16" column="38" selection-start-line="16" selection-start-column="38" selection-end-line="16" selection-end-column="38" />
+        <state relative-caret-position="234">
+          <caret line="9" column="111" selection-start-line="9" selection-start-column="111" selection-end-line="9" selection-end-column="111" />
           <folding>
             <element signature="e#0#31#0" expanded="true" />
           </folding>
