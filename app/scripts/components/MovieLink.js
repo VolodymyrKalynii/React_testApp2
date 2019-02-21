@@ -10,7 +10,7 @@ export default class MovieLink extends React.Component{
         // console.log(this.props.movie.id);
         return (
             <div className='filmLink'>
-                <NavLink className='filmLink__link' to={`/movie/${this.props.movie.id}`}>
+                <NavLink className='filmLink__link' to={`/React_testApp2/movie/${this.props.movie.id}`}>
                     <div className='filmLink__imgBlock'>
                         <img className='filmLink__img' src={Constants.IMG_ROOT+this.props.movie.poster_path} alt={this.props.movie.title}/>
                     </div>
