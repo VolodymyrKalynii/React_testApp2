@@ -12,8 +12,6 @@ export default class MovieBlock extends React.Component {
     }
 
     getMoviesBlock = () => {
-        console.log(this.props.totalItemsCount);
-        console.log(this.props.totalItemsCount / 20);
         return (
             <div className='home__content'>
                 <MoviesList movies={this.props.movies} genres={this.props.genres}/>

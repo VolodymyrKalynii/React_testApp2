@@ -29,10 +29,6 @@
       width: 300px;
     }
 
-    @media screen and (max-width: 660px){
-      width: 250px;
-    }
-
     &:hover{
       .filmLink__content{
         transform: translateX(0);
@@ -67,10 +63,6 @@
 
     @media screen and (max-width: 1020px){
       height: 450px;
-    }
-
-    @media screen and (max-width: 660px){
-      width: 370px;
     }
   }
 
