@@ -1,25 +1,51 @@
 .movie{
   position: relative;
+  padding-top: 10px;
 
   &__title{
     font-size: $middleFz;
     font-weight: 500;
     color: #fff;
     padding: 20px 0;
+
+    @media screen and (max-width: 480px){
+      font-size: $middleSmallFz;
+    }
   }
 
   &__info{
     display: flex;
+    justify-content: space-between;
+    @media screen and (max-width: 660px){
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+  }
+
+  &__left{
+    flex-shrink: 0;
   }
 
   &__right{
-    padding-left: 100px;
+    //padding-left: 100px;
+    width: 100%;
+  }
+
+  &__img{
+    padding: 0 20px 10px 0;
+    @media screen and (max-width: 660px){
+      padding: 0 0 10px 0;
+    }
   }
 
   &__text{
     font-size: $smallBigFz;
     color: #fff;
     padding-bottom: 10px;
+    span {
+      font-style: italic;
+      color: $MainOrange;
+    }
   }
 
   &__starButton{

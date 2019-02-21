@@ -25,7 +25,6 @@ export default class Movie extends React.Component {
             poster_path,
             tagline,
             budget,
-            homepage,
             runtime,
             release_date,
             vote_average,
@@ -38,20 +37,21 @@ export default class Movie extends React.Component {
                 <p  className='movie__title'>{title}</p>
                 <div className='movie__info'>
                     <div className='movie__left'>
-                        <img src={Constants.IMG_ROOT + poster_path} alt=""/>
+                        <img className='movie__img' src={Constants.IMG_ROOT + poster_path} alt=""/>
                     </div>
                     <div className='movie__right'>
-                        <p className='movie__text'>Tagline: {tagline}</p>
-                        <p className='movie__text'>Budget: {budget}</p>
-                        <p className='movie__text'>Genres: {this.renderGenres()}</p>
-                        <p className='movie__text'>Homepage: <a href={homepage}>{homepage}</a></p>
-                        <p className='movie__text'>Runtime: {runtime} minutes</p>
-                        <p className='movie__text'>Release date: {release_date}</p>
-                        <p className='movie__text'>Vote avarage: {vote_average}</p>
-                        <p className='movie__text'>Vote count: {vote_count}</p>
+                        <p className='movie__text'>Tagline: <span>{tagline}</span></p>
+                        <p className='movie__text'>Budget: <span>${this.getFormattedBudget()}</span></p>
+                        <p className='movie__text'>Genres: <span>{this.renderGenres()}</span></p>
+                        <p className='movie__text'>Runtime: <span>{runtime} minutes</span></p>
+                        <p className='movie__text'>Release date: <span>{release_date}</span></p>
+                        <p className='movie__text'>Vote avarage: <span>{vote_average}</span></p>
+                        <p className='movie__text'>Vote count: <span>{vote_count}</span></p>
+                        {this.renderHomepageLink()}
                     </div>
                 </div>
                 <p className='movie__text movie__overview'>{overview}</p>
+
             </div>
         )
     };
@@ -62,6 +62,20 @@ export default class Movie extends React.Component {
         return genres
             .map(genreObj => genreObj.name)
             .join(', ');
+    };
+
+    renderHomepageLink = () => {
+        const {homepage} = this.props.movie;
+
+        return homepage
+            ? (<a className='movie__text' href={homepage}><span>Homepage</span></a>)
+            : null
+    };
+
+    getFormattedBudget = () => {
+        const {budget} = this.props.movie;
+
+        return new Intl.NumberFormat().format(budget)
     };
 }
 

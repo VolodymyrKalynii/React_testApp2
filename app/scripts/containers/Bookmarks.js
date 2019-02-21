@@ -4,6 +4,7 @@ import connect from 'react-redux/es/connect/connect';
 import {JsonImporter} from '../lib/JsonImporter';
 import MoviesList from '../components/MoviesList';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
+import Loader from '../components/Loader';
 
 class Bookmarks extends React.Component{
     constructor(props) {
@@ -38,7 +39,7 @@ class Bookmarks extends React.Component{
     getContent = () => {
         return this.state.allowRenderMovies
             ? <MoviesList movies={this.state.movies}/>
-            : (<div>loading..</div>)
+            : (<Loader/>)
     };
 
     /**
