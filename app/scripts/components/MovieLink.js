@@ -4,13 +4,20 @@ import PropTypes from 'prop-types';
 
 import Constants from '../lib/Constants';
 import StarButton from '../containers/StarButton';
+import URLPartGetter from '../lib/URLPartGetter';
 
 export default class MovieLink extends React.Component{
+    constructor(props) {
+        super(props);
+
+        this.urlPart = URLPartGetter.get();
+    }
+
     render() {
         // console.log(this.props.movie.id);
         return (
             <div className='filmLink'>
-                <NavLink className='filmLink__link' to={`${Constants.UPL_PART}/movie/${this.props.movie.id}`}>
+                <NavLink className='filmLink__link' to={`${this.urlPart}/movie/${this.props.movie.id}`}>
                     <div className='filmLink__imgBlock'>
                         <img className='filmLink__img' src={Constants.IMG_ROOT+this.props.movie.poster_path} alt={this.props.movie.title}/>
                     </div>
