@@ -14,9 +14,9 @@ export default class App extends React.Component {
           <Nav />
           <div className='container'>
               <Switch>
-                  <Route exact path="/React_testApp2/dist/" component={Home} />
-                  <Route path="/React_testApp2/dist/movie/:id" component={MovieWrapper} />
-                  <Route path="/React_testApp2/dist/bookmarks" component={Bookmarks} />
+                  <Route exact path={`${Constants.UPL_PART}/`} component={Home} />
+                  <Route path={`${Constants.UPL_PART}/movie/:id`} component={MovieWrapper} />
+                  <Route path={`${Constants.UPL_PART}/bookmarks`} component={Bookmarks} />
                   {/* <Route path={} component={NotFound} /> */}
               </Switch>
           </div>

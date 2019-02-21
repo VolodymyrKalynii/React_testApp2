@@ -41,3 +41,11 @@ Constants.LOAD_GENRES = 'LOAD_GENRES';
  * @readonly
  */
 Constants.STAR_MOVIES_ID = 'starMoviesId';
+
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.UPL_PART = '/React_testApp2/dist';
+
