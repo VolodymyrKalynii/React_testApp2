@@ -11,9 +11,9 @@ export default class AppWrapper {
     static render(store) {
         return ReactDOM.render(
             <Provider store={store}>
-                <BrowserRouter>
+                <HashRouter>
                     <App/>
-                </BrowserRouter>
+                </HashRouter>
             </Provider>,
             document.getElementById('app')
         );

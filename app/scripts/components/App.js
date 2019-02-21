@@ -24,7 +24,7 @@ export default class App extends React.Component {
                         <Route exact path={`${this.urlPart}/`} component={Home}/>
                         <Route path={`${this.urlPart}/movie/:id`} component={MovieWrapper}/>
                         <Route path={`${this.urlPart}/bookmarks`} component={Bookmarks}/>
-                        {/* <Route path={} component={NotFound} /> */}
+                        <Route component={NotFound} />
                     </Switch>
                 </div>
 

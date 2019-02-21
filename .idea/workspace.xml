@@ -2,13 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15f58179-30b1-4ba7-860c-b87ef45aacc3" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/scripts/lib/UrlPartGetter.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/components/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/MovieLink.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/MovieLink.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/Nav.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/components/Nav.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/global-config/URLConfig.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/global-config/URLConfig.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/lib/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/lib/Constants.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/global-config/Config.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/global-config/Config.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/js/AppWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/js/AppWrapper.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/dist/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/dist/index.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -71,8 +69,8 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="2" />
-          <entry key="js" value="138" />
-          <entry key="json" value="5" />
+          <entry key="js" value="142" />
+          <entry key="json" value="6" />
           <entry key="scss" value="28" />
           <entry key="svg" value="2" />
         </counts>
@@ -80,8 +78,8 @@
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="HTML" value="2" />
-          <entry key="JSON" value="5" />
-          <entry key="JavaScript" value="138" />
+          <entry key="JSON" value="6" />
+          <entry key="JavaScript" value="142" />
           <entry key="SCSS" value="28" />
           <entry key="SVG" value="2" />
         </counts>
@@ -89,7 +87,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="1" />
-          <entry key="js" value="10958" />
+          <entry key="js" value="11003" />
           <entry key="json" value="2" />
           <entry key="scss" value="1284" />
         </counts>
@@ -98,7 +96,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="10958" />
+          <entry key="JavaScript" value="11003" />
           <entry key="SCSS" value="1284" />
         </counts>
       </usages-collector>
@@ -111,15 +109,6 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scss/_variables.scss">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="338">
-              <caret line="13" selection-start-line="13" selection-end-line="13" selection-end-column="14" />
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/index.html">
           <provider selected="true" editor-type-id="text-editor">
@@ -150,28 +139,68 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="260">
-              <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="43" />
+            <state relative-caret-position="676">
+              <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
               <folding>
                 <element signature="e#0#31#0" expanded="true" />
+                <marker date="1550762226157" expanded="true" signature="469:1044" ph="..." />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/app/scripts/lib/UrlPartGetter.js">
+        <entry file="file://$PROJECT_DIR$/package.json">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="208">
-              <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            <state relative-caret-position="1638">
+              <caret line="71" selection-start-line="71" selection-end-line="71" selection-end-column="31" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/global-config/URLConfig.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="468">
+              <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="27" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/global-config/Config.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="52">
+              <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/js/AppWrapper.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="286">
+              <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
+              <folding>
+                <element signature="e#0#25#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/app/scripts/lib/URLPartGetter.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="208">
+              <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/scripts/lib/Constants.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="674">
@@ -240,14 +269,12 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/scripts/components/Home.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/FilmsList.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/FilmLink.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/FilmWrapper.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/Film.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/Movie.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/MovieLink.js" />
-        <option value="$PROJECT_DIR$/app/scripts/global-config/Config.js" />
         <option value="$PROJECT_DIR$/app/scripts/global-config/index.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/RecommendedFilms.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/Bookmarks.js" />
@@ -283,14 +310,16 @@
         <option value="$PROJECT_DIR$/app/scss/movie.scss" />
         <option value="$PROJECT_DIR$/app/scripts/components/Movie.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/Bookmarks.js" />
-        <option value="$PROJECT_DIR$/app/scripts/js/AppWrapper.js" />
         <option value="$PROJECT_DIR$/app/index.html" />
         <option value="$PROJECT_DIR$/app/scripts/global-config/URLConfig.js" />
         <option value="$PROJECT_DIR$/app/scripts/lib/UrlPartGetter.js" />
-        <option value="$PROJECT_DIR$/app/scripts/components/App.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/MovieLink.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/Nav.js" />
         <option value="$PROJECT_DIR$/app/scripts/lib/Constants.js" />
+        <option value="$PROJECT_DIR$/app/scripts/lib/URLPartGetter.js" />
+        <option value="$PROJECT_DIR$/app/scripts/global-config/Config.js" />
+        <option value="$PROJECT_DIR$/app/scripts/js/AppWrapper.js" />
+        <option value="$PROJECT_DIR$/app/scripts/components/App.js" />
       </list>
     </option>
   </component>
@@ -311,8 +340,8 @@
     </packageJsonPaths>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="25" />
-    <option name="y" value="219" />
+    <option name="x" value="70" />
+    <option name="y" value="-8" />
     <option name="width" value="1858" />
     <option name="height" value="1096" />
   </component>
@@ -346,13 +375,6 @@
               <item name="scripts" type="462c0819:PsiDirectoryNode" />
               <item name="global-config" type="462c0819:PsiDirectoryNode" />
             </path>
-            <path>
-              <item name="React_testApp2" type="b2602c69:ProjectViewProjectNode" />
-              <item name="React_testApp2" type="462c0819:PsiDirectoryNode" />
-              <item name="app" type="462c0819:PsiDirectoryNode" />
-              <item name="scripts" type="462c0819:PsiDirectoryNode" />
-              <item name="lib" type="462c0819:PsiDirectoryNode" />
-            </path>
           </expand>
           <select />
         </subPane>
@@ -362,7 +384,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../testAjaxRedux" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.detected.package.standard" value="true" />
     <property name="node.js.path.for.package.eslint" value="project" />
@@ -436,12 +458,12 @@
       <workItem from="1550560600192" duration="17006000" />
       <workItem from="1550583192440" duration="1467000" />
       <workItem from="1550647900970" duration="541000" />
-      <workItem from="1550748426066" duration="8262000" />
+      <workItem from="1550748426066" duration="12508000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="145220000" />
+    <option name="totallyTimeSpent" value="149466000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
@@ -637,13 +659,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="69" column="23" lean-forward="true" selection-start-line="69" selection-start-column="23" selection-end-line="69" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/webpack.config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="648">
@@ -713,13 +728,6 @@
     <entry file="file://$PROJECT_DIR$/node_modules/react-router/es/index.js">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/js/AppWrapper.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" lean-forward="true" selection-start-line="5" selection-end-line="5" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scss/_variables.scss">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -731,27 +739,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/global-config/Config.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="13" selection-start-column="13" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/global-config/URLConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="468">
-          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/lib/UrlPartGetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="1" lean-forward="true" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
         </state>
       </provider>
     </entry>
@@ -769,6 +756,41 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/lib/Constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="674">
+          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/lib/URLPartGetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="208">
+          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/package.json">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1638">
+          <caret line="71" selection-start-line="71" selection-end-line="71" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/global-config/URLConfig.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="468">
+          <caret line="18" selection-start-line="18" selection-end-line="18" selection-end-column="27" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/global-config/Config.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="52">
+          <caret line="2" column="21" lean-forward="true" selection-start-line="2" selection-start-column="21" selection-end-line="2" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieLink.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="286">
@@ -779,20 +801,24 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/js/AppWrapper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="14" selection-start-line="14" selection-end-line="14" selection-end-column="43" />
+        <state relative-caret-position="286">
+          <caret line="11" column="31" lean-forward="true" selection-start-line="11" selection-start-column="31" selection-end-line="11" selection-end-column="31" />
           <folding>
-            <element signature="e#0#31#0" expanded="true" />
+            <element signature="e#0#25#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/lib/Constants.js">
+    <entry file="file://$PROJECT_DIR$/app/scripts/components/App.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="674">
-          <caret line="43" lean-forward="true" selection-start-line="43" selection-end-line="43" />
+        <state relative-caret-position="676">
+          <caret line="26" column="31" selection-start-line="26" selection-start-column="31" selection-end-line="26" selection-end-column="31" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+            <marker date="1550762226157" expanded="true" signature="469:1044" ph="..." />
+          </folding>
         </state>
       </provider>
     </entry>
