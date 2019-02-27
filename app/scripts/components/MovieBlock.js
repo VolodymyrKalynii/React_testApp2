@@ -18,8 +18,6 @@ export default class MovieBlock extends React.Component {
                 <ReactPaginate
                     previousLabel={'<'}
                     nextLabel={'>'}
-                    // breakLabel={'...'}
-                    // breakClassName={'break-me'}
                     pageCount={this.props.totalItemsCount / 20}
                     marginPagesDisplayed={1}
                     pageRangeDisplayed={2}

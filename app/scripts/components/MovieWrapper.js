@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {JsonImporter} from '../lib/JsonImporter';
 import Movie from './Movie';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from './Loader';
@@ -34,13 +33,13 @@ export default class MovieWrapper extends React.Component{
      * @param {number} movieId
      */
     loadMovieById = (movieId) => {
-        const filmsList = JsonImporter.import(RequestsURLsCreator.loadMovieById(movieId));
-
-        filmsList.then(response => {
-            this.setState({
-                loadedFilm: true,
-                movieInfo: response
-            })
-        });
+        fetch(RequestsURLsCreator.loadMovieById(movieId))
+            .then(response => response.json())
+            .then(response => {
+                this.setState({
+                    loadedFilm: true,
+                    movieInfo: response
+                })
+            });
     };
 }

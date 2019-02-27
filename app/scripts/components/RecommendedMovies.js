@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import {JsonImporter} from '../lib/JsonImporter';
 import ArrayUtils from '../lib/ArrayUtils';
 import MoviesList from './MoviesList';
 import {AppConfig} from '../global-config';
@@ -56,16 +55,16 @@ export default class RecommendedMovies extends React.Component {
      * @param {number} pageNumber
      */
     loadRecommendedMoviesId = (movieId, pageNumber = 1) => {
-        const moviesList = JsonImporter.import(RequestsURLsCreator.loadRecommendedMoviesByIdAndPageNumber(movieId, pageNumber));
+        fetch(RequestsURLsCreator.loadRecommendedMoviesByIdAndPageNumber(movieId, pageNumber))
+            .then(response => response.json())
+            .then(response => {
+                const recommendedMoviesId = RecommendedMovies.getMoviesIdList(response.results);
+                this.recommendedAllMoviesId = this.recommendedAllMoviesId.concat(recommendedMoviesId);
 
-        moviesList.then(response => {
-            const recommendedMoviesId = RecommendedMovies.getMoviesIdList(response.results);
-            this.recommendedAllMoviesId = this.recommendedAllMoviesId.concat(recommendedMoviesId);
+                this.recommendedMoviesPageQty++;
 
-            this.recommendedMoviesPageQty++;
-
-            this.checkRecommendedMoviesPagesQty(movieId, response)
-        });
+                this.checkRecommendedMoviesPagesQty(movieId, response)
+            });
     };
 
     /**
@@ -89,11 +88,6 @@ export default class RecommendedMovies extends React.Component {
     };
 
     getRndRecommendedMoviesId = () => {
-        // this.recommendedAllMoviesId.splice(0, 40);
-        // console.log(this.recommendedAllMoviesId);
-        // console.log(this.recommendedMoviesQty);
-
-
         this.checksRecommendedMoviesLength();
 
         const recommendedRndMoviesId = ArrayUtils.getRndElements({
@@ -122,21 +116,21 @@ export default class RecommendedMovies extends React.Component {
      * @param {number} movieId
      */
     loadRecommendedMovieById = (movieId) => {
-        const movie = JsonImporter.import(RequestsURLsCreator.loadMovieById(movieId));
+        fetch(RequestsURLsCreator.loadMovieById(movieId))
+            .then(response => response.json())
+            .then(response => {
+                const recommendedMovies = [...this.state.recommendedMovies];
+                recommendedMovies.push(response);
 
-        movie.then(response => {
-            const recommendedMovies = [...this.state.recommendedMovies];
-            recommendedMovies.push(response);
-
-            this.setState({
-                recommendedMovies
-            });
-
-            if (recommendedMovies.length >= this.recommendedMoviesQty) {
                 this.setState({
-                    readyRecommendedMovies: true
+                    recommendedMovies
                 });
-            }
-        });
+
+                if (recommendedMovies.length >= this.recommendedMoviesQty) {
+                    this.setState({
+                        readyRecommendedMovies: true
+                    });
+                }
+            });
     };
 }

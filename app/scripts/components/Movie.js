@@ -24,7 +24,6 @@ export default class Movie extends React.Component {
             title,
             poster_path,
             tagline,
-            budget,
             runtime,
             release_date,
             vote_average,

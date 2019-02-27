@@ -1,7 +1,7 @@
 import * as React from 'react';
-import PageActions from '../redux/actions/page';
 import connect from 'react-redux/es/connect/connect';
-import {JsonImporter} from '../lib/JsonImporter';
+
+import PageActions from '../redux/actions/page';
 import MoviesList from '../components/MoviesList';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
@@ -46,17 +46,17 @@ class Bookmarks extends React.Component{
      * @param {number} movieId
      */
     loadMovieById = (movieId) => {
-        const movie = JsonImporter.import(RequestsURLsCreator.loadMovieById(movieId));
+        fetch(RequestsURLsCreator.loadMovieById(movieId))
+            .then(response => response.json())
+            .then(response => {
+                const movies = [...this.state.movies];
+                movies.push(response);
 
-        movie.then(response => {
-            const movies = [...this.state.movies];
-            movies.push(response);
-
-            this.setState({
-                movies,
-                allowRenderMovies: true
-            })
-        });
+                this.setState({
+                    movies,
+                    allowRenderMovies: true
+                })
+            });
     };
 }
 

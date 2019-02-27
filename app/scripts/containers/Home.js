@@ -2,7 +2,6 @@ import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 
-import {JsonImporter} from '../lib/JsonImporter';
 import PageActions from '../redux/actions/page';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
@@ -60,17 +59,17 @@ class Home extends React.Component {
      * @param {number} pageNumber
      */
     loadMoviesByPageNumber = (pageNumber = this.state.activePage) => {
-        const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber));
-
-        moviesList.then(response => {
-            this.setState({
-                isMoviesLoaded: true,
-                filteredSearch: false,
-                activePage: pageNumber,
-                movies: response.results,
-                totalItemsCount: response.total_results,
-                itemsCountPerPage: response.results.length
-            });
+        fetch(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber))
+            .then(response => response.json())
+            .then(response => {
+                this.setState({
+                    isMoviesLoaded: true,
+                    filteredSearch: false,
+                    activePage: pageNumber,
+                    movies: response.results,
+                    totalItemsCount: response.total_results,
+                    itemsCountPerPage: response.results.length
+                });
         });
     };
 
@@ -78,15 +77,15 @@ class Home extends React.Component {
      * @param {number} pageNumber
      */
     loadMoviesByNameAndPage = (pageNumber = 1) => {
-        const moviesList = JsonImporter.import(RequestsURLsCreator.loadPopularMoviesByNameAndPageNumber(pageNumber, this.searchMovieName));
-
-        moviesList.then(response => {
-            this.setState({
-                filteredSearch: true,
-                movies: response.results,
-                totalItemsCount: response.total_results,
-                itemsCountPerPage: response.results.length
-            });
+        fetch(RequestsURLsCreator.loadPopularMoviesByNameAndPageNumber(pageNumber, this.searchMovieName))
+            .then(response => response.json())
+            .then(response => {
+                this.setState({
+                    filteredSearch: true,
+                    movies: response.results,
+                    totalItemsCount: response.total_results,
+                    itemsCountPerPage: response.results.length
+                });
         });
     };
 
@@ -130,15 +129,15 @@ class Home extends React.Component {
     };
 
     loadGenres = () => {
-        const genresList = JsonImporter.import(RequestsURLsCreator.loadGenres());
-
-        genresList.then(response => {
-            this.loadGenresAction(response.genres);
-            this.setState({
-                isGenresLoaded: true,
-                genres: response.genres
+        fetch(RequestsURLsCreator.loadGenres())
+            .then(response => response.json())
+            .then(response => {
+                this.loadGenresAction(response.genres);
+                this.setState({
+                    isGenresLoaded: true,
+                    genres: response.genres
+                });
             });
-        });
     };
 }
 
