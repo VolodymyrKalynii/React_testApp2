@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import PageActions from '../redux/actions/page';
+import PageActions from '../redux/actions/page.actions';
 
 class StarButton extends React.Component{
     constructor(props) {

@@ -42,4 +42,10 @@ Constants.LOAD_GENRES = 'LOAD_GENRES';
  */
 Constants.STAR_MOVIES_ID = 'starMoviesId';
 
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.LOAD_MOVIES_BY_PAGE_NAME = 'loadMoviesByPageName';
+
 

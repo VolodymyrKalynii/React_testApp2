@@ -1,10 +1,17 @@
 import Consts from '../../lib/Constants';
 import InitialState from '../state/InitialState';
 
-export function films(state = InitialState.initialState, action) {
+export function filmsReducers(state = InitialState.initialState, action) {
     const starMoviesId = [...state.starMoviesId];
+    // const moviesList = [...state.moviesList];
 
     switch (action.type) {
+        // case Consts.LOAD_MOVIES_BY_PAGE_NAME:
+        //
+        //     return {
+        //         ...state,
+        //         moviesList
+        //     };
         case Consts.ADD_STAR:
 
             return {

@@ -2,7 +2,7 @@ import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 
-import PageActions from '../redux/actions/page';
+import PageActions from '../redux/actions/page.actions';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
 import SearchField from '../components/SearchField';

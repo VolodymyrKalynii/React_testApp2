@@ -1,8 +1,8 @@
 import { createStore } from 'redux';
-import {films} from '../reducers/films';
+import {filmsReducers} from '../reducers/films.reducers';
 
 export default class Store {
     static createStore() {
-        return createStore(films);
+        return createStore(filmsReducers);
     }
 }
