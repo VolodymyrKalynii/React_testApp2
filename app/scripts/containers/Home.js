@@ -7,6 +7,7 @@ import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
 import SearchField from '../components/SearchField';
 import MovieBlock from '../components/MovieBlock';
+import HomePageActions from '../redux/actions/homePage.actions';
 
 class Home extends React.Component {
     constructor(props) {
@@ -24,15 +25,23 @@ class Home extends React.Component {
         };
 
         this.loadGenresAction = this.props.loadGenresAction;
+        this.loadMoviesByPageNumber = this.props.loadMoviesByPageNumber;
     }
 
     componentDidMount() {
+        // dispatch(this.fetchPostsIfNeededAction(this.props.activePage));
+        // dispatch(this.fetchPostsIfNeededAction(this.props.activePage));
+        // dispatch(HomePageActions.loadMoviesByPageNumber(this.state.activePage));
         this.loadMoviesByPageNumber(this.state.activePage);
+
+        // console.log(this.loadMoviesByPageNumber);
+        // HomePageActions.loadMoviesByPageNumber(this.state.activePage);
         this.checkGenres();
     }
 
     render() {
-        const allowRenderContent = this.state.isMoviesLoaded && this.state.isGenresLoaded;
+        // const allowRenderContent = this.state.isMoviesLoaded && this.state.isGenresLoaded;
+        const allowRenderContent = this.props.isMoviesLoaded;
 
         return allowRenderContent
             ? this.getContent()
@@ -42,15 +51,16 @@ class Home extends React.Component {
     getContent = () => {
         return (
             <div className='home'>
-                <SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchMovie}/>
-                <MovieBlock
-                    movies={this.state.movies}
-                    genres={this.state.genres}
-                    activePage={this.state.activePage}
-                    itemsCountPerPage={this.state.itemsCountPerPage}
-                    totalItemsCount={this.state.totalItemsCount}
-                    handlePageChange={this.handlePageChange}
-                />
+                тіпа список фільмів
+                {/*<SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchMovie}/>*/}
+                {/*<MovieBlock*/}
+                    {/*movies={this.state.movies}*/}
+                    {/*genres={this.state.genres}*/}
+                    {/*activePage={this.state.activePage}*/}
+                    {/*itemsCountPerPage={this.state.itemsCountPerPage}*/}
+                    {/*totalItemsCount={this.state.totalItemsCount}*/}
+                    {/*handlePageChange={this.handlePageChange}*/}
+                {/*/>*/}
             </div>
         );
     };
@@ -143,13 +153,17 @@ class Home extends React.Component {
 
 const mapStateToProps = store => {
     return {
-        genres: store.movies.genres
+        genres: store.movies.genres,
+        moviesList: store.homePage.moviesList,
+        activePage: store.homePage.activePage,
+        isMoviesLoaded: store.homePage.isMoviesLoaded,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadGenresAction: genres => dispatch(PageActions.loadGenres(genres))
+        loadGenresAction: genres => dispatch(PageActions.loadGenres(genres)),
+        loadMoviesByPageNumber: pageNumber => dispatch(HomePageActions.loadMoviesByPageNumber(pageNumber))
     };
 };
 
