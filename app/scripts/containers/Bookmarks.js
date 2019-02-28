@@ -62,7 +62,7 @@ class Bookmarks extends React.Component{
 
 const mapStateToProps = store => {
     return {
-        starMoviesId: store.starMoviesId
+        starMoviesId: store.movies.starMoviesId
     }
 };
 

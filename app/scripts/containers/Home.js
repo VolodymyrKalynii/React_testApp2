@@ -143,7 +143,7 @@ class Home extends React.Component {
 
 const mapStateToProps = store => {
     return {
-        genres: store.genres
+        genres: store.movies.genres
     };
 };
 

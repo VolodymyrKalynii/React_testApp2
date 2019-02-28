@@ -32,7 +32,7 @@ export default class Mediator {
      * @private
      */
     handleChange() {
-        for (let key in this.store.getState()) {
+        for (let key in this.store.getState().movies) {
             if (key === Constants.STAR_MOVIES_ID)
                 this.writeLocalStorageField(key);
         }
@@ -44,7 +44,7 @@ export default class Mediator {
      */
     writeLocalStorageField(key) {
         const previousValue = Mediator[key];
-        Mediator[key] = this.store.getState()[key];
+        Mediator[key] = this.store.getState().movies[key];
 
         if (previousValue !== Mediator[key])
             localStorage.setItem(key, JSON.stringify(Mediator[key]));

@@ -91,7 +91,7 @@ class StarButton extends React.Component{
 }
 
 const mapStateToProps = store => ({
-    starMoviesId: store.starMoviesId,
+    starMoviesId: store.movies.starMoviesId,
 });
 
 const mapDispatchToProps = dispatch => ({
