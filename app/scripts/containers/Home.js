@@ -2,101 +2,59 @@ import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 import PropTypes from 'prop-types';
 
-import PageActions from '../redux/actions/page.actions';
-import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
 import SearchField from '../components/SearchField';
 import MovieBlock from '../components/MovieBlock';
-import HomePageActions from '../redux/actions/homePage.actions';
+import {loadMoviesByPageNumber, loadGenres, loadMoviesByNameAndPage} from '../redux/actions';
 
 class Home extends React.Component {
     constructor(props) {
         super(props);
 
-        this.state = {
-            movies: [],
-            genres: [],
-            activePage: 1,
-            itemsCountPerPage: 1,
-            totalItemsCount: 1000,
-            isGenresLoaded: false,
-            isMoviesLoaded: false,
-            filteredSearch: false
-        };
+        this.activePage = this.props.activePage;
 
-        this.loadGenresAction = this.props.loadGenresAction;
+        this.loadGenres = this.props.loadGenres;
         this.loadMoviesByPageNumber = this.props.loadMoviesByPageNumber;
+        this.loadMoviesByNameAndPage = this.props.loadMoviesByNameAndPage;
     }
 
     componentDidMount() {
-        // dispatch(this.fetchPostsIfNeededAction(this.props.activePage));
-        // dispatch(this.fetchPostsIfNeededAction(this.props.activePage));
-        // dispatch(HomePageActions.loadMoviesByPageNumber(this.state.activePage));
-        this.loadMoviesByPageNumber(this.state.activePage);
-
-        // console.log(this.loadMoviesByPageNumber);
-        // HomePageActions.loadMoviesByPageNumber(this.state.activePage);
+        this.loadMoviesByPageNumber(this.activePage);
         this.checkGenres();
     }
 
-    render() {
-        // const allowRenderContent = this.state.isMoviesLoaded && this.state.isGenresLoaded;
-        const allowRenderContent = this.props.isMoviesLoaded;
+    shouldComponentUpdate(nextProps) {
+        const {isMoviesLoaded, isGenresLoaded} = nextProps;
 
+        return isMoviesLoaded && isGenresLoaded;
+    }
+
+    render() {
+        const {isMoviesLoaded, isGenresLoaded} = this.props;
+        const allowRenderContent = isMoviesLoaded && isGenresLoaded;
+
+        console.log('render');
         return allowRenderContent
             ? this.getContent()
             : <Loader/>;
     }
 
     getContent = () => {
+        const {moviesList, totalItemsCount, itemsCountPerPage, genres} = this.props;
+
         return (
             <div className='home'>
-                тіпа список фільмів
-                {/*<SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchMovie}/>*/}
-                {/*<MovieBlock*/}
-                    {/*movies={this.state.movies}*/}
-                    {/*genres={this.state.genres}*/}
-                    {/*activePage={this.state.activePage}*/}
-                    {/*itemsCountPerPage={this.state.itemsCountPerPage}*/}
-                    {/*totalItemsCount={this.state.totalItemsCount}*/}
-                    {/*handlePageChange={this.handlePageChange}*/}
-                {/*/>*/}
+                <SearchField setSearchMovieName={this.setSearchMovieName} makeSearch={this.searchMovie}/>
+                <MovieBlock
+                    movies={moviesList}
+                    genres={genres}
+                    activePage={this.activePage - 1}
+                    itemsCountPerPage={itemsCountPerPage}
+                    totalItemsCount={totalItemsCount}
+                    handlePageChange={this.handlePageChange}
+                />
             </div>
         );
-    };
-
-    /**
-     * @param {number} pageNumber
-     */
-    loadMoviesByPageNumber = (pageNumber = this.state.activePage) => {
-        fetch(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber))
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    isMoviesLoaded: true,
-                    filteredSearch: false,
-                    activePage: pageNumber,
-                    movies: response.results,
-                    totalItemsCount: response.total_results,
-                    itemsCountPerPage: response.results.length
-                });
-        });
-    };
-
-    /**
-     * @param {number} pageNumber
-     */
-    loadMoviesByNameAndPage = (pageNumber = 1) => {
-        fetch(RequestsURLsCreator.loadPopularMoviesByNameAndPageNumber(pageNumber, this.searchMovieName))
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    filteredSearch: true,
-                    movies: response.results,
-                    totalItemsCount: response.total_results,
-                    itemsCountPerPage: response.results.length
-                });
-        });
     };
 
     /**
@@ -107,21 +65,23 @@ class Home extends React.Component {
     };
 
     searchMovie = () => {
+        this.activePage = 1;
+
         this.searchMovieName
-            ? this.loadMoviesByNameAndPage()
-            : this.loadMoviesByPageNumber();
+            ? this.loadMoviesByNameAndPage(this.searchMovieName, this.activePage)
+            : this.loadMoviesByPageNumber(this.activePage);
     };
 
     /**
      * @param {number} data
      */
     handlePageChange = (data) => {
-        const pageNumber = data.selected + 1;
-        const filteredSearch = this.state.filteredSearch;
+        const {filteredSearch} = this.props;
+        this.activePage = data.selected + 1;
 
         filteredSearch
-            ? this.loadMoviesByNameAndPage(pageNumber)
-            : this.loadMoviesByPageNumber(pageNumber);
+            ? this.loadMoviesByNameAndPage(this.searchMovieName, this.activePage)
+            : this.loadMoviesByPageNumber(this.activePage);
     };
 
     /**
@@ -132,38 +92,29 @@ class Home extends React.Component {
 
         genres.length === 0
             ? this.loadGenres()
-            : this.setState({
-                genres,
-                isGenresLoaded: true
-            });
-    };
-
-    loadGenres = () => {
-        fetch(RequestsURLsCreator.loadGenres())
-            .then(response => response.json())
-            .then(response => {
-                this.loadGenresAction(response.genres);
-                this.setState({
-                    isGenresLoaded: true,
-                    genres: response.genres
-                });
-            });
+            : null;
     };
 }
 
 const mapStateToProps = store => {
+
     return {
-        genres: store.movies.genres,
+        genres: store.genres.genres,
+        isGenresLoaded: store.genres.isGenresLoaded,
+        filteredSearch: store.homePage.filteredSearch,
         moviesList: store.homePage.moviesList,
         activePage: store.homePage.activePage,
+        totalItemsCount: store.homePage.totalItemsCount,
+        itemsCountPerPage: store.homePage.itemsCountPerPage,
         isMoviesLoaded: store.homePage.isMoviesLoaded,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadGenresAction: genres => dispatch(PageActions.loadGenres(genres)),
-        loadMoviesByPageNumber: pageNumber => dispatch(HomePageActions.loadMoviesByPageNumber(pageNumber))
+        loadGenres: () => dispatch(loadGenres()),
+        loadMoviesByPageNumber: pageNumber => dispatch(loadMoviesByPageNumber(pageNumber)),
+        loadMoviesByNameAndPage: (searchMovieName, pageNumber) => dispatch(loadMoviesByNameAndPage(searchMovieName, pageNumber))
     };
 };
 

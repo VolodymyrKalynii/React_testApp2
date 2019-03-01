@@ -1,30 +1,28 @@
 import Consts from '../../lib/Constants';
-import RequestsURLsCreator from '../../js/RequestsURLsCreator';
+import {MoviesLoader} from '../../lib/data-loader';
 
-export default class HomePageActions {
+export const loadMoviesByPageNumber = pageNumber => dispatch =>
+    MoviesLoader.load(pageNumber)
+        .then(response => dispatch(saveMovies(response)));
 
-    static loadMovies(movies) {
-        console.log(movies);
-        return {
-            type: Consts.LOAD_MOVIES_BY_PAGE_NAME,
-            payload: {
-                isMoviesLoaded: true,
-                moviesList: movies
-            }
-        };
+export const loadMoviesByNameAndPage = (searchMovieName, pageNumber) => dispatch =>
+    MoviesLoader.load2(pageNumber, searchMovieName)
+        .then(response => dispatch(saveMovies2(response)));
+
+const saveMovies = movies => ({
+    type: Consts.LOAD_MOVIES_BY_PAGE_NAME,
+    payload: {
+        isMoviesLoaded: true,
+        filteredSearch: false,
+        moviesList: movies,
     }
+});
 
-    static loadMoviesByPageNumber(pageNumber) {
-        console.log(1121);
-        return dispatch => {
-            console.log(112);
-            return fetch(RequestsURLsCreator.loadPopularMoviesByPageNumber(pageNumber))
-                .then(response => response.json())
-                .then(json => {
-                    console.log(json);
-                    dispatch(HomePageActions.loadMovies(json))
-                })
-                .catch(error => console.log('error'));
-        };
+const saveMovies2 = movies => ({
+    type: Consts.LOAD_MOVIES_BY_NAME_AND_PAGE,
+    payload: {
+        isMoviesLoaded: true,
+        filteredSearch: true,
+        moviesList: movies,
     }
-}
+});

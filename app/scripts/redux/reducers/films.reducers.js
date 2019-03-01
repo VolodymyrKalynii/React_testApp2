@@ -24,7 +24,7 @@ export function filmsReducers(state = InitialState.initialState, action) {
                 ...state,
                 starMoviesId
             };
-        case Consts.LOAD_GENRES:
+        case Consts.SAVE_GENRES:
 
             return {
                 ...state,

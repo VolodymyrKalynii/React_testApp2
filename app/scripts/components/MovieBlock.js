@@ -18,7 +18,8 @@ export default class MovieBlock extends React.Component {
                 <ReactPaginate
                     previousLabel={'<'}
                     nextLabel={'>'}
-                    pageCount={this.props.totalItemsCount / 20}
+                    pageCount={this.props.totalItemsCount / this.props.itemsCountPerPage}
+                    forcePage={this.props.activePage}
                     marginPagesDisplayed={1}
                     pageRangeDisplayed={2}
                     onPageChange={this.props.handlePageChange}

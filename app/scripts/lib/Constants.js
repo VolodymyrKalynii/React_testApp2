@@ -40,6 +40,12 @@ Constants.LOAD_GENRES = 'LOAD_GENRES';
  * @type {string}
  * @readonly
  */
+Constants.SAVE_GENRES = 'SAVE_GENRES';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.STAR_MOVIES_ID = 'starMoviesId';
 
 /**
@@ -47,5 +53,11 @@ Constants.STAR_MOVIES_ID = 'starMoviesId';
  * @readonly
  */
 Constants.LOAD_MOVIES_BY_PAGE_NAME = 'loadMoviesByPageName';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.LOAD_MOVIES_BY_NAME_AND_PAGE = 'loadMoviesByNameAndPage';
 
 
