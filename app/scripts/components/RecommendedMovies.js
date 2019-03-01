@@ -37,6 +37,7 @@ export default class RecommendedMovies extends React.Component {
     }
 
     render() {
+        // console.log('render');
         return (
             <div>
                 {this.renderSimilarFilms()}

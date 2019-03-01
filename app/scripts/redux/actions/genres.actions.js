@@ -9,7 +9,11 @@ const saveGenres = genres => ({
     }
 });
 
-export const loadGenres = () => dispatch => (
+const loadGenres = () => dispatch => (
     GenresLoader.load()
         .then(response => dispatch(saveGenres(response)))
 );
+
+export default {
+    loadGenres
+}

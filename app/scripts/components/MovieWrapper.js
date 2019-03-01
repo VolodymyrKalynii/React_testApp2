@@ -1,45 +1,77 @@
 import * as React from 'react';
 
 import Movie from './Movie';
-import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from './Loader';
+import {movieActions} from '../redux/actions';
+import connect from 'react-redux/es/connect/connect';
 
-export default class MovieWrapper extends React.Component{
+class MovieWrapper extends React.Component{
     constructor(props) {
         super(props);
 
-        this.state = {
-            movieInfo: '',
-            loadedFilm: false,
-        };
+        this.counter = 0;
     }
+
 
     componentDidMount() {
-        this.loadMovieById(this.props.match.params.id);
-    }
+        const {loadMovie} = this.props;
 
+        loadMovie(this.props.match.params.id)
+    }
+    
     componentWillReceiveProps(nextProps) {
-        if (+nextProps.match.params.id !== this.state.movieInfo.id)
-            this.loadMovieById(nextProps.match.params.id);
+        const {movieInfo: {id}, loadMovie} = this.props;
+        console.log(id);
+        console.log(+nextProps.match.params.id);
+        this.counter++;
+        console.log(this.counter);
+        // console.log(+nextProps.match.params.id !== id);
+
+        console.log('ReceiveProps');
+
+        if (+nextProps.match.params.id !== id && this.counter > 1) {
+            loadMovie(nextProps.match.params.id);
+            this.counter = 0;
+        }
     }
 
     render() {
-        return this.state.loadedFilm
-            ? <Movie movie={this.state.movieInfo}/>
+        const {isMovieLoaded, movieInfo} = this.props;
+        // console.log(isMovieLoaded);
+        // console.log(movieInfo);
+
+        console.log('render');
+        return isMovieLoaded
+            ? <Movie movie={movieInfo}/>
             : <Loader/>
     }
 
-    /**
-     * @param {number} movieId
-     */
-    loadMovieById = (movieId) => {
-        fetch(RequestsURLsCreator.loadMovieById(movieId))
-            .then(response => response.json())
-            .then(response => {
-                this.setState({
-                    loadedFilm: true,
-                    movieInfo: response
-                })
-            });
-    };
+    // /**
+    //  * @param {number} movieId
+    //  */
+    // loadMovieById = (movieId) => {
+    //     fetch(RequestsURLsCreator.loadMovieById(movieId))
+    //         .then(response => response.json())
+    //         .then(response => {
+    //             this.setState({
+    //                 loadedFilm: true,
+    //                 movieInfo: response
+    //             })
+    //         });
+    // };
 }
+
+const mapStateToProps = store => {
+    return {
+        movieInfo: store.movie.movieInfo,
+        isMovieLoaded: store.movie.isMovieLoaded,
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadMovie: movieId => dispatch(movieActions.loadMovie(movieId))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(MovieWrapper);

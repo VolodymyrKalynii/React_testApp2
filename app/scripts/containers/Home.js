@@ -5,21 +5,15 @@ import PropTypes from 'prop-types';
 import Loader from '../components/Loader';
 import SearchField from '../components/SearchField';
 import MovieBlock from '../components/MovieBlock';
-import {loadMoviesByPageNumber, loadGenres, loadMoviesByNameAndPage} from '../redux/actions';
+import {homePageActions, genresActions} from '../redux/actions';
 
 class Home extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.activePage = this.props.activePage;
-
-        this.loadGenres = this.props.loadGenres;
-        this.loadMoviesByPageNumber = this.props.loadMoviesByPageNumber;
-        this.loadMoviesByNameAndPage = this.props.loadMoviesByNameAndPage;
-    }
+    activePage = this.props.activePage;
 
     componentDidMount() {
-        this.loadMoviesByPageNumber(this.activePage);
+        const {loadMoviesByPageNumber} = this.props;
+
+        loadMoviesByPageNumber(this.activePage);
         this.checkGenres();
     }
 
@@ -65,39 +59,46 @@ class Home extends React.Component {
     };
 
     searchMovie = () => {
+        const {
+            loadMoviesByPageNumber,
+            loadMoviesByNameAndPage
+        } = this.props;
         this.activePage = 1;
 
         this.searchMovieName
-            ? this.loadMoviesByNameAndPage(this.searchMovieName, this.activePage)
-            : this.loadMoviesByPageNumber(this.activePage);
+            ? loadMoviesByNameAndPage(this.searchMovieName, this.activePage)
+            : loadMoviesByPageNumber(this.activePage);
     };
 
     /**
      * @param {number} data
      */
     handlePageChange = (data) => {
-        const {filteredSearch} = this.props;
         this.activePage = data.selected + 1;
+        const {
+            filteredSearch,
+            loadMoviesByPageNumber,
+            loadMoviesByNameAndPage
+        } = this.props;
 
         filteredSearch
-            ? this.loadMoviesByNameAndPage(this.searchMovieName, this.activePage)
-            : this.loadMoviesByPageNumber(this.activePage);
+            ? loadMoviesByNameAndPage(this.searchMovieName, this.activePage)
+            : loadMoviesByPageNumber(this.activePage);
     };
 
     /**
      * Перевіряє чи є об"єкт з жанрами.
      */
     checkGenres = () => {
-        const {genres} = this.props;
+        const {genres, loadGenres} = this.props;
 
         genres.length === 0
-            ? this.loadGenres()
+            ? loadGenres()
             : null;
     };
 }
 
 const mapStateToProps = store => {
-
     return {
         genres: store.genres.genres,
         isGenresLoaded: store.genres.isGenresLoaded,
@@ -112,9 +113,11 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadGenres: () => dispatch(loadGenres()),
-        loadMoviesByPageNumber: pageNumber => dispatch(loadMoviesByPageNumber(pageNumber)),
-        loadMoviesByNameAndPage: (searchMovieName, pageNumber) => dispatch(loadMoviesByNameAndPage(searchMovieName, pageNumber))
+        loadGenres: () => dispatch(genresActions.loadGenres()),
+        loadMoviesByPageNumber: pageNumber =>
+            dispatch(homePageActions.loadMoviesByPageNumber(pageNumber)),
+        loadMoviesByNameAndPage: (searchMovieName, pageNumber) =>
+            dispatch(homePageActions.loadMoviesByNameAndPage(searchMovieName, pageNumber))
     };
 };
 

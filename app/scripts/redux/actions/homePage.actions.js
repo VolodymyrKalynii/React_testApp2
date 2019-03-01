@@ -1,14 +1,27 @@
 import Consts from '../../lib/Constants';
 import {MoviesLoader} from '../../lib/data-loader';
 
-export const loadMoviesByPageNumber = pageNumber => dispatch =>
+/**
+ * @param {number} pageNumber
+ * @return {function(*): Promise<T | never>}
+ */
+const loadMoviesByPageNumber = pageNumber => dispatch =>
     MoviesLoader.load(pageNumber)
         .then(response => dispatch(saveMovies(response)));
 
-export const loadMoviesByNameAndPage = (searchMovieName, pageNumber) => dispatch =>
+/**
+ * @param {string} searchMovieName
+ * @param {number} pageNumber
+ * @return {function(*): Promise<T | never>}
+ */
+const loadMoviesByNameAndPage = (searchMovieName, pageNumber) => dispatch =>
     MoviesLoader.load2(pageNumber, searchMovieName)
         .then(response => dispatch(saveMovies2(response)));
 
+/**
+ * @param {{}} movies
+ * @return {{type: string, payload: {isMoviesLoaded: boolean, filteredSearch: boolean, moviesList: *}}}
+ */
 const saveMovies = movies => ({
     type: Consts.LOAD_MOVIES_BY_PAGE_NAME,
     payload: {
@@ -18,6 +31,10 @@ const saveMovies = movies => ({
     }
 });
 
+/**
+ * @param {{}} movies
+ * @return {{type: string, payload: {isMoviesLoaded: boolean, filteredSearch: boolean, moviesList: *}}}
+ */
 const saveMovies2 = movies => ({
     type: Consts.LOAD_MOVIES_BY_NAME_AND_PAGE,
     payload: {
@@ -26,3 +43,8 @@ const saveMovies2 = movies => ({
         moviesList: movies,
     }
 });
+
+export default {
+    loadMoviesByPageNumber,
+    loadMoviesByNameAndPage
+}

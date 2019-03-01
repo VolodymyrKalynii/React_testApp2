@@ -1,7 +1,7 @@
 import Consts from '../../lib/Constants';
 import InitialState from '../state/InitialState';
 
-export function filmsReducers(state = InitialState.initialState, action) {
+export function filmsReducer(state = InitialState.initialState, action) {
     const starMoviesId = [...state.starMoviesId];
     // const moviesList = [...state.moviesList];
 

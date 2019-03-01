@@ -46,6 +46,12 @@ Constants.SAVE_GENRES = 'SAVE_GENRES';
  * @type {string}
  * @readonly
  */
+Constants.LOAD_MOVIE = 'LOAD_MOVIE';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.STAR_MOVIES_ID = 'starMoviesId';
 
 /**

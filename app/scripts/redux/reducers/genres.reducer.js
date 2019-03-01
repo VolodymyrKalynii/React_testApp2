@@ -5,7 +5,7 @@ const initialState = {
     isGenresLoaded: false,
 };
 
-export function genresReducers(state = initialState, action) {
+export function genresReducer(state = initialState, action) {
     switch (action.type) {
         case Consts.LOAD_GENRES:
             // console.log(action.payload.genres.genres);

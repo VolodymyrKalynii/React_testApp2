@@ -18,13 +18,4 @@ export class PageActions {
         type: Consts.REMOVE_STAR,
         payload: starMoviesId
     });
-
-    /**
-     * @param {Array<string>} genres
-     * @return {{type: string, payload: *}}
-     */
-    static loadGenres = genres => ({
-        type: Consts.SAVE_GENRES,
-        payload: genres
-    })
 }
