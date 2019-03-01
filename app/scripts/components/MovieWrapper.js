@@ -18,27 +18,44 @@ class MovieWrapper extends React.Component{
 
         loadMovie(this.props.match.params.id)
     }
-    
-    componentWillReceiveProps(nextProps) {
+
+    // componentWillReceiveProps(nextProps) {
+    //     const {movieInfo: {id}, loadMovie} = this.props;
+    //     // console.log(id);
+    //     // console.log(+nextProps.match.params.id);
+    //     this.counter++;
+    //     console.log(this.counter);
+    //     // console.log(+nextProps.match.params.id !== id);
+    //
+    //     // console.log('ReceiveProps');
+    //
+    //     if (+nextProps.match.params.id !== id && this.counter > 1) {
+    //         console.log('new film');
+    //         loadMovie(nextProps.match.params.id);
+    //         this.counter = 0;
+    //     }
+    // }
+
+    shouldComponentUpdate(nextProps) {
         const {movieInfo: {id}, loadMovie} = this.props;
-        console.log(id);
-        console.log(+nextProps.match.params.id);
+        // console.log(id);
+        // console.log(+nextProps.match.params.id);
         this.counter++;
         console.log(this.counter);
         // console.log(+nextProps.match.params.id !== id);
 
-        console.log('ReceiveProps');
+        // console.log('ReceiveProps');
 
         if (+nextProps.match.params.id !== id && this.counter > 1) {
+            console.log('new film');
             loadMovie(nextProps.match.params.id);
             this.counter = 0;
-        }
+            return true
+        } return false
     }
 
     render() {
         const {isMovieLoaded, movieInfo} = this.props;
-        // console.log(isMovieLoaded);
-        // console.log(movieInfo);
 
         console.log('render');
         return isMovieLoaded
