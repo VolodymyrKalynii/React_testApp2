@@ -1,7 +1,7 @@
 import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 
-import PageActions from '../redux/actions/page.actions';
+import {PageActions} from '../redux/actions/page.actions';
 import MoviesList from '../components/MoviesList';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';

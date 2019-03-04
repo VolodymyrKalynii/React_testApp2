@@ -5,7 +5,7 @@ import Nav from './Nav';
 import Home from '../containers/Home';
 import Bookmarks from '../containers/Bookmarks';
 import NotFound from './NotFound';
-import MovieWrapper from './MovieWrapper';
+import MovieWrapper from '../containers/MovieWrapper';
 import URLPartGetter from '../lib/URLPartGetter';
 
 export default class App extends React.Component {

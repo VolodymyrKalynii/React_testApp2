@@ -40,12 +40,12 @@ export default class RecommendedMovies extends React.Component {
         // console.log('render');
         return (
             <div>
-                {this.renderSimilarFilms()}
+                {this.renderSimilarMovies()}
             </div>
         );
     }
 
-    renderSimilarFilms = () => {
+    renderSimilarMovies = () => {
         return this.state.readyRecommendedMovies
             ? <MoviesList movies={this.state.recommendedMovies}/>
             : <Loader/>
