@@ -66,4 +66,16 @@ Constants.LOAD_MOVIES_BY_PAGE_NAME = 'loadMoviesByPageName';
  */
 Constants.LOAD_MOVIES_BY_NAME_AND_PAGE = 'loadMoviesByNameAndPage';
 
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.LOAD_RECOMMENDED_MOVIES_ID = 'loadRecommendedMoviesId';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.LOAD_RECOMMENDED_MOVIES_PAGES_QTY = 'loadRecommendedMoviesPagesQty';
+
 

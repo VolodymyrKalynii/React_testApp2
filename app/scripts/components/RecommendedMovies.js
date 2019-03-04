@@ -5,8 +5,10 @@ import MoviesList from './MoviesList';
 import {AppConfig} from '../global-config';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from './Loader';
+import {recommendedMoviesActions} from '../redux/actions';
+import connect from 'react-redux/es/connect/connect';
 
-export default class RecommendedMovies extends React.Component {
+class RecommendedMovies extends React.Component {
     constructor(props) {
         super(props);
 
@@ -16,20 +18,29 @@ export default class RecommendedMovies extends React.Component {
             recommendedAllMoviesId: [],
         };
 
-        this.recommendedMoviesPageQty = 1;
         this.recommendedMoviesQty = AppConfig.RECOMMENDED_MOVIES_QTY;
         this.recommendedAllMoviesId = [];
     }
 
     componentDidMount() {
-        this.loadRecommendedMoviesId(this.props.movieId);
+        const {loadRecommendedMoviesPagesQty} = this.props;
+        // console.log(recommendedMoviesPagesQty);
+
+        loadRecommendedMoviesPagesQty({
+            movieId:this.props.movieId,
+            pageNumber:1,
+            recommendedMoviesPagesQty:1,
+            recommendedMoviesQty: this.recommendedMoviesQty
+        });
+        // this.loadRecommendedMoviesId(this.props.movieId);
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({
-            recommendedMovies: []
-        });
-        this.loadRecommendedMoviesId(nextProps.movieId);
+        console.log(nextProps.recommendedMoviesPagesQty);
+        // this.setState({
+        //     recommendedMovies: []
+        // });
+        // this.loadRecommendedMoviesId(nextProps.movieId);
     }
 
     shouldComponentUpdate(nextProps, nextState) {
@@ -135,3 +146,19 @@ export default class RecommendedMovies extends React.Component {
             });
     };
 }
+
+
+const mapStateToProps = store => {
+    return {
+        movies: store.recommendedMovies.movies,
+        recommendedMoviesPagesQty: store.recommendedMovies.recommendedMoviesPagesQty
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        loadRecommendedMoviesPagesQty: (opts) => dispatch(recommendedMoviesActions.loadRecommendedMoviesPagesQty(opts))
+    };
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecommendedMovies);
