@@ -28,6 +28,9 @@ export default class RecommendedMoviesIdsGetter {
         this.saveMovies = saveMovies;
     }
 
+    /**
+     * @private
+     */
     get() {
         RecommendedMoviesLoader.load(this.opts.movieId, this.opts.pageNumber)
             .then(response =>
@@ -35,6 +38,9 @@ export default class RecommendedMoviesIdsGetter {
             );
     }
 
+    /**
+     * @param {{}} response
+     */
     analyzeResponse = response => {
         const recommendedMoviesId = RecommendedMoviesIdsGetter.getMoviesIdList(response.results);
 
@@ -45,7 +51,16 @@ export default class RecommendedMoviesIdsGetter {
     };
 
     /**
+     * @param movies
+     * @return {*}
+     * @private
+     */
+    static getMoviesIdList = movies =>
+        movies.map(movie => movie.id);
+
+    /**
      * @param {{}} response
+     * @private
      */
     checkRecommendedMoviesPagesQty = response => {
         const isThisPageNotLast = this.recommendedMoviesPagesQty <= response.total_pages;
@@ -55,6 +70,9 @@ export default class RecommendedMoviesIdsGetter {
             : this.getRndRecommendedMoviesId();
     };
 
+    /**
+     * @private
+     */
     getRndRecommendedMoviesId = () => {
         this.checksRecommendedMoviesLength();
 
@@ -66,21 +84,17 @@ export default class RecommendedMoviesIdsGetter {
         this.getRndRecommendedMovies(recommendedRndMoviesId);
     };
 
+    /**
+     * @private
+     */
     checksRecommendedMoviesLength = () => {
         if (this.recommendedAllMoviesId.length < this.recommendedMoviesQty)
             this.recommendedMoviesQty = this.recommendedAllMoviesId.length;
     };
 
-    // checksRecommendedMoviesLength = () => {
-    //     const notEnoughMovies = this.recommendedAllMoviesId.length < this.recommendedMoviesQty;
-    //
-    //     notEnoughMovies ?
-    //         this.recommendedMoviesQty = this.recommendedAllMoviesId.length :
-    //         null
-    // };
-
     /**
      * @param {Array<number>} recommendedRndMoviesId
+     * @private
      */
     getRndRecommendedMovies = (recommendedRndMoviesId) => {
         recommendedRndMoviesId.map((movieId) => {
@@ -90,32 +104,23 @@ export default class RecommendedMoviesIdsGetter {
 
     /**
      * @param {number} movieId
+     * @private
      */
     loadRecommendedMovieById = (movieId) => {
         MovieLoader.load(movieId)
             .then(response =>
-                this.analyzeResponse2(response)
+                this.createArray(response)
             );
     };
 
-    analyzeResponse2 = response => {
-        this.recommendedMovies.push(response);
-        // const allowRunAction = this.recommendedMovies.length >= this.recommendedMoviesQty;
-        //
-        // allowRunAction
-        //     ? this.dispatch(this.saveMovies(this.recommendedMovies))
-        //     : null;
-        if (this.recommendedMovies.length >= this.recommendedMoviesQty)
-            this.dispatch(this.saveMovies(this.recommendedMovies))
-    };
-
-    //todo доробити рекомендовані фільми через redux
-
     /**
-     * @param movies
-     * @return {*}
+     * @param {{}} response
      * @private
      */
-    static getMoviesIdList = movies =>
-        movies.map(movie => movie.id);
+    createArray = response => {
+        this.recommendedMovies.push(response);
+
+        if (this.recommendedMovies.length >= this.recommendedMoviesQty)
+            this.dispatch(this.saveMovies(this.recommendedMovies));
+    };
 }

@@ -76,6 +76,7 @@ Constants.LOAD_RECOMMENDED_MOVIES_ID = 'loadRecommendedMoviesId';
  * @type {string}
  * @readonly
  */
-Constants.LOAD_RECOMMENDED_MOVIES_PAGES_QTY = 'loadRecommendedMoviesPagesQty';
+Constants.START_LOAD_RECOMMENDED_MOVIES = 'startLoadRecommendedMovies';
+
 
 

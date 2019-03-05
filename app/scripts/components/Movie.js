@@ -2,7 +2,7 @@ import * as React from 'react';
 import PropTypes from 'prop-types';
 
 import Constants from '../lib/Constants';
-import RecommendedMovies from './RecommendedMovies';
+import RecommendedMovies from '../containers/RecommendedMovies';
 import StarButton from '../containers/StarButton';
 
 export default class Movie extends React.Component {

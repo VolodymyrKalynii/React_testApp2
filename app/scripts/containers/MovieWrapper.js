@@ -15,9 +15,8 @@ class MovieWrapper extends React.Component{
     componentWillReceiveProps(nextProps) {
         const {movieInfo: {id}, loadMovie} = this.props;
 
-        if (+nextProps.match.params.id !== id) {
+        if (+nextProps.match.params.id !== id)
             loadMovie(nextProps.match.params.id);
-        }
     }
 
     render() {
