@@ -2,7 +2,7 @@ import * as React from 'react';
 import {connect} from 'react-redux';
 import PropTypes from 'prop-types';
 
-import PageActions from '../redux/actions/page.actions';
+import {starActions} from '../redux/actions';
 
 class StarButton extends React.Component{
     constructor(props) {
@@ -91,12 +91,12 @@ class StarButton extends React.Component{
 }
 
 const mapStateToProps = store => ({
-    starMoviesId: store.movies.starMoviesId,
+    starMoviesId: store.starMovies.starMoviesId,
 });
 
 const mapDispatchToProps = dispatch => ({
-    addStarAction: starMoviesId => dispatch(PageActions.addStar(starMoviesId)),
-    removeStarAction: starMoviesId => dispatch(PageActions.removeStar(starMoviesId)),
+    addStarAction: starMoviesId => dispatch(starActions.addStar(starMoviesId)),
+    removeStarAction: starMoviesId => dispatch(starActions.removeStar(starMoviesId)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(StarButton);

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import connect from 'react-redux/es/connect/connect';
 
-import {PageActions} from '../redux/actions/page.actions';
+import {starActions} from '../redux/actions';
 import MoviesList from '../components/MoviesList';
 import RequestsURLsCreator from '../js/RequestsURLsCreator';
 import Loader from '../components/Loader';
@@ -62,14 +62,14 @@ class Bookmarks extends React.Component{
 
 const mapStateToProps = store => {
     return {
-        starMoviesId: store.movies.starMoviesId
+        starMoviesId: store.starMovies.starMoviesId
     }
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        addStarAction: starMoviesId => dispatch(PageActions.addStar(starMoviesId)),
-        removeStarAction: starMoviesId => dispatch(PageActions.removeStar(starMoviesId))
+        addStarAction: starMoviesId => dispatch(starActions.addStar(starMoviesId)),
+        removeStarAction: starMoviesId => dispatch(starActions.removeStar(starMoviesId))
     };
 };
 
