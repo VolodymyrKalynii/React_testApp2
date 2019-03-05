@@ -27,7 +27,6 @@ class Home extends React.Component {
         const {isMoviesLoaded, isGenresLoaded} = this.props;
         const allowRenderContent = isMoviesLoaded && isGenresLoaded;
 
-        console.log('render');
         return allowRenderContent
             ? this.getContent()
             : <Loader/>;
