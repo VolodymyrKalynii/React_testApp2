@@ -2,14 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15f58179-30b1-4ba7-860c-b87ef45aacc3" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/app/scripts/js/StarMoviesGetter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/redux/actions/bookmarks.actions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/app/scripts/redux/reducers/bookmarks.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/containers/Bookmarks.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/containers/Bookmarks.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/containers/StarButton.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/containers/StarButton.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/scripts/lib/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/lib/Constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/redux/actions/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/actions/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/redux/actions/page.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/actions/star.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/redux/reducers/films.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/reducers/star.reducer.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/redux/reducers/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/reducers/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/redux/state/InitialState.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/state/InitialState.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -80,7 +80,7 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="html" value="2" />
-          <entry key="js" value="271" />
+          <entry key="js" value="283" />
           <entry key="json" value="6" />
           <entry key="scss" value="28" />
           <entry key="svg" value="2" />
@@ -90,7 +90,7 @@
         <counts>
           <entry key="HTML" value="2" />
           <entry key="JSON" value="6" />
-          <entry key="JavaScript" value="271" />
+          <entry key="JavaScript" value="283" />
           <entry key="SCSS" value="28" />
           <entry key="SVG" value="2" />
         </counts>
@@ -98,7 +98,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="1" />
-          <entry key="js" value="16119" />
+          <entry key="js" value="16477" />
           <entry key="json" value="2" />
           <entry key="scss" value="1284" />
         </counts>
@@ -107,7 +107,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="16119" />
+          <entry key="JavaScript" value="16477" />
           <entry key="SCSS" value="1284" />
         </counts>
       </usages-collector>
@@ -119,14 +119,14 @@
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.6788875">
+    <splitter split-orientation="horizontal" split-proportion="0.54795355">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/containers/StarButton.js">
+            <entry file="file://$PROJECT_DIR$/app/scripts/containers/Home.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="624">
-                  <caret line="93" column="34" selection-start-line="93" selection-start-column="34" selection-end-line="93" selection-end-column="34" />
+                <state relative-caret-position="520">
+                  <caret line="41" column="27" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="27" />
                   <folding>
                     <element signature="e#0#31#0" expanded="true" />
                   </folding>
@@ -137,29 +137,30 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/scripts/containers/Bookmarks.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="78">
-                  <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+                <state relative-caret-position="26">
+                  <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/movie.reducer.js">
+            <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/bookmarks.actions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="338">
-                  <caret line="13" column="59" selection-start-line="13" selection-start-column="59" selection-end-line="13" selection-end-column="59" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/star.reducer.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="104">
-                  <caret line="4" column="49" selection-start-line="4" selection-start-column="49" selection-end-line="4" selection-end-column="49" />
+                <state relative-caret-position="598">
+                  <caret line="23" column="20" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="20" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
+                    <marker date="1551799677755" expanded="true" signature="530:648" ph="..." />
                   </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/bookmarks.reducer.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="104">
+                  <caret line="4" column="22" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="22" />
                 </state>
               </provider>
             </entry>
@@ -167,8 +168,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="11" column="14" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="14" />
+                <state relative-caret-position="364">
+                  <caret line="14" column="19" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="19" />
                   <folding>
                     <element signature="e#0#38#0" expanded="true" />
                   </folding>
@@ -177,10 +178,10 @@
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/genres.actions.js">
+            <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/recommendedMovies.actions.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="442">
-                  <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
+                <state relative-caret-position="76">
+                  <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
                   <folding>
                     <element signature="e#0#41#0" expanded="true" />
                   </folding>
@@ -191,32 +192,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/scripts/lib/Constants.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="294">
-                  <caret line="42" selection-start-line="42" selection-end-line="42" selection-end-column="21" />
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/components/MoviesList.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state>
-                  <caret column="7" selection-start-column="7" selection-end-column="7" />
-                  <folding>
-                    <element signature="e#0#31#0" expanded="true" />
-                  </folding>
-                </state>
-              </provider>
-            </entry>
-          </file>
-          <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/recommendedMovies.actions.js">
-              <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="622">
-                  <caret line="36" selection-start-line="36" selection-end-line="39" selection-end-column="2" />
-                  <folding>
-                    <element signature="e#0#41#0" expanded="true" />
-                  </folding>
+                <state relative-caret-position="778">
+                  <caret line="90" column="26" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="26" />
                 </state>
               </provider>
             </entry>
@@ -224,8 +201,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/recommendedMovies.reducer.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="286">
-                  <caret line="11" selection-start-line="11" selection-end-line="11" />
+                <state relative-caret-position="104">
+                  <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="36" />
                 </state>
               </provider>
             </entry>
@@ -234,7 +211,16 @@
       </split-first>
       <split-second>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-          <file pinned="false" current-in-tab="true">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/app/scripts/js/StarMoviesGetter.js">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="1092">
+                  <caret line="42" selection-start-line="42" selection-end-line="42" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/star.actions.js">
               <provider selected="true" editor-type-id="text-editor">
                 <state relative-caret-position="208">
@@ -243,11 +229,11 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="false">
+          <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/index.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="104">
-                  <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
+                <state relative-caret-position="130">
+                  <caret line="5" column="35" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="35" />
                 </state>
               </provider>
             </entry>
@@ -255,8 +241,8 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/app/scripts/js/RecommendedMoviesIdsGetter.js">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="208">
-                  <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
+                <state relative-caret-position="452">
+                  <caret line="115" selection-start-line="115" selection-end-line="124" selection-end-column="6" />
                   <folding>
                     <element signature="e#0#83#0" expanded="true" />
                   </folding>
@@ -277,7 +263,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>isFilmInStarFilms</find>
       <find>movieInfo</find>
       <find>filmInfo</find>
       <find>filmId</find>
@@ -307,6 +292,7 @@
       <find>SAVE_GENRES</find>
       <find>SAVE</find>
       <find>store.movies</find>
+      <find>addStarAction</find>
     </findStrings>
     <replaceStrings>
       <replace>recommendedFilmsIdFinal</replace>
@@ -337,9 +323,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/app/scss/movie.scss" />
-        <option value="$PROJECT_DIR$/app/index.html" />
-        <option value="$PROJECT_DIR$/app/scripts/global-config/URLConfig.js" />
         <option value="$PROJECT_DIR$/app/scripts/lib/UrlPartGetter.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/MovieLink.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/Nav.js" />
@@ -373,7 +356,6 @@
         <option value="$PROJECT_DIR$/app/scripts/lib/data-loader/ReccomendedMoviesLoader.js" />
         <option value="$PROJECT_DIR$/app/scripts/lib/data-loader/RecommendedMoviesLoader.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/RecommendedMovies.js" />
-        <option value="$PROJECT_DIR$/app/scripts/lib/Constants.js" />
         <option value="$PROJECT_DIR$/app/scripts/redux/reducers/recommendedMovies.reducer.js" />
         <option value="$PROJECT_DIR$/app/scripts/components/RecommendedMoviesInner.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/MovieWrapper.js" />
@@ -381,12 +363,16 @@
         <option value="$PROJECT_DIR$/app/scripts/js/RecommendedMoviesIdsGetter.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/RecommendedMovies.js" />
         <option value="$PROJECT_DIR$/app/scripts/redux/actions/page.actions.js" />
-        <option value="$PROJECT_DIR$/app/scripts/redux/actions/index.js" />
         <option value="$PROJECT_DIR$/app/scripts/redux/reducers/films.reducer.js" />
         <option value="$PROJECT_DIR$/app/scripts/redux/state/InitialState.js" />
         <option value="$PROJECT_DIR$/app/scripts/redux/reducers/star.reducer.js" />
-        <option value="$PROJECT_DIR$/app/scripts/redux/reducers/index.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/StarButton.js" />
+        <option value="$PROJECT_DIR$/app/scripts/lib/Constants.js" />
+        <option value="$PROJECT_DIR$/app/scripts/redux/reducers/bookmarks.reducer.js" />
+        <option value="$PROJECT_DIR$/app/scripts/redux/reducers/index.js" />
+        <option value="$PROJECT_DIR$/app/scripts/redux/actions/bookmarks.actions.js" />
+        <option value="$PROJECT_DIR$/app/scripts/js/StarMoviesGetter.js" />
+        <option value="$PROJECT_DIR$/app/scripts/redux/actions/index.js" />
         <option value="$PROJECT_DIR$/app/scripts/containers/Bookmarks.js" />
       </list>
     </option>
@@ -531,15 +517,15 @@
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors.Color Scheme Font" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\redux\reducers" />
-      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\lib\data-loader" />
-      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\redux\actions" />
-      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scss" />
-      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\components" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\containers" />
+      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\components" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\redux\reducers" />
+      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\redux\actions" />
+      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\lib\data-loader" />
+      <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scss" />
       <recent name="D:\vova\my\reactLern\testApps\React_testApp2\app\scripts\components" />
     </key>
   </component>
@@ -607,18 +593,18 @@
       <workItem from="1551685437123" duration="4450000" />
       <workItem from="1551696603017" duration="14248000" />
       <workItem from="1551770648228" duration="15229000" />
-      <workItem from="1551795684610" duration="543000" />
+      <workItem from="1551795684610" duration="3616000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="229490000" />
+    <option name="totallyTimeSpent" value="232563000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.13076924" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.10054945" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -665,27 +651,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/app/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="130">
-          <caret line="5" column="72" selection-start-line="5" selection-start-column="72" selection-end-line="5" selection-end-column="72" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/lib/URLPartGetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="8" column="1" selection-start-line="8" selection-start-column="1" selection-end-line="8" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/global-config/AppConfig.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="52">
-          <caret line="2" column="36" selection-start-line="2" selection-start-column="36" selection-end-line="2" selection-end-column="36" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/global-config/Config.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
@@ -805,6 +770,9 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="208">
           <caret line="8" column="20" selection-start-line="8" selection-start-column="13" selection-end-line="8" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -846,13 +814,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/lib/data-loader/RecommendedMoviesLoader.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="260">
-          <caret line="10" selection-start-line="10" selection-end-line="10" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/components/MovieInner.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="104">
@@ -875,16 +836,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="52">
           <caret line="8" column="21" selection-start-line="8" selection-start-column="21" selection-end-line="8" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/containers/Home.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="572">
-          <caret line="29" column="30" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-          <folding>
-            <element signature="e#0#31#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -916,40 +867,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/recommendedMovies.reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" selection-start-line="11" selection-end-line="11" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/recommendedMovies.actions.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="622">
-          <caret line="36" selection-start-line="36" selection-end-line="39" selection-end-column="2" />
-          <folding>
-            <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/js/RecommendedMoviesIdsGetter.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="208">
-          <caret line="10" column="44" selection-start-line="10" selection-start-column="44" selection-end-line="10" selection-end-column="44" />
-          <folding>
-            <element signature="e#0#83#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/lib/Constants.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="294">
-          <caret line="42" selection-start-line="42" selection-end-line="42" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/js/Mediator.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="338">
@@ -957,13 +874,6 @@
           <folding>
             <element signature="e#0#41#0" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
         </state>
       </provider>
     </entry>
@@ -987,16 +897,6 @@
           <caret line="17" column="14" lean-forward="true" selection-start-line="17" selection-start-column="14" selection-end-line="17" selection-end-column="14" />
           <folding>
             <element signature="e#0#41#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/index.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="286">
-          <caret line="11" column="14" selection-start-line="11" selection-start-column="4" selection-end-line="11" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -1028,10 +928,106 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/containers/Home.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="520">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="17" selection-end-line="41" selection-end-column="27" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/recommendedMovies.reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" selection-start-line="4" selection-end-line="4" selection-end-column="36" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/lib/Constants.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="778">
+          <caret line="90" column="26" selection-start-line="90" selection-start-column="10" selection-end-line="90" selection-end-column="26" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/lib/data-loader/RecommendedMoviesLoader.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="260">
+          <caret line="10" selection-start-line="10" selection-end-line="10" />
+          <folding>
+            <marker date="1551711024746" expanded="true" signature="1013:1143" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/js/RecommendedMoviesIdsGetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="452">
+          <caret line="115" selection-start-line="115" selection-end-line="124" selection-end-column="6" />
+          <folding>
+            <element signature="e#0#83#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/recommendedMovies.actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="76">
+          <caret line="12" column="43" selection-start-line="12" selection-start-column="43" selection-end-line="12" selection-end-column="43" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/bookmarks.reducer.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="104">
+          <caret line="4" column="22" selection-start-line="4" selection-start-column="4" selection-end-line="4" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/bookmarks.actions.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="598">
+          <caret line="23" column="20" selection-start-line="23" selection-start-column="6" selection-end-line="23" selection-end-column="20" />
+          <folding>
+            <element signature="e#0#41#0" expanded="true" />
+            <marker date="1551799677755" expanded="true" signature="530:648" ph="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/js/StarMoviesGetter.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1092">
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/redux/reducers/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="364">
+          <caret line="14" column="19" selection-start-line="14" selection-start-column="4" selection-end-line="14" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/app/scripts/redux/actions/index.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="130">
+          <caret line="5" column="35" selection-start-line="5" selection-start-column="19" selection-end-line="5" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/containers/Bookmarks.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="78">
-          <caret line="3" column="43" selection-start-line="3" selection-start-column="43" selection-end-line="3" selection-end-column="43" />
+        <state relative-caret-position="26">
+          <caret line="4" column="50" selection-start-line="4" selection-start-column="50" selection-end-line="4" selection-end-column="50" />
         </state>
       </provider>
     </entry>

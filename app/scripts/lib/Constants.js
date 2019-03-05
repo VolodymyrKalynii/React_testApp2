@@ -78,5 +78,17 @@ Constants.LOAD_RECOMMENDED_MOVIES_ID = 'loadRecommendedMoviesId';
  */
 Constants.START_LOAD_RECOMMENDED_MOVIES = 'startLoadRecommendedMovies';
 
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.LOAD_STAR_MOVIES = 'loadStarMovies';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.SAVE_STAR_MOVIES = 'saveStarMovies';
+
 
 
