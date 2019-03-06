@@ -52,6 +52,12 @@ Constants.LOAD_MOVIE = 'LOAD_MOVIE';
  * @type {string}
  * @readonly
  */
+Constants.FINISH_LOAD_MOVIE = 'FINISH_LOAD_MOVIE';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.STAR_MOVIES_ID = 'starMoviesId';
 
 /**

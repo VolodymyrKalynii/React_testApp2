@@ -9,9 +9,17 @@ const saveMovie = movieInfo => ({
     }
 });
 
+const finishLoadMovie = () => ({
+    type: Consts.FINISH_LOAD_MOVIE,
+    payload: {
+        isMovieLoaded: false
+    }
+});
+
 const loadMovie = (movieId) => dispatch =>
     MovieGetter.get(movieId, saveMovie, dispatch);
 
 export default {
-    loadMovie
+    loadMovie,
+    finishLoadMovie
 }

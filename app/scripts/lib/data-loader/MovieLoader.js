@@ -2,9 +2,10 @@ import RequestsURLsCreator from '../../js/RequestsURLsCreator';
 
 export class MovieLoader {
     static async load(movieId) {
-        const genresUrl = this.getMovieUrl(movieId);
 
-        const response = await fetch(genresUrl);
+        const movieUrl = this.getMovieUrl(movieId);
+
+        const response = await fetch(movieUrl);
 
         return response.json();
     }

@@ -3,7 +3,7 @@ import connect from 'react-redux/es/connect/connect';
 
 import {movieActions} from '../redux/actions/index';
 import Loader from '../components/Loader';
-import {MovieInner} from '../components/MovieInner';
+import Movie from '../components/Movie';
 
 class MovieWrapper extends React.Component{
     componentDidMount() {
@@ -15,15 +15,26 @@ class MovieWrapper extends React.Component{
     componentWillReceiveProps(nextProps) {
         const {movieInfo: {id}, loadMovie} = this.props;
 
-        if (+nextProps.match.params.id !== id)
-            loadMovie(nextProps.match.params.id);
+        if (+nextProps.match.params.id !== id && id && !nextProps.isMovieLoaded)
+                loadMovie(nextProps.match.params.id);
+    }
+
+    shouldComponentUpdate(nextProps) {
+        return nextProps.isMovieLoaded;
+    }
+
+    componentDidUpdate() {
+        const {finishLoadMovie, isMovieLoaded} = this.props;
+
+        if (isMovieLoaded)
+            finishLoadMovie();
     }
 
     render() {
         const {isMovieLoaded, movieInfo} = this.props;
 
         return isMovieLoaded
-            ? <MovieInner movie={movieInfo}/>
+            ? <Movie movie={movieInfo}/>
             : <Loader/>
     }
 }
@@ -37,7 +48,8 @@ const mapStateToProps = store => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        loadMovie: movieId => dispatch(movieActions.loadMovie(movieId))
+        loadMovie: movieId => dispatch(movieActions.loadMovie(movieId)),
+        finishLoadMovie: () => dispatch(movieActions.finishLoadMovie()),
     };
 };
 
