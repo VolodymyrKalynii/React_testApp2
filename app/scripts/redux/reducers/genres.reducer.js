@@ -1,11 +1,7 @@
 import Consts from '../../lib/Constants';
+import {GenresState} from '../state';
 
-const initialState = {
-    genres: [],
-    isGenresLoaded: false,
-};
-
-export function genresReducer(state = initialState, action) {
+export function genresReducer(state = GenresState.initialState, action) {
     switch (action.type) {
         case Consts.LOAD_GENRES:
             // console.log(action.payload.genres.genres);

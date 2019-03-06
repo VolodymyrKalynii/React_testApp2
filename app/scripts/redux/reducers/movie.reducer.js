@@ -1,11 +1,7 @@
 import Consts from '../../lib/Constants';
+import {MovieState} from '../state';
 
-const initialState = {
-    movieInfo: '',
-    isMovieLoaded: false
-};
-
-export function movieReducer(state = initialState, action) {
+export function movieReducer(state = MovieState.initialState, action) {
     switch (action.type) {
         case Consts.LOAD_MOVIE:
             return {

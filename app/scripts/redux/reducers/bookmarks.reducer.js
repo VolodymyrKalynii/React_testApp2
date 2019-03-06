@@ -1,11 +1,7 @@
 import Consts from '../../lib/Constants';
+import {BookmarksState} from '../state';
 
-const initialState = {
-    starMovies: [],
-    isStarMoviesLoaded: false
-};
-
-export function bookmarksReducer(state = initialState, action) {
+export function bookmarksReducer(state = BookmarksState.initialState, action) {
     switch (action.type) {
         case Consts.SAVE_STAR_MOVIES:
             const {starMovies, isStarMoviesLoaded} = action.payload;
