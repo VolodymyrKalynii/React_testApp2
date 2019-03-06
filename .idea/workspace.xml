@@ -2,13 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="15f58179-30b1-4ba7-860c-b87ef45aacc3" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/components/MovieInner.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/scripts/containers/MovieWrapper.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/containers/MovieWrapper.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/lib/Constants.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/lib/Constants.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/lib/data-loader/MovieLoader.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/lib/data-loader/MovieLoader.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/redux/actions/movie.actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/actions/movie.actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/scripts/redux/reducers/movie.reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/app/scripts/redux/reducers/movie.reducer.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -97,7 +91,7 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="1" />
-          <entry key="js" value="17401" />
+          <entry key="js" value="17511" />
           <entry key="json" value="2" />
           <entry key="scss" value="1284" />
         </counts>
@@ -106,7 +100,7 @@
         <counts>
           <entry key="HTML" value="1" />
           <entry key="JSON" value="2" />
-          <entry key="JavaScript" value="17401" />
+          <entry key="JavaScript" value="17511" />
           <entry key="SCSS" value="1284" />
         </counts>
       </usages-collector>
@@ -161,8 +155,11 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/app/scripts/containers/MovieWrapper.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="104">
-              <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+            <state relative-caret-position="442">
+              <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+              <folding>
+                <element signature="e#0#31#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -522,7 +519,7 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="251597000" />
+    <option name="totallyTimeSpent" value="253559000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="70" y="-8" width="1858" height="1096" extended-state="6" />
@@ -925,8 +922,11 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/scripts/containers/MovieWrapper.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="104">
-          <caret line="4" column="42" selection-start-line="4" selection-start-column="42" selection-end-line="4" selection-end-column="42" />
+        <state relative-caret-position="442">
+          <caret line="17" column="35" selection-start-line="17" selection-start-column="35" selection-end-line="17" selection-end-column="35" />
+          <folding>
+            <element signature="e#0#31#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>

@@ -5,18 +5,18 @@ import {movieActions} from '../redux/actions/index';
 import Loader from '../components/Loader';
 import Movie from '../components/Movie';
 
-class MovieWrapper extends React.Component{
+class MovieWrapper extends React.Component {
     componentDidMount() {
         const {loadMovie} = this.props;
 
-        loadMovie(this.props.match.params.id)
+        loadMovie(this.props.match.params.id);
     }
 
     componentWillReceiveProps(nextProps) {
-        const {movieInfo: {id}, loadMovie} = this.props;
+        const {loadMovie} = this.props;
 
-        if (+nextProps.match.params.id !== id && id && !nextProps.isMovieLoaded)
-                loadMovie(nextProps.match.params.id);
+        if (this.isAllowSendRequest(nextProps))
+            loadMovie(nextProps.match.params.id);
     }
 
     shouldComponentUpdate(nextProps) {
@@ -35,8 +35,19 @@ class MovieWrapper extends React.Component{
 
         return isMovieLoaded
             ? <Movie movie={movieInfo}/>
-            : <Loader/>
+            : <Loader/>;
     }
+
+    /**
+     * @param {{}} nextProps
+     * @return {boolean|*}
+     */
+    isAllowSendRequest = nextProps => {
+        const {movieInfo: {id: currId}} = this.props;
+        const {match: {params: {id}}, isMovieLoaded} = nextProps;
+
+        return +id !== currId && currId && !isMovieLoaded;
+    };
 }
 
 const mapStateToProps = store => {
