@@ -14,7 +14,6 @@ export default class MovieLink extends React.Component{
     }
 
     render() {
-        // console.log(this.props.movie.id);
         return (
             <div className='filmLink'>
                 <NavLink className='filmLink__link' to={`${this.urlPart}/movie/${this.props.movie.id}`}>
