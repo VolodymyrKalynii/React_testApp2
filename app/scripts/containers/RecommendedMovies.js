@@ -22,18 +22,25 @@ class RecommendedMovies extends React.Component {
         return nextProps.isRecommendedMoviesLoaded;
     }
 
+    //todo доробити пустий список
     componentDidUpdate() {
-        const {finishLoadMovies, isRecommendedMoviesLoaded} = this.props;
+        const {finishLoadMovies, isRecommendedMoviesLoaded, saveMovies122} = this.props;
 
-        if (isRecommendedMoviesLoaded)
+        if (isRecommendedMoviesLoaded) {
+
             finishLoadMovies();
+            saveMovies122()
+        }
     }
 
     render() {
-        const {isRecommendedMoviesLoaded} = this.props;
-
+        const {isRecommendedMoviesLoaded, isNoRecommendedMovies} = this.props;
+        console.log(isRecommendedMoviesLoaded);
+        console.log(isNoRecommendedMovies);
         return isRecommendedMoviesLoaded
-            ? <MoviesList movies={this.props.movies}/>
+            ? isNoRecommendedMovies
+                ? <div>empty</div>
+                : <MoviesList movies={this.props.movies}/>
             : <Loader/>;
     }
 
@@ -54,12 +61,14 @@ class RecommendedMovies extends React.Component {
 const mapStateToProps = store => {
     return {
         movies: store.recommendedMovies.movies,
+        isNoRecommendedMovies: store.recommendedMovies.isNoRecommendedMovies,
         isRecommendedMoviesLoaded: store.recommendedMovies.isRecommendedMoviesLoaded,
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
+        saveMovies122: () => dispatch(recommendedMoviesActions.saveMovies122()),
         finishLoadMovies: () => dispatch(recommendedMoviesActions.finishLoadMovies()),
         loadRecommendedMovies: (opts) => dispatch(recommendedMoviesActions.loadRecommendedMovies(opts)),
     };

@@ -88,6 +88,18 @@ Constants.START_LOAD_RECOMMENDED_MOVIES = 'startLoadRecommendedMovies';
  * @type {string}
  * @readonly
  */
+Constants.EMPTY_RECOMMENDED_LIST = 'emptyRecommendedList';
+
+/**
+ * @type {string}
+ * @readonly
+ */
+Constants.NOT_EMPTY_RECOMMENDED_LIST = 'notEmptyRecommendedList';
+
+/**
+ * @type {string}
+ * @readonly
+ */
 Constants.LOAD_STAR_MOVIES = 'loadStarMovies';
 
 /**

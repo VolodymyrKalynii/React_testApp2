@@ -5,19 +5,21 @@ export class RecommendedMoviesIdsGetter {
     /**
      * @param {{}} opts
      * @param {Function} loadMovies
+     * @param {Function} saveMovies12
      * @param {Function} dispatch
      */
-    static get(opts, loadMovies, dispatch) {
-        return (new RecommendedMoviesIdsGetter(opts, loadMovies, dispatch).get());
+    static get(opts, loadMovies, saveMovies12, dispatch) {
+        return (new RecommendedMoviesIdsGetter(opts, loadMovies, saveMovies12, dispatch).get());
     }
 
     /**
      * @param {{}} opts
      * @param {Function} loadMovies
+     * @param {Function} saveMovies12
      * @param {Function} dispatch
      * @private
      */
-    constructor(opts, loadMovies, dispatch) {
+    constructor(opts, loadMovies, saveMovies12, dispatch) {
         this.opts = opts;
         this.recommendedAllMoviesId = [];
         this.recommendedMoviesPagesQty = 1;
@@ -25,6 +27,7 @@ export class RecommendedMoviesIdsGetter {
         this.recommendedMovies = [];
         this.loadMovies = loadMovies;
         this.dispatch = dispatch;
+        this.saveMovies12 = saveMovies12;
     }
 
     /**
@@ -43,6 +46,9 @@ export class RecommendedMoviesIdsGetter {
      */
     analyzeResponse = response => {
         const recommendedMoviesId = RecommendedMoviesIdsGetter.getMoviesIdList(response.results);
+        console.log(recommendedMoviesId);
+
+        this.checkRecommendedMoviesIdLength(recommendedMoviesId);
 
         this.recommendedAllMoviesId = this.recommendedAllMoviesId.concat(recommendedMoviesId);
         this.recommendedMoviesPagesQty++;
@@ -57,6 +63,11 @@ export class RecommendedMoviesIdsGetter {
      */
     static getMoviesIdList = movies =>
         movies.map(movie => movie.id);
+
+    checkRecommendedMoviesIdLength = (recommendedMoviesId) => {
+        if (recommendedMoviesId.length === 0)
+            this.dispatch(this.saveMovies12())
+    };
 
     /**
      * @param {{}} response
