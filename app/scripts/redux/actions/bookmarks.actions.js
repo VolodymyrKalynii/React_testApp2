@@ -1,6 +1,6 @@
 import Consts from '../../lib/Constants';
 
-import MoviesGetter from '../../js/MoviesGetter';
+import {MoviesGetter} from '../../lib/data-getter';
 
 /**
  * @param {Array<{}>} starMovies

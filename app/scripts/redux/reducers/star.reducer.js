@@ -1,7 +1,7 @@
 import Consts from '../../lib/Constants';
-import InitialState from '../state/InitialState';
+import StarTate from '../state/star.state';
 
-export function starReducer(state = InitialState.initialState, action) {
+export function starReducer(state = StarTate.initialState, action) {
     const starMoviesId = [...state.starMoviesId];
 
     switch (action.type) {

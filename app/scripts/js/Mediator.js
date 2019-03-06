@@ -1,6 +1,6 @@
 import Store from '../redux/store/store';
 import AppWrapper from './AppWrapper';
-import InitialState from '../redux/state/InitialState';
+import StarTate from '../redux/state/star.state';
 import Constants from '../lib/Constants';
 
 export default class Mediator {
@@ -58,4 +58,4 @@ export default class Mediator {
     }
 }
 
-Mediator.starFilmsId = InitialState.initialState.starFilmsId;
+Mediator.starFilmsId = StarTate.initialState.starFilmsId;

@@ -1,22 +1,20 @@
 import Consts from '../../lib/Constants';
-import {MoviesLoader} from '../../lib/data-loader';
+import {MoviesGetterByPageName} from '../../lib/data-getter';
 
 /**
  * @param {number} pageNumber
- * @return {function(*): Promise<T | never>}
+ * @return {function(*=): void}
  */
 const loadMoviesByPageNumber = pageNumber => dispatch =>
-    MoviesLoader.load(pageNumber)
-        .then(response => dispatch(saveMovies(response)));
+    MoviesGetterByPageName.getByPage(pageNumber, saveMovies, dispatch);
 
 /**
  * @param {string} searchMovieName
  * @param {number} pageNumber
- * @return {function(*): Promise<T | never>}
+ * @return {function(*=): void}
  */
 const loadMoviesByNameAndPage = (searchMovieName, pageNumber) => dispatch =>
-    MoviesLoader.load2(pageNumber, searchMovieName)
-        .then(response => dispatch(saveMovies2(response)));
+    MoviesGetterByPageName.getByPageAndName(pageNumber, searchMovieName, saveMovies2, dispatch);
 
 /**
  * @param {{}} movies

@@ -1,7 +1,7 @@
 import Constants from '../../lib/Constants';
 
-export default class InitialState {}
+export default class StarTate {}
 
-InitialState.initialState = {
+StarTate.initialState = {
     starMoviesId: JSON.parse(localStorage.getItem(Constants.STAR_MOVIES_ID)) || []
 };

@@ -1,6 +1,5 @@
 import Consts from '../../lib/Constants';
-import RecommendedMoviesIdsGetter from '../../js/RecommendedMoviesIdsGetter';
-import MoviesGetter from '../../js/MoviesGetter';
+import {RecommendedMoviesIdsGetter, MoviesGetter} from '../../lib/data-getter';
 
 /**
  * @param {{}} opts

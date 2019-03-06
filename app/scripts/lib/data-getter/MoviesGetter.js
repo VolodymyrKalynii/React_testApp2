@@ -1,6 +1,6 @@
-import {MovieLoader} from '../lib/data-loader';
+import {MovieLoader} from '../data-loader/index';
 
-export default class MoviesGetter {
+export class MoviesGetter {
     static get(moviesId, saveMovies, dispatch) {
 
         return (new MoviesGetter(moviesId, saveMovies, dispatch).get())

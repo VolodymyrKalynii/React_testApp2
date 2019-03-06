@@ -1,5 +1,5 @@
 import Consts from '../../lib/Constants';
-import {GenresLoader} from '../../lib/data-loader';
+import {GenresGetter} from '../../lib/data-getter';
 
 const saveGenres = genres => ({
     type: Consts.LOAD_GENRES,
@@ -10,8 +10,7 @@ const saveGenres = genres => ({
 });
 
 const loadGenres = () => dispatch => (
-    GenresLoader.load()
-        .then(response => dispatch(saveGenres(response)))
+    GenresGetter.get(saveGenres, dispatch)
 );
 
 export default {

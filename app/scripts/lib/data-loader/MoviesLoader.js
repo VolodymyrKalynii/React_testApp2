@@ -1,7 +1,7 @@
 import RequestsURLsCreator from '../../js/RequestsURLsCreator';
 
 export class MoviesLoader {
-    static async load(pageNumber) {
+    static async loadByPage(pageNumber) {
         const moviesUrl = this.getMoviesUrl(pageNumber);
 
         const response = await fetch(moviesUrl);
@@ -9,7 +9,7 @@ export class MoviesLoader {
         return response.json();
     }
 
-    static async load2(pageNumber, searchMovieName) {
+    static async loadByPageAndName(pageNumber, searchMovieName) {
         const moviesUrl = this.getMoviesUrl2(pageNumber, searchMovieName);
 
         const response = await fetch(moviesUrl);

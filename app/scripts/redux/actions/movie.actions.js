@@ -1,5 +1,5 @@
 import Consts from '../../lib/Constants';
-import {MovieLoader} from '../../lib/data-loader';
+import {MovieGetter} from '../../lib/data-getter';
 
 const saveMovie = movieInfo => ({
     type: Consts.LOAD_MOVIE,
@@ -9,10 +9,8 @@ const saveMovie = movieInfo => ({
     }
 });
 
-const loadMovie = (movieId) => dispatch => (
-    MovieLoader.load(movieId)
-        .then(response => dispatch(saveMovie(response)))
-);
+const loadMovie = (movieId) => dispatch =>
+    MovieGetter.get(movieId, saveMovie, dispatch);
 
 export default {
     loadMovie

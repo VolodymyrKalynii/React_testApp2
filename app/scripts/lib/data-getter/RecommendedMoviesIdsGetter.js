@@ -1,7 +1,7 @@
-import {RecommendedMoviesLoader} from '../lib/data-loader/RecommendedMoviesLoader';
-import ArrayUtils from '../lib/ArrayUtils';
+import {RecommendedMoviesLoader} from '../data-loader/RecommendedMoviesLoader';
+import ArrayUtils from '../ArrayUtils';
 
-export default class RecommendedMoviesIdsGetter {
+export class RecommendedMoviesIdsGetter {
     /**
      * @param {{}} opts
      * @param {Function} loadMovies
