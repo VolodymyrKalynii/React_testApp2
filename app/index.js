@@ -1,4 +1,4 @@
-require('@babel/polyfill');
+import '@babel/polyfill';
 import Mediator from './scripts/js/Mediator';
 
 window.addEventListener('load', async () => {
