@@ -1,19 +1,20 @@
 import {MovieLoader} from '../lib/data-loader';
 
-export default class StarMoviesGetter {
-    static get(starMoviesId, saveStarMovies, dispatch) {
-        return (new StarMoviesGetter(starMoviesId, saveStarMovies, dispatch).get())
+export default class MoviesGetter {
+    static get(moviesId, saveMovies, dispatch) {
+
+        return (new MoviesGetter(moviesId, saveMovies, dispatch).get())
     }
 
-    constructor(starMoviesId, saveStarMovies, dispatch) {
+    constructor(moviesId, saveMovies, dispatch) {
         this.dispatch = dispatch;
-        this.starMoviesId = starMoviesId;
-        this.saveStarMovies = saveStarMovies;
+        this.moviesId = moviesId;
+        this.saveMovies = saveMovies;
         this.starMovies = [];
     }
 
     get() {
-        this.starMoviesId.map((movieId) => {
+        this.moviesId.map((movieId) => {
             this.loadStarMovieById(movieId);
         });
     }
@@ -36,7 +37,7 @@ export default class StarMoviesGetter {
     createArray = response => {
         this.starMovies.push(response);
 
-        if (this.starMovies.length >= this.starMoviesId.length)
-            this.dispatch(this.saveStarMovies(this.starMovies));
+        if (this.starMovies.length >= this.moviesId.length)
+            this.dispatch(this.saveMovies(this.starMovies));
     };
 }

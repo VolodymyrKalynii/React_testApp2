@@ -1,6 +1,6 @@
 import Consts from '../../lib/Constants';
 
-import StarMoviesGetter from '../../js/StarMoviesGetter';
+import MoviesGetter from '../../js/MoviesGetter';
 
 /**
  * @param {Array<{}>} starMovies
@@ -17,7 +17,7 @@ const saveStarMovies = starMovies => {
 };
 
 const loadStarMovies = (starMoviesId) => dispatch =>
-    StarMoviesGetter.get(starMoviesId, saveStarMovies, dispatch);
+    MoviesGetter.get(starMoviesId, saveStarMovies, dispatch);
 
 export default {
     loadStarMovies
