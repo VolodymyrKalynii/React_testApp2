@@ -1,5 +1,5 @@
 import * as React from 'react';
-import connect from 'react-redux/es/connect/connect';
+import {connect} from 'react-redux';
 
 import {movieActions} from '../redux/actions/index';
 import Loader from '../components/Loader';
