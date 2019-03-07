@@ -5,21 +5,21 @@ export class RecommendedMoviesIdsGetter {
     /**
      * @param {{}} opts
      * @param {Function} loadMovies
-     * @param {Function} saveMovies12
+     * @param {Function} setEmptyRecommendedList
      * @param {Function} dispatch
      */
-    static get(opts, loadMovies, saveMovies12, dispatch) {
-        return (new RecommendedMoviesIdsGetter(opts, loadMovies, saveMovies12, dispatch).get());
+    static get(opts, loadMovies, setEmptyRecommendedList, dispatch) {
+        return (new RecommendedMoviesIdsGetter(opts, loadMovies, setEmptyRecommendedList, dispatch).get());
     }
 
     /**
      * @param {{}} opts
      * @param {Function} loadMovies
-     * @param {Function} saveMovies12
+     * @param {Function} setEmptyRecommendedList
      * @param {Function} dispatch
      * @private
      */
-    constructor(opts, loadMovies, saveMovies12, dispatch) {
+    constructor(opts, loadMovies, setEmptyRecommendedList, dispatch) {
         this.opts = opts;
         this.recommendedAllMoviesId = [];
         this.recommendedMoviesPagesQty = 1;
@@ -27,7 +27,7 @@ export class RecommendedMoviesIdsGetter {
         this.recommendedMovies = [];
         this.loadMovies = loadMovies;
         this.dispatch = dispatch;
-        this.saveMovies12 = saveMovies12;
+        this.setEmptyRecommendedList = setEmptyRecommendedList;
     }
 
     /**
@@ -44,16 +44,10 @@ export class RecommendedMoviesIdsGetter {
      * @param {{}} response
      * @private
      */
-    analyzeResponse = response => {
+    analyzeResponse(response) {
         const recommendedMoviesId = RecommendedMoviesIdsGetter.getMoviesIdList(response.results);
-        console.log(recommendedMoviesId);
 
-        this.checkRecommendedMoviesIdLength(recommendedMoviesId);
-
-        this.recommendedAllMoviesId = this.recommendedAllMoviesId.concat(recommendedMoviesId);
-        this.recommendedMoviesPagesQty++;
-
-        this.checkRecommendedMoviesPagesQty(response);
+        this.checkRecommendedMoviesIdLength(response, recommendedMoviesId);
     };
 
     /**
@@ -64,16 +58,30 @@ export class RecommendedMoviesIdsGetter {
     static getMoviesIdList = movies =>
         movies.map(movie => movie.id);
 
-    checkRecommendedMoviesIdLength = (recommendedMoviesId) => {
-        if (recommendedMoviesId.length === 0)
-            this.dispatch(this.saveMovies12())
+    /**
+     * @param {{}} response
+     * @param {Array<number>} recommendedMoviesId
+     */
+    checkRecommendedMoviesIdLength(response, recommendedMoviesId) {
+        const isEmptyArray = recommendedMoviesId.length === 0;
+
+        isEmptyArray ?
+            this.dispatch(this.setEmptyRecommendedList()) :
+            this.continueWorkWithMovies(response, recommendedMoviesId);
     };
+
+    continueWorkWithMovies(response, recommendedMoviesId) {
+        this.recommendedAllMoviesId = this.recommendedAllMoviesId.concat(recommendedMoviesId);
+        this.recommendedMoviesPagesQty++;
+
+        this.checkRecommendedMoviesPagesQty(response);
+    }
 
     /**
      * @param {{}} response
      * @private
      */
-    checkRecommendedMoviesPagesQty = response => {
+    checkRecommendedMoviesPagesQty(response) {
         const isThisPageNotLast = this.recommendedMoviesPagesQty <= response.total_pages;
 
         isThisPageNotLast
@@ -84,7 +92,7 @@ export class RecommendedMoviesIdsGetter {
     /**
      * @private
      */
-    getRndRecommendedMoviesId = () => {
+    getRndRecommendedMoviesId() {
         this.checksRecommendedMoviesLength();
 
         const recommendedRndMoviesId = ArrayUtils.getRndElements({
@@ -98,7 +106,7 @@ export class RecommendedMoviesIdsGetter {
     /**
      * @private
      */
-    checksRecommendedMoviesLength = () => {
+    checksRecommendedMoviesLength() {
         if (this.recommendedAllMoviesId.length < this.recommendedMoviesQty)
             this.recommendedMoviesQty = this.recommendedAllMoviesId.length;
     };

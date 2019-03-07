@@ -6,7 +6,7 @@ import {RecommendedMoviesIdsGetter, MoviesGetter} from '../../lib/data-getter';
  * @return {function(*=): *}
  */
 const loadRecommendedMovies = (opts) => dispatch =>
-    RecommendedMoviesIdsGetter.get(opts, loadMovies, saveMovies12, dispatch);
+    RecommendedMoviesIdsGetter.get(opts, loadMovies, setEmptyRecommendedList, dispatch);
 
 /**
  * @param {Array<number>} moviesId
@@ -30,20 +30,22 @@ const saveMovies = movies => ({
 /**
  * @return {{type: string, payload: *}}
  */
-const saveMovies12 = () => ({
+const setEmptyRecommendedList = () => ({
     type: Consts.EMPTY_RECOMMENDED_LIST,
     payload: {
-        isNoRecommendedMovies: true
+        isNoRecommendedMovies: true,
+        isRecommendedMoviesLoaded: true
     }
 });
 
 /**
  * @return {{type: string, payload: *}}
  */
-const saveMovies122 = () => ({
+const setNotEmptyRecommendedList = () => ({
     type: Consts.NOT_EMPTY_RECOMMENDED_LIST,
     payload: {
-        isNoRecommendedMovies: false
+        isNoRecommendedMovies: false,
+        isRecommendedMoviesLoaded: false,
     }
 });
 
@@ -60,5 +62,5 @@ const finishLoadMovies = () => ({
 export default {
     loadRecommendedMovies,
     finishLoadMovies,
-    saveMovies122
+    setNotEmptyRecommendedList
 };

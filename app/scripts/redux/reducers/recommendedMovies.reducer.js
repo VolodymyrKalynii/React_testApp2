@@ -8,7 +8,8 @@ export function recommendedMoviesReducer(state = RecommendedMoviesState.initialS
         case Consts.NOT_EMPTY_RECOMMENDED_LIST:
             return {
                 ...state,
-                isNoRecommendedMovies: action.payload.isNoRecommendedMovies
+                isNoRecommendedMovies: action.payload.isNoRecommendedMovies,
+                isRecommendedMoviesLoaded: action.payload.isRecommendedMoviesLoaded
             };
         case Consts.START_LOAD_RECOMMENDED_MOVIES:
             return {
