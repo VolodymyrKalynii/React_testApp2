@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {RecommendedMoviesState} from '../state';
 
 export function recommendedMoviesReducer(state = RecommendedMoviesState.initialState, action) {

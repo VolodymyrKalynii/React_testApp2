@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {StarState} from '../state';
 
 export function starReducer(state = StarState.initialState, action) {

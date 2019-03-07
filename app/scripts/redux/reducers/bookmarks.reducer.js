@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {BookmarksState} from '../state';
 
 export function bookmarksReducer(state = BookmarksState.initialState, action) {

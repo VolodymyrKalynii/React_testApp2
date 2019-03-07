@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {RecommendedMoviesIdsGetter, MoviesGetter} from '../../lib/data-getter';
 
 /**

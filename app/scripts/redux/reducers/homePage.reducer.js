@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {HomePageState} from '../state';
 
 export function homePageReducer(state = HomePageState.initialState, action) {

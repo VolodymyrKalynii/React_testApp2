@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {MovieState} from '../state';
 
 export function movieReducer(state = MovieState.initialState, action) {

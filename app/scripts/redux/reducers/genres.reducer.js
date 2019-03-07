@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {GenresState} from '../state';
 
 export function genresReducer(state = GenresState.initialState, action) {

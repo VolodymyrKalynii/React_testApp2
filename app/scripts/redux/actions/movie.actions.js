@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 import {MovieGetter} from '../../lib/data-getter';
 
 const saveMovie = movieInfo => ({

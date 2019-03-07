@@ -1,4 +1,4 @@
-import Consts from '../../lib/Constants';
+import Consts from '../Constants';
 
 /**
  * @param {Array<{}>} starMoviesId
