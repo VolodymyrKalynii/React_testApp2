@@ -1,6 +1,0 @@
-export {default as StarState} from './star.state'
-export {default as MovieState} from './movie.state'
-export {default as GenresState} from './genres.state'
-export {default as HomePageState} from './homePage.state'
-export {default as BookmarksState} from './bookmarks.state'
-export {default as RecommendedMoviesState} from './recommendedMovies.state'
