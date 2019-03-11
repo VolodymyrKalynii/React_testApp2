@@ -27,7 +27,6 @@ export default class App extends React.Component {
                         <Route component={NotFound} />
                     </Switch>
                 </div>
-
             </div>
         );
     }

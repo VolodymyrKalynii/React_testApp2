@@ -58,7 +58,6 @@
   },
   "dependencies": {
     "@babel/polyfill": "^7.0.0",
-    "@fullpage/react-fullpage": "^0.1.13",
     "babel-eslint": "^10.0.1",
     "copy-webpack-plugin": "^4.6.0",
     "history": "latest",
